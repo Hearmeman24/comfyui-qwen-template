@@ -23,6 +23,20 @@ else
     echo "aria2 is already installed"
 fi
 
+if [ "$install_sageattention" == "true" ]; then
+echo "Building SageAttention in the background"
+(
+  git clone https://github.com/thu-ml/SageAttention.git
+  cd SageAttention || exit 1
+  python3 setup.py install
+  cd /
+  pip install --no-cache-dir triton
+) &> /var/log/sage_build.log &      # run in background, log output
+
+BUILD_PID=$!
+echo "Background build started (PID: $BUILD_PID)"
+fi
+
 # Check if NETWORK_VOLUME exists; if not, use root directory instead
 if [ ! -d "$NETWORK_VOLUME" ]; then
     echo "NETWORK_VOLUME directory '$NETWORK_VOLUME' does not exist. You are NOT using a network volume. Setting NETWORK_VOLUME to '/' (root directory)."
@@ -224,6 +238,12 @@ fi
 echo "Config file setup complete!"
 echo "Default preview method updated to 'auto'"
 
+if [ "$install_sageattention" == "true" ]; then
+while kill -0 "$BUILD_PID" 2>/dev/null; do
+    echo "🛠️ Building SageAttention in progress... (this can take around 5 minutes)"
+    sleep 10
+done
+fi
 URL="http://127.0.0.1:8188"
 echo "Starting ComfyUI"
 nohup python3 "$NETWORK_VOLUME/ComfyUI/main.py" --listen > "$NETWORK_VOLUME/comfyui_${RUNPOD_POD_ID}_nohup.log" 2>&1 &
