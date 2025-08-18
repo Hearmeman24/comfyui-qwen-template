@@ -225,10 +225,10 @@
         }
       ],
       "properties": {
-        "cnr_id": "comfyui-impact-pack",
+        "aux_id": "ltdrdata/ComfyUI-Impact-Pack",
         "ver": "2346b677666e14ad53a6e65e16a33289a78106c7",
         "Node name for S&R": "FromBasicPipe_v2",
-        "aux_id": "ltdrdata/ComfyUI-Impact-Pack",
+        "cnr_id": "comfyui-impact-pack",
         "ue_properties": {
           "version": "7.0.1",
           "widget_ue_connectable": {}
@@ -314,10 +314,10 @@
         }
       ],
       "properties": {
-        "cnr_id": "comfyui-kjnodes",
+        "aux_id": "kijai/ComfyUI-KJNodes",
         "ver": "9682804efb2e7caeafcca9431c94a38163e8ceb8",
         "Node name for S&R": "ModelPassThrough",
-        "aux_id": "kijai/ComfyUI-KJNodes",
+        "cnr_id": "comfyui-kjnodes",
         "ue_properties": {
           "version": "7.0.1",
           "widget_ue_connectable": {}
@@ -524,10 +524,10 @@
         }
       ],
       "properties": {
-        "cnr_id": "comfyui-detail-daemon",
+        "aux_id": "Jonseed/ComfyUI-Detail-Daemon",
         "ver": "f391accbda2d309cdcbec65cb9fcc80a41197b20",
         "Node name for S&R": "DetailDaemonSamplerNode",
-        "aux_id": "Jonseed/ComfyUI-Detail-Daemon",
+        "cnr_id": "comfyui-detail-daemon",
         "ue_properties": {
           "version": "7.0.1",
           "widget_ue_connectable": {}
@@ -820,10 +820,10 @@
         }
       ],
       "properties": {
-        "cnr_id": "comfyui-impact-pack",
+        "aux_id": "ltdrdata/ComfyUI-Impact-Pack",
         "ver": "2346b677666e14ad53a6e65e16a33289a78106c7",
         "Node name for S&R": "ToBasicPipe",
-        "aux_id": "ltdrdata/ComfyUI-Impact-Pack",
+        "cnr_id": "comfyui-impact-pack",
         "ue_properties": {
           "version": "7.0.1",
           "widget_ue_connectable": {}
@@ -1001,10 +1001,10 @@
         }
       ],
       "properties": {
-        "cnr_id": "comfyui_ultimatesdupscale",
+        "aux_id": "ssitu/ComfyUI_UltimateSDUpscale",
         "ver": "8642daf6281e4ebbdf2daca18539c0ab6c2c63f4",
         "Node name for S&R": "UltimateSDUpscale",
-        "aux_id": "ssitu/ComfyUI_UltimateSDUpscale",
+        "cnr_id": "comfyui_ultimatesdupscale",
         "ue_properties": {
           "version": "7.0.1",
           "widget_ue_connectable": {
@@ -1015,7 +1015,7 @@
       },
       "widgets_values": [
         1.5000000000000002,
-        140475385216924,
+        590094960672180,
         "randomize",
         20,
         1.5,
@@ -1384,10 +1384,10 @@
         }
       ],
       "properties": {
-        "cnr_id": "ComfyUI_JPS-Nodes",
+        "aux_id": "JPS-GER/ComfyUI_JPS-Nodes",
         "ver": "0e2a9aca02b17dde91577bfe4b65861df622dcaf",
         "Node name for S&R": "SDXL Resolutions (JPS)",
-        "aux_id": "JPS-GER/ComfyUI_JPS-Nodes",
+        "cnr_id": "ComfyUI_JPS-Nodes",
         "ue_properties": {
           "version": "7.0.1",
           "widget_ue_connectable": {}
@@ -1643,7 +1643,11 @@
       "properties": {
         "cnr_id": "comfy-core",
         "ver": "0.3.50",
-        "Node name for S&R": "CLIPLoader"
+        "Node name for S&R": "CLIPLoader",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "version": "7.0.1"
+        }
       },
       "widgets_values": [
         "qwen_2.5_vl_7b.safetensors",
@@ -1764,7 +1768,7 @@
       },
       "widgets_values": [
         true,
-        115392175359528,
+        994572353672694,
         "randomize",
         2.5
       ],
@@ -1849,17 +1853,17 @@
         }
       ],
       "properties": {
-        "cnr_id": "rgthree-comfy",
+        "aux_id": "rgthree/rgthree-comfy",
         "ver": "84a146fee39f7b3a8c6631dcac29bc13b077eb49",
         "Node name for S&R": "Lora Loader Stack (rgthree)",
-        "aux_id": "rgthree/rgthree-comfy",
+        "cnr_id": "rgthree-comfy",
         "ue_properties": {
           "version": "7.0.1",
           "widget_ue_connectable": {}
         }
       },
       "widgets_values": [
-        "lenovo.safetensors",
+        "None",
         0.8,
         "None",
         0.8000000000000002,
@@ -2273,10 +2277,10 @@
   "extra": {
     "ue_links": [],
     "ds": {
-      "scale": 0.569631657993868,
+      "scale": 1.3312800000000011,
       "offset": [
-        5592.865150616881,
-        -414.25059036580086
+        5797.31793046466,
+        -281.4051619725097
       ]
     },
     "links_added_by_ue": [],
