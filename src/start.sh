@@ -98,29 +98,15 @@ download_model() {
     fi
 
     echo "📥 Downloading $destination_file to $destination_dir..."
-
-    if [ "${download_flux_kontext:-false}" = true ] || [ "${download_flux_krea:-false}" = true ]; then
-    # Download with Hugging Face token header
-    if [ -z "$HUGGINGFACE_TOKEN" ]; then
-        echo "❌ HUGGINGFACE_TOKEN is not set. Cannot download $destination_file."
-        return 1
-    fi
-
-    aria2c -x 16 -s 16 -k 1M --continue=true \
-        --header="Authorization: Bearer $HUGGINGFACE_TOKEN" \
-        -d "$destination_dir" -o "$destination_file" "$url" &
-    else
-        # Normal download without auth header
-        aria2c -x 16 -s 16 -k 1M --continue=true -d "$destination_dir" -o "$destination_file" "$url" &
-    fi
+    aria2c -x 16 -s 16 -k 1M --continue=true -d "$destination_dir" -o "$destination_file" "$url" &
 
     echo "Download started in background for $destination_file"
 }
 
 
-download_model "https://huggingface.co/Comfy-Org/Qwen-Image_ComfyUI/resolve/main/split_files/diffusion_models/qwen_image_bf16.safetensors" "$DIFFUSION_MODELS_DIR/flux1-dev-fp8.safetensors"
-download_model "https://huggingface.co/Comfy-Org/Qwen-Image_ComfyUI/resolve/main/split_files/text_encoders/qwen_2.5_vl_7b.safetensors" "$TEXT_ENCODERS_DIR/clip_l.safetensors"
-download_model "https://huggingface.co/Comfy-Org/Qwen-Image_ComfyUI/resolve/main/split_files/vae/qwen_image_vae.safetensors" "$VAE_DIR/ae.safetensors"
+download_model "https://huggingface.co/Comfy-Org/Qwen-Image_ComfyUI/resolve/main/split_files/diffusion_models/qwen_image_bf16.safetensors" "$DIFFUSION_MODELS_DIR/qwen_image_bf16.safetensors"
+download_model "https://huggingface.co/Comfy-Org/Qwen-Image_ComfyUI/resolve/main/split_files/text_encoders/qwen_2.5_vl_7b.safetensors" "$TEXT_ENCODERS_DIR/qwen_2.5_vl_7b.safetensors"
+download_model "https://huggingface.co/Comfy-Org/Qwen-Image_ComfyUI/resolve/main/split_files/vae/qwen_image_vae.safetensors" "$VAE_DIR/qwen_image_vae.safetensors"
 
 # Download additional models
 echo "📥 Starting additional model downloads..."
