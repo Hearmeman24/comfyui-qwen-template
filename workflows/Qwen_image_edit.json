@@ -1,7 +1,7 @@
 {
   "id": "d92b100f-cc99-4988-8ba7-8144a43ad2e0",
   "revision": 0,
-  "last_node_id": 175,
+  "last_node_id": 176,
   "last_link_id": 294,
   "nodes": [
     {
@@ -18,7 +18,7 @@
       "flags": {
         "collapsed": true
       },
-      "order": 18,
+      "order": 19,
       "mode": 0,
       "inputs": [
         {
@@ -63,7 +63,7 @@
       "flags": {
         "collapsed": true
       },
-      "order": 21,
+      "order": 22,
       "mode": 0,
       "inputs": [
         {
@@ -107,7 +107,7 @@
       "flags": {
         "collapsed": true
       },
-      "order": 11,
+      "order": 12,
       "mode": 0,
       "inputs": [
         {
@@ -151,7 +151,7 @@
       "flags": {
         "collapsed": true
       },
-      "order": 19,
+      "order": 20,
       "mode": 0,
       "inputs": [
         {
@@ -234,7 +234,7 @@
       "flags": {
         "collapsed": true
       },
-      "order": 12,
+      "order": 13,
       "mode": 0,
       "inputs": [
         {
@@ -384,71 +384,6 @@
       "bgcolor": "#535"
     },
     {
-      "id": 124,
-      "type": "Lora Loader Stack (rgthree)",
-      "pos": [
-        -3616.0078125,
-        656.1705322265625
-      ],
-      "size": [
-        271.8785095214844,
-        246
-      ],
-      "flags": {},
-      "order": 14,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "model",
-          "type": "MODEL",
-          "link": 204
-        },
-        {
-          "name": "clip",
-          "type": "CLIP",
-          "link": 263
-        }
-      ],
-      "outputs": [
-        {
-          "name": "MODEL",
-          "type": "MODEL",
-          "links": [
-            207
-          ]
-        },
-        {
-          "name": "CLIP",
-          "type": "CLIP",
-          "links": [
-            206
-          ]
-        }
-      ],
-      "properties": {
-        "cnr_id": "rgthree-comfy",
-        "ver": "84a146fee39f7b3a8c6631dcac29bc13b077eb49",
-        "Node name for S&R": "Lora Loader Stack (rgthree)",
-        "aux_id": "rgthree/rgthree-comfy",
-        "ue_properties": {
-          "version": "7.0.1",
-          "widget_ue_connectable": {}
-        }
-      },
-      "widgets_values": [
-        "None",
-        0.8,
-        "None",
-        0.8000000000000002,
-        "None",
-        0.6000000000000001,
-        "None",
-        1
-      ],
-      "color": "#323",
-      "bgcolor": "#535"
-    },
-    {
       "id": 165,
       "type": "GetNode",
       "pos": [
@@ -541,7 +476,7 @@
       "flags": {
         "collapsed": true
       },
-      "order": 17,
+      "order": 18,
       "mode": 0,
       "inputs": [
         {
@@ -625,7 +560,7 @@
       "flags": {
         "collapsed": true
       },
-      "order": 22,
+      "order": 23,
       "mode": 0,
       "inputs": [
         {
@@ -669,7 +604,7 @@
       "flags": {
         "collapsed": true
       },
-      "order": 24,
+      "order": 25,
       "mode": 0,
       "inputs": [
         {
@@ -743,51 +678,162 @@
       "bgcolor": "#335"
     },
     {
-      "id": 166,
-      "type": "LoadImage",
+      "id": 14,
+      "type": "EmptyLatentImage",
       "pos": [
-        -3590.8046875,
-        1046.4337158203125
+        -2876.9951171875,
+        1185.00146484375
       ],
       "size": [
-        274.080078125,
-        314.00006103515625
+        270,
+        106
       ],
-      "flags": {},
+      "flags": {
+        "collapsed": false
+      },
       "order": 8,
       "mode": 0,
       "inputs": [],
       "outputs": [
         {
-          "name": "IMAGE",
-          "type": "IMAGE",
+          "name": "LATENT",
+          "type": "LATENT",
           "links": [
-            285
+            280
           ]
-        },
-        {
-          "name": "MASK",
-          "type": "MASK",
-          "links": null
         }
       ],
-      "title": "Reference Image",
       "properties": {
         "cnr_id": "comfy-core",
-        "ver": "0.3.50",
-        "Node name for S&R": "LoadImage",
+        "ver": "0.3.39",
+        "Node name for S&R": "EmptyLatentImage",
         "ue_properties": {
-          "widget_ue_connectable": {
-            "image": true,
-            "upload": true
-          },
-          "version": "7.0.1"
+          "version": "7.0.1",
+          "widget_ue_connectable": {}
         }
       },
       "widgets_values": [
-        "ComfyUI_00020_.png",
-        "image"
+        1024,
+        1024,
+        1
       ]
+    },
+    {
+      "id": 173,
+      "type": "UNETLoader",
+      "pos": [
+        -2039.9892578125,
+        316.16131591796875
+      ],
+      "size": [
+        270,
+        82
+      ],
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": []
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.40",
+        "Node name for S&R": "UNETLoader",
+        "ue_properties": {
+          "version": "7.0.1",
+          "widget_ue_connectable": {}
+        }
+      },
+      "widgets_values": [
+        "qwen_image_bf16.safetensors",
+        "default"
+      ],
+      "color": "#323",
+      "bgcolor": "#535"
+    },
+    {
+      "id": 10,
+      "type": "CLIPTextEncode",
+      "pos": [
+        -2939.9921875,
+        972.4977416992188
+      ],
+      "size": [
+        380,
+        110
+      ],
+      "flags": {},
+      "order": 14,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 177
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            168,
+            279
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.39",
+        "Node name for S&R": "CLIPTextEncode",
+        "ue_properties": {
+          "version": "7.0.1",
+          "widget_ue_connectable": {}
+        }
+      },
+      "widgets_values": [
+        "low quality"
+      ],
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
+      "id": 103,
+      "type": "PreviewImage",
+      "pos": [
+        -2091.125732421875,
+        701.9049072265625
+      ],
+      "size": [
+        484.17877197265625,
+        739.4611206054688
+      ],
+      "flags": {},
+      "order": 26,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 282
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.39",
+        "Node name for S&R": "PreviewImage",
+        "ue_properties": {
+          "version": "7.0.1",
+          "widget_ue_connectable": {}
+        }
+      },
+      "widgets_values": []
     },
     {
       "id": 171,
@@ -803,7 +849,7 @@
       "flags": {
         "collapsed": true
       },
-      "order": 16,
+      "order": 17,
       "mode": 0,
       "inputs": [
         {
@@ -835,6 +881,7 @@
         "cnr_id": "comfyui_essentials",
         "ver": "9d9f4bedfc9f0321c19faf71855e228c93bd0dc9",
         "Node name for S&R": "ImageResize+",
+        "aux_id": "cubiq/ComfyUI_essentials",
         "ue_properties": {
           "widget_ue_connectable": {
             "width": true,
@@ -857,56 +904,15 @@
       ]
     },
     {
-      "id": 14,
-      "type": "EmptyLatentImage",
+      "id": 124,
+      "type": "Lora Loader Stack (rgthree)",
       "pos": [
-        -2876.9951171875,
-        1185.00146484375
+        -3616.0078125,
+        656.1705322265625
       ],
       "size": [
-        270,
-        106
-      ],
-      "flags": {
-        "collapsed": false
-      },
-      "order": 9,
-      "mode": 0,
-      "inputs": [],
-      "outputs": [
-        {
-          "name": "LATENT",
-          "type": "LATENT",
-          "links": [
-            280
-          ]
-        }
-      ],
-      "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.3.39",
-        "Node name for S&R": "EmptyLatentImage",
-        "ue_properties": {
-          "version": "7.0.1",
-          "widget_ue_connectable": {}
-        }
-      },
-      "widgets_values": [
-        1024,
-        1024,
-        1
-      ]
-    },
-    {
-      "id": 169,
-      "type": "ModelSamplingAuraFlow",
-      "pos": [
-        -2405.182861328125,
-        635.3348388671875
-      ],
-      "size": [
-        270,
-        58
+        271.8785095214844,
+        246
       ],
       "flags": {},
       "order": 15,
@@ -915,7 +921,12 @@
         {
           "name": "model",
           "type": "MODEL",
-          "link": 283
+          "link": 204
+        },
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 263
         }
       ],
       "outputs": [
@@ -923,24 +934,39 @@
           "name": "MODEL",
           "type": "MODEL",
           "links": [
-            284
+            207
+          ]
+        },
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            206
           ]
         }
       ],
       "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.3.50",
-        "Node name for S&R": "ModelSamplingAuraFlow",
+        "cnr_id": "rgthree-comfy",
+        "ver": "84a146fee39f7b3a8c6631dcac29bc13b077eb49",
+        "Node name for S&R": "Lora Loader Stack (rgthree)",
+        "aux_id": "rgthree/rgthree-comfy",
         "ue_properties": {
-          "widget_ue_connectable": {
-            "shift": true
-          },
-          "version": "7.0.1"
+          "version": "7.0.1",
+          "widget_ue_connectable": {}
         }
       },
       "widgets_values": [
-        2.55
-      ]
+        "Qwen-Image-Lightning-8steps-V1.1.safetensors",
+        1,
+        "None",
+        0.8000000000000002,
+        "None",
+        0.6000000000000001,
+        "None",
+        1
+      ],
+      "color": "#323",
+      "bgcolor": "#535"
     },
     {
       "id": 168,
@@ -954,7 +980,7 @@
         474
       ],
       "flags": {},
-      "order": 23,
+      "order": 24,
       "mode": 0,
       "inputs": [
         {
@@ -1004,98 +1030,134 @@
         }
       },
       "widgets_values": [
-        1118703564520392,
+        512046134858944,
         "randomize",
-        35,
-        2.5,
-        "res_2s",
-        "beta",
+        8,
+        1,
+        "euler",
+        "simple",
         1
       ]
     },
     {
-      "id": 173,
-      "type": "UNETLoader",
+      "id": 176,
+      "type": "MarkdownNote",
       "pos": [
-        -2039.9892578125,
-        316.16131591796875
+        -3296.2255859375,
+        1166.18359375
       ],
       "size": [
-        270,
-        82
+        269.7795104980469,
+        160.59848022460938
       ],
       "flags": {},
       "order": 10,
       "mode": 0,
       "inputs": [],
+      "outputs": [],
+      "properties": {
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "version": "7.0.1"
+        }
+      },
+      "widgets_values": [
+        "## I've noticed that selecting images may not work with the new ComfyUI version, you can just drag and drop an image."
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 166,
+      "type": "LoadImage",
+      "pos": [
+        -3590.8046875,
+        1046.4337158203125
+      ],
+      "size": [
+        274.080078125,
+        314.00006103515625
+      ],
+      "flags": {},
+      "order": 11,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            285
+          ]
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null
+        }
+      ],
+      "title": "Reference Image",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.50",
+        "Node name for S&R": "LoadImage",
+        "ue_properties": {
+          "widget_ue_connectable": {
+            "image": true,
+            "upload": true
+          },
+          "version": "7.0.1"
+        }
+      },
+      "widgets_values": [
+        "ComfyUI_temp_ystxk_00002_.png",
+        "image"
+      ]
+    },
+    {
+      "id": 169,
+      "type": "ModelSamplingAuraFlow",
+      "pos": [
+        -2404.62939453125,
+        638.3214111328125
+      ],
+      "size": [
+        270,
+        58
+      ],
+      "flags": {},
+      "order": 16,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 283
+        }
+      ],
       "outputs": [
         {
           "name": "MODEL",
           "type": "MODEL",
-          "links": []
-        }
-      ],
-      "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.3.40",
-        "Node name for S&R": "UNETLoader",
-        "ue_properties": {
-          "version": "7.0.1",
-          "widget_ue_connectable": {}
-        }
-      },
-      "widgets_values": [
-        "qwen_image_bf16.safetensors",
-        "default"
-      ],
-      "color": "#323",
-      "bgcolor": "#535"
-    },
-    {
-      "id": 10,
-      "type": "CLIPTextEncode",
-      "pos": [
-        -2939.9921875,
-        972.4977416992188
-      ],
-      "size": [
-        380,
-        110
-      ],
-      "flags": {},
-      "order": 13,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "clip",
-          "type": "CLIP",
-          "link": 177
-        }
-      ],
-      "outputs": [
-        {
-          "name": "CONDITIONING",
-          "type": "CONDITIONING",
           "links": [
-            168,
-            279
+            284
           ]
         }
       ],
       "properties": {
         "cnr_id": "comfy-core",
-        "ver": "0.3.39",
-        "Node name for S&R": "CLIPTextEncode",
+        "ver": "0.3.50",
+        "Node name for S&R": "ModelSamplingAuraFlow",
         "ue_properties": {
-          "version": "7.0.1",
-          "widget_ue_connectable": {}
+          "widget_ue_connectable": {
+            "shift": true
+          },
+          "version": "7.0.1"
         }
       },
       "widgets_values": [
-        "low quality"
-      ],
-      "color": "#322",
-      "bgcolor": "#533"
+        2.1
+      ]
     },
     {
       "id": 164,
@@ -1109,7 +1171,7 @@
         200
       ],
       "flags": {},
-      "order": 20,
+      "order": 21,
       "mode": 0,
       "inputs": [
         {
@@ -1152,41 +1214,8 @@
         }
       },
       "widgets_values": [
-        "Place this woman on a fitness bike, sweating, in an upscale gym"
+        "Make her wear japanese attire"
       ]
-    },
-    {
-      "id": 103,
-      "type": "PreviewImage",
-      "pos": [
-        -2091.125732421875,
-        701.9049072265625
-      ],
-      "size": [
-        484.17877197265625,
-        739.4611206054688
-      ],
-      "flags": {},
-      "order": 25,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "images",
-          "type": "IMAGE",
-          "link": 282
-        }
-      ],
-      "outputs": [],
-      "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.3.39",
-        "Node name for S&R": "PreviewImage",
-        "ue_properties": {
-          "version": "7.0.1",
-          "widget_ue_connectable": {}
-        }
-      },
-      "widgets_values": []
     }
   ],
   "links": [
@@ -1425,10 +1454,10 @@
   "extra": {
     "ue_links": [],
     "ds": {
-      "scale": 1.151299151324948,
+      "scale": 0.7584282103004044,
       "offset": [
-        4007.636516885766,
-        -551.720040067979
+        3853.4154333902675,
+        -428.0758663492022
       ]
     },
     "links_added_by_ue": [],
