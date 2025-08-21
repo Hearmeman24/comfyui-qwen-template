@@ -55,6 +55,7 @@ DIFFUSION_MODELS_DIR="$NETWORK_VOLUME/ComfyUI/models/diffusion_models"
 LORAS_DIR="$NETWORK_VOLUME/ComfyUI/models/loras"
 TEXT_ENCODERS_DIR="$NETWORK_VOLUME/ComfyUI/models/text_encoders"
 VAE_DIR="$NETWORK_VOLUME/ComfyUI/models/vae"
+UPSCALE_MODELS_DIR="$NETWORK_VOLUME/ComfyUI/models/upscale_models"
 
 if [ ! -d "$COMFYUI_DIR" ]; then
     mv /ComfyUI "$COMFYUI_DIR"
@@ -110,7 +111,7 @@ download_model "https://huggingface.co/Comfy-Org/Qwen-Image-Edit_ComfyUI/resolve
 download_model "https://huggingface.co/Comfy-Org/Qwen-Image_ComfyUI/resolve/main/split_files/text_encoders/qwen_2.5_vl_7b.safetensors" "$TEXT_ENCODERS_DIR/qwen_2.5_vl_7b.safetensors"
 download_model "https://huggingface.co/Comfy-Org/Qwen-Image_ComfyUI/resolve/main/split_files/vae/qwen_image_vae.safetensors" "$VAE_DIR/qwen_image_vae.safetensors"
 download_model "https://huggingface.co/lightx2v/Qwen-Image-Lightning/resolve/main/Qwen-Image-Lightning-8steps-V1.1.safetensors" "$LORAS_DIR/Qwen-Image-Lightning-8steps-V1.1.safetensors"
-
+download_model "https://objectstorage.us-phoenix-1.oraclecloud.com/n/ax6ygfvpvzka/b/open-modeldb-files/o/1x-ITF-SkinDiffDetail-Lite-v1.pth" "$UPSCALE_MODELS_DIR/1x-ITF-SkinDiffDetail-Lite-v1.pth"
 
 
 # Download additional models
@@ -131,7 +132,7 @@ echo "Finished downloading models!"
 
 declare -A MODEL_CATEGORIES=(
     ["$NETWORK_VOLUME/ComfyUI/models/loras"]="$LORAS_IDS_TO_DOWNLOAD"
-    ["$NETWORK_VOLUME/ComfyUI/models/diffusion_models"]="$FLUX_MODEL_IDS_TO_DOWNLOAD"
+    ["$NETWORK_VOLUME/ComfyUI/models/diffusion_models"]="$SDXL_MODEL_IDS_TO_DOWNLOAD"
 )
 
 # Counter to track background jobs
