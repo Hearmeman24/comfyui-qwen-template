@@ -31,10 +31,6 @@ jobs:
             
             docker push "${IMG}:${TAG}"
 
-            # Update cache tag for next build
-            docker tag "${IMG}:${TAG}" "${IMG}:buildcache"
-            docker push "${IMG}:buildcache"
-
 workflows:
   version: 2
   build_on_tag:
