@@ -1,8 +1,8 @@
 {
   "id": "0e795202-8c8d-45fd-89ae-0db75e25e1b1",
   "revision": 0,
-  "last_node_id": 205,
-  "last_link_id": 455,
+  "last_node_id": 209,
+  "last_link_id": 464,
   "nodes": [
     {
       "id": 7,
@@ -39,9 +39,9 @@
       ],
       "title": "CLIP Text Encode (Negative Prompt)",
       "properties": {
+        "Node name for S&R": "CLIPTextEncode",
         "cnr_id": "comfy-core",
         "ver": "0.3.49",
-        "Node name for S&R": "CLIPTextEncode",
         "ue_properties": {
           "version": "7.0.1",
           "widget_ue_connectable": {}
@@ -97,7 +97,7 @@
       "flags": {
         "collapsed": true
       },
-      "order": 9,
+      "order": 8,
       "mode": 0,
       "inputs": [
         {
@@ -128,9 +128,9 @@
       ],
       "title": "Empty Latent",
       "properties": {
+        "Node name for S&R": "EmptyLatentImage",
         "cnr_id": "comfy-core",
         "ver": "0.3.49",
-        "Node name for S&R": "EmptyLatentImage",
         "ue_properties": {
           "version": "7.0.1",
           "widget_ue_connectable": {
@@ -188,9 +188,9 @@
         }
       ],
       "properties": {
+        "Node name for S&R": "VAEDecode",
         "cnr_id": "comfy-core",
         "ver": "0.3.49",
-        "Node name for S&R": "VAEDecode",
         "ue_properties": {
           "version": "7.0.1",
           "widget_ue_connectable": {}
@@ -221,9 +221,9 @@
       ],
       "outputs": [],
       "properties": {
+        "Node name for S&R": "PreviewImage",
         "cnr_id": "comfy-core",
         "ver": "0.3.60",
-        "Node name for S&R": "PreviewImage",
         "ue_properties": {
           "widget_ue_connectable": {},
           "version": "7.1",
@@ -258,9 +258,9 @@
         }
       ],
       "properties": {
+        "Node name for S&R": "CLIPLoader",
         "cnr_id": "comfy-core",
         "ver": "0.3.52",
-        "Node name for S&R": "CLIPLoader",
         "ue_properties": {
           "version": "7.0.1",
           "widget_ue_connectable": {
@@ -306,9 +306,9 @@
         }
       ],
       "properties": {
+        "Node name for S&R": "VAELoader",
         "cnr_id": "comfy-core",
         "ver": "0.3.49",
-        "Node name for S&R": "VAELoader",
         "ue_properties": {
           "version": "7.0.1",
           "widget_ue_connectable": {}
@@ -346,9 +346,9 @@
       ],
       "title": "Image Width",
       "properties": {
+        "Node name for S&R": "PrimitiveInt",
         "cnr_id": "comfy-core",
         "ver": "0.3.60",
-        "Node name for S&R": "PrimitiveInt",
         "ue_properties": {
           "widget_ue_connectable": {
             "value": true
@@ -363,236 +363,6 @@
       ],
       "color": "#2a363b",
       "bgcolor": "#3f5159"
-    },
-    {
-      "id": 96,
-      "type": "UNETLoader",
-      "pos": [
-        -1324.97509765625,
-        -246.21925354003906
-      ],
-      "size": [
-        302.80438232421875,
-        82
-      ],
-      "flags": {},
-      "order": 4,
-      "mode": 0,
-      "inputs": [],
-      "outputs": [
-        {
-          "name": "MODEL",
-          "type": "MODEL",
-          "links": [
-            371
-          ]
-        }
-      ],
-      "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.3.52",
-        "Node name for S&R": "UNETLoader",
-        "ue_properties": {
-          "version": "7.0.1",
-          "widget_ue_connectable": {
-            "unet_name": true,
-            "weight_dtype": true
-          }
-        }
-      },
-      "widgets_values": [
-        "qwen_image_2512_bf16.safetensors",
-        "default"
-      ],
-      "color": "#223",
-      "bgcolor": "#335"
-    },
-    {
-      "id": 101,
-      "type": "LoraLoaderModelOnly",
-      "pos": [
-        -924.6854858398438,
-        -293.9217224121094
-      ],
-      "size": [
-        377.3145751953125,
-        83.44073486328125
-      ],
-      "flags": {},
-      "order": 8,
-      "mode": 4,
-      "inputs": [
-        {
-          "name": "model",
-          "type": "MODEL",
-          "link": 371
-        }
-      ],
-      "outputs": [
-        {
-          "name": "MODEL",
-          "type": "MODEL",
-          "links": [
-            429
-          ]
-        }
-      ],
-      "title": "LoRA1",
-      "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.3.52",
-        "Node name for S&R": "LoraLoaderModelOnly",
-        "ue_properties": {
-          "version": "7.0.1",
-          "widget_ue_connectable": {
-            "lora_name": true,
-            "strength_model": true
-          }
-        }
-      },
-      "widgets_values": [
-        "HMFemme_V1.safetensors",
-        0.89
-      ],
-      "color": "#232",
-      "bgcolor": "#353"
-    },
-    {
-      "id": 103,
-      "type": "LoraLoaderModelOnly",
-      "pos": [
-        -923.5361938476562,
-        -162.90296936035156
-      ],
-      "size": [
-        363.27520751953125,
-        82
-      ],
-      "flags": {},
-      "order": 10,
-      "mode": 4,
-      "inputs": [
-        {
-          "name": "model",
-          "type": "MODEL",
-          "link": 429
-        }
-      ],
-      "outputs": [
-        {
-          "name": "MODEL",
-          "type": "MODEL",
-          "links": [
-            344
-          ]
-        }
-      ],
-      "title": "LoRA2",
-      "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.3.49",
-        "Node name for S&R": "LoraLoaderModelOnly",
-        "ue_properties": {
-          "version": "7.0.1",
-          "widget_ue_connectable": {}
-        }
-      },
-      "widgets_values": [
-        "HearmemanAI_V4_Rank128_BreastsLoRA_Epoch80.safetensors",
-        0.55
-      ]
-    },
-    {
-      "id": 170,
-      "type": "LoraLoaderModelOnly",
-      "pos": [
-        -923.1637573242188,
-        -38.29335403442383
-      ],
-      "size": [
-        363.27520751953125,
-        82
-      ],
-      "flags": {},
-      "order": 11,
-      "mode": 4,
-      "inputs": [
-        {
-          "name": "model",
-          "type": "MODEL",
-          "link": 344
-        }
-      ],
-      "outputs": [
-        {
-          "name": "MODEL",
-          "type": "MODEL",
-          "links": [
-            432
-          ]
-        }
-      ],
-      "title": "LoRA3",
-      "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.3.49",
-        "Node name for S&R": "LoraLoaderModelOnly",
-        "ue_properties": {
-          "version": "7.0.1",
-          "widget_ue_connectable": {}
-        }
-      },
-      "widgets_values": [
-        "Lily01_epoch80.safetensors",
-        0.45
-      ]
-    },
-    {
-      "id": 201,
-      "type": "LoraLoaderModelOnly",
-      "pos": [
-        -915.785400390625,
-        89.99315643310547
-      ],
-      "size": [
-        363.27520751953125,
-        82
-      ],
-      "flags": {},
-      "order": 12,
-      "mode": 4,
-      "inputs": [
-        {
-          "name": "model",
-          "type": "MODEL",
-          "link": 432
-        }
-      ],
-      "outputs": [
-        {
-          "name": "MODEL",
-          "type": "MODEL",
-          "links": [
-            455
-          ]
-        }
-      ],
-      "title": "LoRA4",
-      "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.3.49",
-        "Node name for S&R": "LoraLoaderModelOnly",
-        "ue_properties": {
-          "version": "7.0.1",
-          "widget_ue_connectable": {}
-        }
-      },
-      "widgets_values": [
-        "Greta01_epoch80.safetensors",
-        0.8
-      ],
-      "color": "#323",
-      "bgcolor": "#535"
     },
     {
       "id": 6,
@@ -629,9 +399,9 @@
       ],
       "title": "CLIP Text Encode (Positive Prompt)",
       "properties": {
+        "Node name for S&R": "CLIPTextEncode",
         "cnr_id": "comfy-core",
         "ver": "0.3.49",
-        "Node name for S&R": "CLIPTextEncode",
         "ue_properties": {
           "version": "7.0.1",
           "widget_ue_connectable": {}
@@ -655,7 +425,7 @@
         82
       ],
       "flags": {},
-      "order": 5,
+      "order": 4,
       "mode": 0,
       "inputs": [],
       "outputs": [
@@ -669,9 +439,9 @@
       ],
       "title": "Image Height",
       "properties": {
+        "Node name for S&R": "PrimitiveInt",
         "cnr_id": "comfy-core",
         "ver": "0.3.60",
-        "Node name for S&R": "PrimitiveInt",
         "ue_properties": {
           "widget_ue_connectable": {
             "value": true
@@ -733,9 +503,9 @@
         }
       ],
       "properties": {
+        "Node name for S&R": "KSampler",
         "cnr_id": "comfy-core",
         "ver": "0.3.75",
-        "Node name for S&R": "KSampler",
         "ue_properties": {
           "widget_ue_connectable": {
             "seed": true,
@@ -750,7 +520,7 @@
         }
       },
       "widgets_values": [
-        951861602393884,
+        283437054051037,
         "randomize",
         28,
         2.4,
@@ -777,7 +547,7 @@
         {
           "name": "model",
           "type": "MODEL",
-          "link": 455
+          "link": 464
         }
       ],
       "outputs": [
@@ -790,13 +560,233 @@
         }
       ],
       "properties": {
+        "Node name for S&R": "ModelSamplingAuraFlow",
         "cnr_id": "comfy-core",
         "ver": "0.16.4",
-        "Node name for S&R": "ModelSamplingAuraFlow"
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "version": "7.8",
+          "input_ue_unconnectable": {}
+        }
       },
       "widgets_values": [
         2.85
       ]
+    },
+    {
+      "id": 206,
+      "type": "LoraLoaderModelOnly",
+      "pos": [
+        -879.8152637593795,
+        -334.5557213367377
+      ],
+      "size": [
+        270,
+        82
+      ],
+      "flags": {},
+      "order": 9,
+      "mode": 4,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 460
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            461
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoraLoaderModelOnly",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "input_ue_unconnectable": {},
+          "version": "7.8"
+        }
+      },
+      "widgets_values": [
+        "MultiAngle.safetensors",
+        1
+      ]
+    },
+    {
+      "id": 207,
+      "type": "LoraLoaderModelOnly",
+      "pos": [
+        -879.8688259732563,
+        -198.30031970360574
+      ],
+      "size": [
+        270,
+        82
+      ],
+      "flags": {},
+      "order": 10,
+      "mode": 4,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 461
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            462
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoraLoaderModelOnly",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "input_ue_unconnectable": {},
+          "version": "7.8"
+        }
+      },
+      "widgets_values": [
+        "MultiAngle.safetensors",
+        1
+      ]
+    },
+    {
+      "id": 208,
+      "type": "LoraLoaderModelOnly",
+      "pos": [
+        -882.9076712962575,
+        -75.44187803216145
+      ],
+      "size": [
+        270,
+        82
+      ],
+      "flags": {},
+      "order": 11,
+      "mode": 4,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 462
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            463
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoraLoaderModelOnly",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "input_ue_unconnectable": {},
+          "version": "7.8"
+        }
+      },
+      "widgets_values": [
+        "MultiAngle.safetensors",
+        1
+      ]
+    },
+    {
+      "id": 209,
+      "type": "LoraLoaderModelOnly",
+      "pos": [
+        -884.1258955302861,
+        68.48757536018847
+      ],
+      "size": [
+        270,
+        82
+      ],
+      "flags": {},
+      "order": 12,
+      "mode": 4,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 463
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            464
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoraLoaderModelOnly",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "input_ue_unconnectable": {},
+          "version": "7.8"
+        }
+      },
+      "widgets_values": [
+        "MultiAngle.safetensors",
+        1
+      ]
+    },
+    {
+      "id": 96,
+      "type": "UNETLoader",
+      "pos": [
+        -1324.97509765625,
+        -246.21925354003906
+      ],
+      "size": [
+        302.80438232421875,
+        82
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            460
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "UNETLoader",
+        "cnr_id": "comfy-core",
+        "ver": "0.3.52",
+        "ue_properties": {
+          "version": "7.0.1",
+          "widget_ue_connectable": {
+            "unet_name": true,
+            "weight_dtype": true
+          }
+        }
+      },
+      "widgets_values": [
+        "qwen_image_2512_bf16.safetensors",
+        "default"
+      ],
+      "color": "#223",
+      "bgcolor": "#335"
     }
   ],
   "links": [
@@ -807,30 +797,6 @@
       8,
       1,
       "VAE"
-    ],
-    [
-      344,
-      103,
-      0,
-      170,
-      0,
-      "MODEL"
-    ],
-    [
-      371,
-      96,
-      0,
-      101,
-      0,
-      "MODEL"
-    ],
-    [
-      429,
-      101,
-      0,
-      103,
-      0,
-      "MODEL"
     ],
     [
       430,
@@ -847,14 +813,6 @@
       7,
       0,
       "CLIP"
-    ],
-    [
-      432,
-      170,
-      0,
-      201,
-      0,
-      "MODEL"
     ],
     [
       443,
@@ -921,8 +879,40 @@
       "MODEL"
     ],
     [
-      455,
-      201,
+      460,
+      96,
+      0,
+      206,
+      0,
+      "MODEL"
+    ],
+    [
+      461,
+      206,
+      0,
+      207,
+      0,
+      "MODEL"
+    ],
+    [
+      462,
+      207,
+      0,
+      208,
+      0,
+      "MODEL"
+    ],
+    [
+      463,
+      208,
+      0,
+      209,
+      0,
+      "MODEL"
+    ],
+    [
+      464,
+      209,
       0,
       205,
       0,
@@ -999,20 +989,24 @@
   "config": {},
   "extra": {
     "ds": {
-      "scale": 0.7972024500000032,
+      "scale": 0.6588450000000005,
       "offset": [
-        1961.1222855537758,
-        653.5918498726114
+        3284.6726885589615,
+        966.0233242702104
       ]
     },
-    "frontendVersion": "1.39.19",
+    "frontendVersion": "1.42.8",
     "ue_links": [],
     "links_added_by_ue": [],
     "VHS_latentpreview": false,
     "VHS_latentpreviewrate": 0,
     "VHS_MetadataImage": true,
     "VHS_KeepIntermediate": true,
-    "workflowRendererVersion": "LG"
+    "workflowRendererVersion": "LG",
+    "linearData": {
+      "inputs": [],
+      "outputs": []
+    }
   },
   "version": 0.4
 }
