@@ -369,7 +369,7 @@ URL="http://127.0.0.1:8188"
 echo "Starting ComfyUI"
 
 # Build ComfyUI command with optional flags
-COMFYUI_CMD="python3 $NETWORK_VOLUME/ComfyUI/main.py --listen"
+COMFYUI_CMD="python3 $NETWORK_VOLUME/ComfyUI/main.py --listen --enable-cors-header '*'"
 
 if [ "$SAGE_ATTENTION_AVAILABLE" == "true" ]; then
   COMFYUI_CMD="$COMFYUI_CMD --use-sage-attention"
