@@ -7,6 +7,21 @@ export LD_PRELOAD="${TCMALLOC}"
 NETWORK_VOLUME="/workspace"
 REPO_DIR="/comfyui-qwen-template"
 
+# Treat well-known placeholder values from the RunPod template form as unset.
+is_placeholder() {
+    case "${1// /}" in
+        ""|"replace_with_ids"|"pat_here"|"token_here") return 0 ;;
+        *) return 1 ;;
+    esac
+}
+is_placeholder "$GITHUB_PAT"          && GITHUB_PAT=""
+is_placeholder "$CIVITAI_LORAS"       && CIVITAI_LORAS=""
+is_placeholder "$CIVITAI_CHECKPOINTS" && CIVITAI_CHECKPOINTS=""
+is_placeholder "$HF_TOKEN"            && HF_TOKEN=""
+is_placeholder "$civitai_token"       && civitai_token=""
+is_placeholder "$CIVITAI_TOKEN"       && CIVITAI_TOKEN=""
+export GITHUB_PAT CIVITAI_LORAS CIVITAI_CHECKPOINTS HF_TOKEN civitai_token CIVITAI_TOKEN
+
 # Optional user override hook
 if [ -f "/workspace/additional_params.sh" ]; then
     chmod +x /workspace/additional_params.sh
