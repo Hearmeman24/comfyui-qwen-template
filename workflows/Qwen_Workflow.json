@@ -778,7 +778,7 @@
         }
       },
       "widgets_values": [
-        "qwen_image_bf16.safetensors",
+        "qwen_image_2512_bf16.safetensors",
         "default"
       ],
       "color": "#223",

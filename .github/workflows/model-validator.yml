@@ -1,0 +1,25 @@
+name: model-validator
+
+on:
+  pull_request:
+    paths:
+      - 'workflows/**'
+      - 'src/models_registry.json'
+      - 'src/workflows_registry.json'
+      - '.github/workflows/model-validator.yml'
+  push:
+    branches: [master]
+    paths:
+      - 'workflows/**'
+      - 'src/models_registry.json'
+      - 'src/workflows_registry.json'
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run validator
+        run: python3 .github/workflows/model_validator.py

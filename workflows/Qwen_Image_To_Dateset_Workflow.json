@@ -417,7 +417,7 @@
         }
       },
       "widgets_values": [
-        "qwen_image_edit_2509_bf16.safetensors",
+        "qwen_image_edit_2511_bf16.safetensors",
         "default"
       ],
       "color": "#323",
@@ -1683,7 +1683,7 @@
         }
       },
       "widgets_values": [
-        "Qwen-Image-Lightning-8steps-V1.1.safetensors",
+        "Qwen-Image-Lightning-8steps-V2.0.safetensors",
         1,
         "None",
         1.51,

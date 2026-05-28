@@ -1,11 +1,11 @@
 # Use multi-stage build with caching optimizations
 FROM nvidia/cuda:12.8.1-cudnn-devel-ubuntu24.04 AS base
 
-# Consolidated environment variables
 ENV DEBIAN_FRONTEND=noninteractive \
-   PIP_PREFER_BINARY=1 \
-   PYTHONUNBUFFERED=1 \
-   CMAKE_BUILD_PARALLEL_LEVEL=8
+    PIP_PREFER_BINARY=1 \
+    PYTHONUNBUFFERED=1 \
+    CMAKE_BUILD_PARALLEL_LEVEL=8 \
+    HF_XET_HIGH_PERFORMANCE=1
 
 RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
     apt-get update && \
@@ -19,7 +19,6 @@ RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
         curl ffmpeg ninja-build git aria2 git-lfs wget vim \
         libgl1 libglib2.0-0 build-essential gcc && \
     \
-    # make Python3.11 the default python & pip
     ln -sf /usr/bin/python3.11 /usr/bin/python && \
     ln -sf /usr/bin/pip3 /usr/bin/pip && \
     \
@@ -27,29 +26,34 @@ RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
     \
     apt-get clean && rm -rf /var/lib/apt/lists/*
 
-# Use the virtual environment
 ENV PATH="/opt/venv/bin:$PATH"
 
 RUN --mount=type=cache,target=/root/.cache/pip \
     pip install --pre torch torchvision torchaudio \
         --index-url https://download.pytorch.org/whl/nightly/cu128
 
-# Core Python tooling
 RUN --mount=type=cache,target=/root/.cache/pip \
     pip install packaging setuptools wheel
 
-# Runtime libraries
+# Runtime libraries. comfy-cli removed (§7) — ComfyUI is cloned directly below.
+# huggingface_hub + hf_xet pulled in for the new download manager (§6).
 RUN --mount=type=cache,target=/root/.cache/pip \
-    pip install pyyaml gdown triton comfy-cli jupyterlab jupyterlab-lsp \
+    pip install pyyaml gdown triton jupyterlab jupyterlab-lsp \
         jupyter-server jupyter-server-terminals \
-        ipykernel jupyterlab_code_formatter
+        ipykernel jupyterlab_code_formatter \
+        "huggingface_hub>=0.27" hf_xet
 
+# §7: Clone ComfyUI directly instead of using `comfy install`.
 RUN --mount=type=cache,target=/root/.cache/pip \
-    /usr/bin/yes | comfy --workspace /ComfyUI install
+    git clone --depth=1 https://github.com/comfyanonymous/ComfyUI.git /ComfyUI \
+    && pip install -r /ComfyUI/requirements.txt
 
 FROM base AS final
-RUN python -m pip install opencv-python
+RUN --mount=type=cache,target=/root/.cache/pip \
+    pip install opencv-python
 
+# Bulk custom-node clone. All these names start with capitals, so they sort
+# before the lowercase `comfyui-manager` cloned below (§11).
 RUN for repo in \
     https://github.com/ssitu/ComfyUI_UltimateSDUpscale.git \
     https://github.com/kijai/ComfyUI-KJNodes.git \
@@ -88,6 +92,27 @@ RUN for repo in \
         fi; \
     done
 
+# §11: ComfyUI-Manager — lowercase dir so it loads AFTER other nodes
+# and can detect their IMPORT FAILED states.
+RUN --mount=type=cache,target=/root/.cache/pip \
+    git clone --depth=1 https://github.com/ltdrdata/ComfyUI-Manager.git \
+        /ComfyUI/custom_nodes/comfyui-manager \
+    && if [ -f /ComfyUI/custom_nodes/comfyui-manager/requirements.txt ]; then \
+         pip install -r /ComfyUI/custom_nodes/comfyui-manager/requirements.txt; \
+       fi
+
+# §8: Several custom-node requirements.txt files pull in CPU-only `onnxruntime`
+# alongside `onnxruntime-gpu`. They share a Python module, so last install wins.
+# Force GPU at end of build; start.sh defensively re-checks at boot.
+RUN --mount=type=cache,target=/root/.cache/pip \
+    pip uninstall -y onnxruntime onnxruntime-gpu 2>/dev/null || true; \
+    pip install onnxruntime-gpu
+
+# §12: Bake the CivitAI helper at build time so boot doesn't pay a git clone.
+RUN git clone --depth=1 https://github.com/Hearmeman24/CivitAI_Downloader.git /tmp/civitai-dl \
+    && cp /tmp/civitai-dl/download_with_aria.py /usr/local/bin/ \
+    && chmod +x /usr/local/bin/download_with_aria.py \
+    && rm -rf /tmp/civitai-dl
 
 COPY src/start_script.sh /start_script.sh
 RUN chmod +x /start_script.sh

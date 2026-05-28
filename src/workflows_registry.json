@@ -1,0 +1,31 @@
+{
+  "DOWNLOAD_QWEN_IMAGE": {
+    "default": true,
+    "workflows": [
+      "Qwen_Workflow.json",
+      "Qwen_Workflow_Slower_Higher_Quality.json",
+      "QwenImage_2512_Workflow.json"
+    ]
+  },
+  "DOWNLOAD_QWEN_IMAGE_EDIT": {
+    "default": true,
+    "workflows": [
+      "Qwen_image_edit.json",
+      "Qwen_MultiAngle_image_edit.json",
+      "Qwen_Image_To_Dateset_Workflow.json"
+    ]
+  },
+  "DOWNLOAD_Z_IMAGE": {
+    "default": false,
+    "workflows": [
+      "Z_Image_Turbo.json",
+      "Z_Image_Turbo_Upscale.json"
+    ]
+  },
+  "DOWNLOAD_HMFEMME": {
+    "default": false,
+    "workflows": [
+      "HMFemme_Workflow.json"
+    ]
+  }
+}

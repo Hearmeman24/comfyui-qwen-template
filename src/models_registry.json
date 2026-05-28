@@ -1,0 +1,54 @@
+{
+  "qwen_image_2512_bf16.safetensors": {
+    "url": "https://huggingface.co/Comfy-Org/Qwen-Image_ComfyUI/resolve/main/split_files/diffusion_models/qwen_image_2512_bf16.safetensors",
+    "dest_subdir": "models/diffusion_models"
+  },
+  "qwen_image_2512_fp8_e4m3fn.safetensors": {
+    "url": "https://huggingface.co/Comfy-Org/Qwen-Image_ComfyUI/resolve/main/split_files/diffusion_models/qwen_image_2512_fp8_e4m3fn.safetensors",
+    "dest_subdir": "models/diffusion_models"
+  },
+  "qwen_image_edit_2511_bf16.safetensors": {
+    "url": "https://huggingface.co/Comfy-Org/Qwen-Image-Edit_ComfyUI/resolve/main/split_files/diffusion_models/qwen_image_edit_2511_bf16.safetensors",
+    "dest_subdir": "models/diffusion_models"
+  },
+  "qwen_image_edit_2511_fp8mixed.safetensors": {
+    "url": "https://huggingface.co/Comfy-Org/Qwen-Image-Edit_ComfyUI/resolve/main/split_files/diffusion_models/qwen_image_edit_2511_fp8mixed.safetensors",
+    "dest_subdir": "models/diffusion_models"
+  },
+  "qwen_2.5_vl_7b_fp8_scaled.safetensors": {
+    "url": "https://huggingface.co/Comfy-Org/Qwen-Image_ComfyUI/resolve/main/split_files/text_encoders/qwen_2.5_vl_7b_fp8_scaled.safetensors",
+    "dest_subdir": "models/text_encoders"
+  },
+  "qwen_image_vae.safetensors": {
+    "url": "https://huggingface.co/Comfy-Org/Qwen-Image_ComfyUI/resolve/main/split_files/vae/qwen_image_vae.safetensors",
+    "dest_subdir": "models/vae"
+  },
+  "Qwen-Image-Lightning-8steps-V2.0.safetensors": {
+    "url": "https://huggingface.co/lightx2v/Qwen-Image-Lightning/resolve/main/Qwen-Image-Lightning-8steps-V2.0.safetensors",
+    "dest_subdir": "models/loras"
+  },
+  "MultiAngle.safetensors": {
+    "url": "https://huggingface.co/Hearmeman/MultiAngleQwen/resolve/main/MultiAngle.safetensors",
+    "dest_subdir": "models/loras"
+  },
+  "z_image_turbo_bf16.safetensors": {
+    "url": "https://huggingface.co/Comfy-Org/z_image_turbo/resolve/main/split_files/diffusion_models/z_image_turbo_bf16.safetensors",
+    "dest_subdir": "models/diffusion_models"
+  },
+  "qwen_3_4b.safetensors": {
+    "url": "https://huggingface.co/Comfy-Org/z_image_turbo/resolve/main/split_files/text_encoders/qwen_3_4b.safetensors",
+    "dest_subdir": "models/text_encoders"
+  },
+  "ae.safetensors": {
+    "url": "https://huggingface.co/modelzpalace/ae.safetensors/resolve/main/ae.safetensors",
+    "dest_subdir": "models/vae"
+  },
+  "1x-ITF-SkinDiffDetail-Lite-v1.pth": {
+    "url": "https://objectstorage.us-phoenix-1.oraclecloud.com/n/ax6ygfvpvzka/b/open-modeldb-files/o/1x-ITF-SkinDiffDetail-Lite-v1.pth",
+    "dest_subdir": "models/upscale_models"
+  },
+  "4xLSDIR.pth": {
+    "baked": true,
+    "dest_subdir": "models/upscale_models"
+  }
+}
