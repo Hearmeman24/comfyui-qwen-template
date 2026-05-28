@@ -32,6 +32,7 @@ commands:
 jobs:
   build_and_push:
     executor: docker-dind
+    resource_class: large.gen2
     steps:
       - checkout
       - run:
