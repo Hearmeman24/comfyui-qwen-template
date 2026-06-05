@@ -19,6 +19,14 @@
     "url": "https://huggingface.co/Comfy-Org/Qwen-Image_ComfyUI/resolve/main/split_files/text_encoders/qwen_2.5_vl_7b_fp8_scaled.safetensors",
     "dest_subdir": "models/text_encoders"
   },
+  "gemma_2_2b_it_elm_bf16.safetensors": {
+    "url": "https://huggingface.co/Comfy-Org/PixelDiT/resolve/main/text_encoders/gemma_2_2b_it_elm_bf16.safetensors",
+    "dest_subdir": "models/text_encoders"
+  },
+  "model_ema_bf16.pth": {
+    "url": "https://huggingface.co/nvidia/PiD/resolve/main/checkpoints/PiD_res2kto4k_sr4x_official_qwenimage_distill_4step/model_ema_bf16.pth",
+    "dest_subdir": "models/diffusion_models"
+  },
   "qwen_image_vae.safetensors": {
     "url": "https://huggingface.co/Comfy-Org/Qwen-Image_ComfyUI/resolve/main/split_files/vae/qwen_image_vae.safetensors",
     "dest_subdir": "models/vae"
