@@ -5,7 +5,7 @@
       "Qwen_Workflow.json",
       "Qwen_Workflow_Slower_Higher_Quality.json",
       "QwenImage_2512_Workflow.json",
-      "QwenImage_2512_PiD_Workflow.json"
+      "QwenImage_2512_Workflow_PiD.json"
     ]
   },
   "DOWNLOAD_QWEN_IMAGE_EDIT": {

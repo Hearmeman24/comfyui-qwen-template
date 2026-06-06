@@ -14,12 +14,12 @@ class PiDWorkflowProvisioningTest(unittest.TestCase):
     def test_pid_workflow_is_default_qwen_workflow_with_required_models_registered(self):
         workflows = load_json(REPO_ROOT / "src" / "workflows_registry.json")
         models = load_json(REPO_ROOT / "src" / "models_registry.json")
-        workflow_text = (REPO_ROOT / "workflows" / "QwenImage_2512_PiD_Workflow.json").read_text(
+        workflow_text = (REPO_ROOT / "workflows" / "QwenImage_2512_Workflow_PiD.json").read_text(
             encoding="utf-8"
         )
 
         self.assertIn(
-            "QwenImage_2512_PiD_Workflow.json",
+            "QwenImage_2512_Workflow_PiD.json",
             workflows["DOWNLOAD_QWEN_IMAGE"]["workflows"],
         )
         self.assertIs(workflows["DOWNLOAD_QWEN_IMAGE"]["default"], True)
