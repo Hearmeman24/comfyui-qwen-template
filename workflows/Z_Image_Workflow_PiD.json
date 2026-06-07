@@ -108,7 +108,7 @@
       "flags": {
         "collapsed": true
       },
-      "order": 11,
+      "order": 10,
       "mode": 0,
       "inputs": [
         {
@@ -216,7 +216,7 @@
       "flags": {
         "collapsed": true
       },
-      "order": 12,
+      "order": 11,
       "mode": 0,
       "inputs": [
         {
@@ -279,6 +279,42 @@
       ],
       "color": "#432",
       "bgcolor": "#653"
+    },
+    {
+      "id": 256,
+      "type": "SaveImage",
+      "pos": [
+        1956.5423902154591,
+        -545.6341146547414
+      ],
+      "size": [
+        816.8118224576624,
+        879.7394559923011
+      ],
+      "flags": {},
+      "order": 23,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 550
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.24.0",
+        "Node name for S&R": "SaveImage",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "input_ue_unconnectable": {},
+          "version": "7.8"
+        }
+      },
+      "widgets_values": [
+        "ComfyUI"
+      ]
     },
     {
       "id": 205,
@@ -412,12 +448,12 @@
           {
             "name": "A",
             "selected": true,
-            "url": "/api/view?filename=rgthree.compare._temp_zkvtr_00007_.png&type=temp&subfolder=&rand=0.7259563605019901"
+            "url": "/api/view?filename=rgthree.compare._temp_zkvtr_00003_.png&type=temp&subfolder=&rand=0.4586601797521158"
           },
           {
             "name": "B",
             "selected": true,
-            "url": "/api/view?filename=rgthree.compare._temp_zkvtr_00008_.png&type=temp&subfolder=&rand=0.18327814595934633"
+            "url": "/api/view?filename=rgthree.compare._temp_zkvtr_00004_.png&type=temp&subfolder=&rand=0.8856700335987931"
           }
         ]
       ]
@@ -640,6 +676,51 @@
       ]
     },
     {
+      "id": 206,
+      "type": "LoraLoaderModelOnly",
+      "pos": [
+        -879.8152637593795,
+        -334.5557213367377
+      ],
+      "size": [
+        270,
+        82
+      ],
+      "flags": {},
+      "order": 12,
+      "mode": 4,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 460
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            461
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.24.0",
+        "Node name for S&R": "LoraLoaderModelOnly",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "input_ue_unconnectable": {},
+          "version": "7.8"
+        }
+      },
+      "widgets_values": [
+        "Qwen-Image-Lightning-8steps-V2.0.safetensors",
+        0.4
+      ]
+    },
+    {
       "id": 95,
       "type": "EmptyLatentImage",
       "pos": [
@@ -769,7 +850,7 @@
         }
       },
       "widgets_values": [
-        1037531975612837,
+        1116461079078883,
         "randomize",
         4,
         1,
@@ -777,6 +858,140 @@
         "beta",
         1
       ]
+    },
+    {
+      "id": 39,
+      "type": "VAELoader",
+      "pos": [
+        -1318.1757513221398,
+        126.06034471638023
+      ],
+      "size": [
+        288.9561462402344,
+        58.316253662109375
+      ],
+      "flags": {
+        "collapsed": false
+      },
+      "order": 5,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "slot_index": 0,
+          "links": [
+            540
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.49",
+        "Node name for S&R": "VAELoader",
+        "ue_properties": {
+          "version": "7.0.1",
+          "widget_ue_connectable": {},
+          "input_ue_unconnectable": {}
+        }
+      },
+      "widgets_values": [
+        "ae.safetensors"
+      ],
+      "color": "#223",
+      "bgcolor": "#335"
+    },
+    {
+      "id": 99,
+      "type": "CLIPLoader",
+      "pos": [
+        -1317.0090115309624,
+        -42.86956267169838
+      ],
+      "size": [
+        297.8836669921875,
+        115.81897735595703
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            430,
+            431
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.52",
+        "Node name for S&R": "CLIPLoader",
+        "ue_properties": {
+          "version": "7.0.1",
+          "widget_ue_connectable": {
+            "clip_name": true,
+            "type": true,
+            "device": true
+          },
+          "input_ue_unconnectable": {}
+        }
+      },
+      "widgets_values": [
+        "qwen_3_4b.safetensors",
+        "lumina2",
+        "default"
+      ],
+      "color": "#223",
+      "bgcolor": "#335"
+    },
+    {
+      "id": 96,
+      "type": "UNETLoader",
+      "pos": [
+        -1322.2911800502325,
+        -292.738034344327
+      ],
+      "size": [
+        302.80438232421875,
+        82
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            460
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.52",
+        "Node name for S&R": "UNETLoader",
+        "ue_properties": {
+          "version": "7.0.1",
+          "widget_ue_connectable": {
+            "unet_name": true,
+            "weight_dtype": true
+          },
+          "input_ue_unconnectable": {}
+        }
+      },
+      "widgets_values": [
+        "z_image_turbo_bf16.safetensors",
+        "default"
+      ],
+      "color": "#223",
+      "bgcolor": "#335"
     },
     {
       "id": 237,
@@ -829,221 +1044,6 @@
       },
       "color": "#223",
       "bgcolor": "#335"
-    },
-    {
-      "id": 256,
-      "type": "SaveImage",
-      "pos": [
-        1956.5423902154591,
-        -545.6341146547414
-      ],
-      "size": [
-        816.8118224576624,
-        879.7394559923011
-      ],
-      "flags": {},
-      "order": 23,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "images",
-          "type": "IMAGE",
-          "link": 550
-        }
-      ],
-      "outputs": [],
-      "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.24.0",
-        "Node name for S&R": "SaveImage",
-        "ue_properties": {
-          "widget_ue_connectable": {},
-          "input_ue_unconnectable": {},
-          "version": "7.8"
-        }
-      },
-      "widgets_values": [
-        "ComfyUI"
-      ]
-    },
-    {
-      "id": 96,
-      "type": "UNETLoader",
-      "pos": [
-        -1322.2911800502325,
-        -292.738034344327
-      ],
-      "size": [
-        302.80438232421875,
-        82
-      ],
-      "flags": {},
-      "order": 5,
-      "mode": 0,
-      "inputs": [],
-      "outputs": [
-        {
-          "name": "MODEL",
-          "type": "MODEL",
-          "links": [
-            460
-          ]
-        }
-      ],
-      "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.3.52",
-        "Node name for S&R": "UNETLoader",
-        "ue_properties": {
-          "version": "7.0.1",
-          "widget_ue_connectable": {
-            "unet_name": true,
-            "weight_dtype": true
-          },
-          "input_ue_unconnectable": {}
-        }
-      },
-      "widgets_values": [
-        "qwen_image_2512_bf16.safetensors",
-        "default"
-      ],
-      "color": "#223",
-      "bgcolor": "#335"
-    },
-    {
-      "id": 99,
-      "type": "CLIPLoader",
-      "pos": [
-        -1317.0090115309624,
-        -42.86956267169838
-      ],
-      "size": [
-        297.8836669921875,
-        115.81897735595703
-      ],
-      "flags": {},
-      "order": 6,
-      "mode": 0,
-      "inputs": [],
-      "outputs": [
-        {
-          "name": "CLIP",
-          "type": "CLIP",
-          "links": [
-            430,
-            431
-          ]
-        }
-      ],
-      "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.3.52",
-        "Node name for S&R": "CLIPLoader",
-        "ue_properties": {
-          "version": "7.0.1",
-          "widget_ue_connectable": {
-            "clip_name": true,
-            "type": true,
-            "device": true
-          },
-          "input_ue_unconnectable": {}
-        }
-      },
-      "widgets_values": [
-        "qwen_2.5_vl_7b_fp8_scaled.safetensors",
-        "qwen_image",
-        "default"
-      ],
-      "color": "#223",
-      "bgcolor": "#335"
-    },
-    {
-      "id": 39,
-      "type": "VAELoader",
-      "pos": [
-        -1318.1757513221398,
-        126.06034471638023
-      ],
-      "size": [
-        288.9561462402344,
-        58.316253662109375
-      ],
-      "flags": {
-        "collapsed": false
-      },
-      "order": 7,
-      "mode": 0,
-      "inputs": [],
-      "outputs": [
-        {
-          "name": "VAE",
-          "type": "VAE",
-          "slot_index": 0,
-          "links": [
-            540
-          ]
-        }
-      ],
-      "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.3.49",
-        "Node name for S&R": "VAELoader",
-        "ue_properties": {
-          "version": "7.0.1",
-          "widget_ue_connectable": {},
-          "input_ue_unconnectable": {}
-        }
-      },
-      "widgets_values": [
-        "qwen_image_vae.safetensors"
-      ],
-      "color": "#223",
-      "bgcolor": "#335"
-    },
-    {
-      "id": 206,
-      "type": "LoraLoaderModelOnly",
-      "pos": [
-        -879.5931625904373,
-        -334.5557213367377
-      ],
-      "size": [
-        270,
-        82
-      ],
-      "flags": {},
-      "order": 10,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "model",
-          "type": "MODEL",
-          "link": 460
-        }
-      ],
-      "outputs": [
-        {
-          "name": "MODEL",
-          "type": "MODEL",
-          "links": [
-            461
-          ]
-        }
-      ],
-      "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.24.0",
-        "Node name for S&R": "LoraLoaderModelOnly",
-        "ue_properties": {
-          "widget_ue_connectable": {},
-          "input_ue_unconnectable": {},
-          "version": "7.8"
-        }
-      },
-      "widgets_values": [
-        "Qwen-Image-Lightning-8steps-V2.0.safetensors",
-        1
-      ]
     },
     {
       "id": 247,
@@ -1163,7 +1163,7 @@
         }
       },
       "widgets_values": [
-        "qwen_image_pid.pth",
+        "z_image_pid.pth",
         "default"
       ],
       "color": "#223",
@@ -1859,6 +1859,61 @@
             "bgcolor": "#533"
           },
           {
+            "id": 244,
+            "type": "PiDConditioning",
+            "pos": [
+              864.0598374694637,
+              -682.6062747405374
+            ],
+            "size": [
+              270,
+              137.328125
+            ],
+            "flags": {},
+            "order": 5,
+            "mode": 0,
+            "inputs": [
+              {
+                "localized_name": "positive",
+                "name": "positive",
+                "type": "CONDITIONING",
+                "link": 518
+              },
+              {
+                "localized_name": "latent",
+                "name": "latent",
+                "type": "LATENT",
+                "link": 523
+              }
+            ],
+            "outputs": [
+              {
+                "localized_name": "CONDITIONING",
+                "name": "CONDITIONING",
+                "type": "CONDITIONING",
+                "links": [
+                  520
+                ]
+              }
+            ],
+            "properties": {
+              "cnr_id": "comfy-core",
+              "ver": "0.22.0",
+              "Node name for S&R": "PiDConditioning",
+              "ue_properties": {
+                "widget_ue_connectable": {},
+                "version": "7.8",
+                "input_ue_unconnectable": {}
+              }
+            },
+            "widgets_values": [
+              "flux",
+              0
+            ],
+            "color": "#332922",
+            "bgcolor": "#593930"
+          },
+          {
             "id": 245,
             "type": "SamplerCustom",
             "pos": [
@@ -1938,7 +1993,7 @@
             },
             "widgets_values": [
               true,
-              984888672975971,
+              983744741398137,
               "randomize",
               1
             ]
@@ -1985,61 +2040,6 @@
             ],
             "color": "#323",
             "bgcolor": "#535"
-          },
-          {
-            "id": 244,
-            "type": "PiDConditioning",
-            "pos": [
-              864.0598374694637,
-              -682.6062747405374
-            ],
-            "size": [
-              270,
-              137.328125
-            ],
-            "flags": {},
-            "order": 5,
-            "mode": 0,
-            "inputs": [
-              {
-                "localized_name": "positive",
-                "name": "positive",
-                "type": "CONDITIONING",
-                "link": 518
-              },
-              {
-                "localized_name": "latent",
-                "name": "latent",
-                "type": "LATENT",
-                "link": 523
-              }
-            ],
-            "outputs": [
-              {
-                "localized_name": "CONDITIONING",
-                "name": "CONDITIONING",
-                "type": "CONDITIONING",
-                "links": [
-                  520
-                ]
-              }
-            ],
-            "properties": {
-              "cnr_id": "comfy-core",
-              "ver": "0.22.0",
-              "Node name for S&R": "PiDConditioning",
-              "ue_properties": {
-                "widget_ue_connectable": {},
-                "version": "7.8",
-                "input_ue_unconnectable": {}
-              }
-            },
-            "widgets_values": [
-              "qwenimage",
-              0
-            ],
-            "color": "#332922",
-            "bgcolor": "#593930"
           }
         ],
         "groups": [],
@@ -2388,7 +2388,7 @@
               }
             },
             "widgets_values": [
-              "qwen_image_vae.safetensors"
+              "ae.safetensors"
             ]
           }
         ],
@@ -2449,10 +2449,10 @@
       "outputs": []
     },
     "ds": {
-      "scale": 0.9646149645000055,
+      "scale": 0.6588450000000009,
       "offset": [
-        960.328448220174,
-        632.868720707226
+        181.0497939384135,
+        903.8228688815088
       ]
     }
   },

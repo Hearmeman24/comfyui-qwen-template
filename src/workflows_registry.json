@@ -20,7 +20,8 @@
     "default": false,
     "workflows": [
       "Z_Image_Turbo.json",
-      "Z_Image_Turbo_Upscale.json"
+      "Z_Image_Turbo_Upscale.json",
+      "Z_Image_Workflow_PiD.json"
     ]
   },
   "DOWNLOAD_HMFEMME": {

@@ -11,10 +11,13 @@ def load_json(path: Path) -> dict:
 
 
 class PiDWorkflowProvisioningTest(unittest.TestCase):
-    def test_pid_workflow_is_default_qwen_workflow_with_required_models_registered(self):
+    def test_pid_workflows_are_registered_with_workflow_specific_model_filenames(self):
         workflows = load_json(REPO_ROOT / "src" / "workflows_registry.json")
         models = load_json(REPO_ROOT / "src" / "models_registry.json")
-        workflow_text = (REPO_ROOT / "workflows" / "QwenImage_2512_Workflow_PiD.json").read_text(
+        qwen_workflow_text = (REPO_ROOT / "workflows" / "QwenImage_2512_Workflow_PiD.json").read_text(
+            encoding="utf-8"
+        )
+        z_workflow_text = (REPO_ROOT / "workflows" / "Z_Image_Workflow_PiD.json").read_text(
             encoding="utf-8"
         )
 
@@ -23,21 +26,32 @@ class PiDWorkflowProvisioningTest(unittest.TestCase):
             workflows["DOWNLOAD_QWEN_IMAGE"]["workflows"],
         )
         self.assertIs(workflows["DOWNLOAD_QWEN_IMAGE"]["default"], True)
+        self.assertIn("Z_Image_Workflow_PiD.json", workflows["DOWNLOAD_Z_IMAGE"]["workflows"])
 
         expected = {
             "gemma_2_2b_it_elm_bf16.safetensors": {
                 "url": "https://huggingface.co/Comfy-Org/PixelDiT/resolve/main/text_encoders/gemma_2_2b_it_elm_bf16.safetensors",
                 "dest_subdir": "models/text_encoders",
             },
-            "model_ema_bf16.pth": {
+            "qwen_image_pid.pth": {
                 "url": "https://huggingface.co/nvidia/PiD/resolve/main/checkpoints/PiD_res2kto4k_sr4x_official_qwenimage_distill_4step/model_ema_bf16.pth",
+                "dest_subdir": "models/diffusion_models",
+            },
+            "z_image_pid.pth": {
+                "url": "https://huggingface.co/nvidia/PiD/resolve/main/checkpoints/PiD_res2kto4k_sr4x_official_flux_distill_4step/model_ema_bf16.pth",
                 "dest_subdir": "models/diffusion_models",
             },
         }
 
         for basename, registry_entry in expected.items():
-            self.assertIn(basename, workflow_text)
             self.assertEqual(models[basename], registry_entry)
+
+        self.assertIn("gemma_2_2b_it_elm_bf16.safetensors", qwen_workflow_text)
+        self.assertIn("gemma_2_2b_it_elm_bf16.safetensors", z_workflow_text)
+        self.assertIn("qwen_image_pid.pth", qwen_workflow_text)
+        self.assertIn("z_image_pid.pth", z_workflow_text)
+        self.assertNotIn("model_ema_bf16.pth", qwen_workflow_text)
+        self.assertNotIn("model_ema_bf16.pth", z_workflow_text)
 
 
 if __name__ == "__main__":
