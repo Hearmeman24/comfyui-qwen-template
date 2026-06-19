@@ -29,5 +29,14 @@
     "workflows": [
       "HMFemme_Workflow.json"
     ]
+  },
+  "download_boogu": {
+    "default": false,
+    "precision_env": "BOOGU_PRECISION",
+    "workflows": [
+      "Boogu_Base.json",
+      "Boogu_Edit.json",
+      "Boogu_Turbo.json"
+    ]
   }
 }

@@ -29,33 +29,18 @@ MANIFEST_PATH = Path("/tmp/qwen_manifest.json")
 
 MODEL_REF_RE = re.compile(r'"([A-Za-z0-9._/-]+\.(?:safetensors|pth|pt|ckpt|gguf|onnx|bin))"')
 
+# bf16 -> fp8 filename swaps applied to workflow JSON when its precision is fp8.
+# A swap is a no-op for workflows that don't reference the bf16 name, so all
+# families can share one map regardless of which precision env drives them.
 PRECISION_VARIANTS = {
     "fp8": {
         "qwen_image_2512_bf16.safetensors": "qwen_image_2512_fp8_e4m3fn.safetensors",
         "qwen_image_edit_2511_bf16.safetensors": "qwen_image_edit_2511_fp8mixed.safetensors",
+        "boogu_image_base_bf16.safetensors": "boogu_image_base_fp8_scaled.safetensors",
+        "boogu_image_edit_bf16.safetensors": "boogu_image_edit_fp8_scaled.safetensors",
+        "boogu_image_turbo_bf16.safetensors": "boogu_image_turbo_fp8_scaled.safetensors",
     },
 }
-
-# Boogu is a model *category*, not a workflow — it has no workflow JSON to scan, so it
-# resolves directly to a fixed model set gated by `download_boogu`. BOOGU_PRECISION picks
-# the base/edit/turbo diffusion variant.
-BOOGU_DIFFUSION = {
-    "bf16": [
-        "boogu_image_base_bf16.safetensors",
-        "boogu_image_edit_bf16.safetensors",
-        "boogu_image_turbo_bf16.safetensors",
-    ],
-    "fp8": [
-        "boogu_image_base_fp8_scaled.safetensors",
-        "boogu_image_edit_fp8_scaled.safetensors",
-        "boogu_image_turbo_fp8_scaled.safetensors",
-    ],
-}
-BOOGU_SHARED = [
-    "boogu_image_turbo_lora_rank_128_bf16.safetensors",
-    "qwen3vl_8b_fp8_scaled.safetensors",
-    "flux1_vae_bf16.safetensors",
-]
 
 
 def env_bool(name: str, default: bool) -> bool:
@@ -77,13 +62,17 @@ def apply_precision_swap(content: str, precision: str) -> str:
     return content
 
 
+def resolve_precision(env_name: str) -> str:
+    precision = os.environ.get(env_name, "bf16").strip().lower()
+    if precision not in {"bf16", "fp8"}:
+        print(f"⚠️  Unknown {env_name}={precision!r}; defaulting to bf16")
+        precision = "bf16"
+    return precision
+
+
 def main() -> int:
     models_registry = load_json(SRC_DIR / "models_registry.json")
     workflows_registry = load_json(SRC_DIR / "workflows_registry.json")
-    precision = os.environ.get("QWEN_IMAGE_PRECISION", "bf16").strip().lower()
-    if precision not in {"bf16", "fp8"}:
-        print(f"⚠️  Unknown QWEN_IMAGE_PRECISION={precision!r}; defaulting to bf16")
-        precision = "bf16"
 
     WORKFLOW_DEST_DIR.mkdir(parents=True, exist_ok=True)
 
@@ -97,7 +86,8 @@ def main() -> int:
             print(f"⏭️  {flag}=false — skipping {len(cfg['workflows'])} workflow(s)")
             continue
         enabled_flags.append(flag)
-        print(f"✅ {flag}=true — provisioning {len(cfg['workflows'])} workflow(s)")
+        precision = resolve_precision(cfg.get("precision_env", "QWEN_IMAGE_PRECISION"))
+        print(f"✅ {flag}=true ({precision}) — provisioning {len(cfg['workflows'])} workflow(s)")
 
         for wf_name in cfg["workflows"]:
             src = WORKFLOWS_SRC_DIR / wf_name
@@ -122,20 +112,6 @@ def main() -> int:
                     }
                 else:
                     user_supplied.add(basename)
-
-    if env_bool("download_boogu", False):
-        boogu_precision = os.environ.get("BOOGU_PRECISION", "bf16").strip().lower()
-        if boogu_precision not in BOOGU_DIFFUSION:
-            print(f"⚠️  Unknown BOOGU_PRECISION={boogu_precision!r}; defaulting to bf16")
-            boogu_precision = "bf16"
-        enabled_flags.append("download_boogu")
-        boogu_models = BOOGU_DIFFUSION[boogu_precision] + BOOGU_SHARED
-        print(f"✅ download_boogu=true ({boogu_precision}) — adding {len(boogu_models)} Boogu model(s)")
-        for basename in boogu_models:
-            entry = models_registry[basename]
-            manifest[basename] = {"url": entry["url"], "dest_subdir": entry["dest_subdir"]}
-    else:
-        print("⏭️  download_boogu=false — skipping Boogu models")
 
     if user_supplied:
         print()

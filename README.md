@@ -33,8 +33,8 @@ Downloading LoRAs and checkpoints from CivitAI requires an API token.
 | `DOWNLOAD_QWEN_IMAGE_EDIT` | `true` | no | Downloads Qwen-Image-Edit 2511 and copies the three edit workflows. |
 | `DOWNLOAD_Z_IMAGE` | `false` | no | Downloads Z-Image Turbo + `qwen_3_4b` text encoder + `ae` VAE and copies the two Z-Image workflows. |
 | `DOWNLOAD_HMFEMME` | `false` | no | Copies the HMFemme workflow into the user dir. **Note:** this workflow references `qwen_image_bf16.safetensors` (the older non-2512 base) plus several private LoRAs that you must supply yourself — see warnings printed at boot. |
-| `download_boogu` | `false` | no | Downloads the Boogu-Image model set (base + edit + turbo diffusion models, turbo LoRA, `qwen3vl_8b` text encoder, `flux1` VAE). No workflow ships for it yet. |
-| `BOOGU_PRECISION` | `bf16` | no | `bf16` or `fp8`. Picks the Boogu base/edit/turbo diffusion variants. |
+| `download_boogu` | `false` | no | Downloads Boogu-Image models and copies the three Boogu workflows (base / edit / turbo). |
+| `BOOGU_PRECISION` | `bf16` | no | `bf16` or `fp8`. Switches the Boogu diffusion variant AND rewrites the Boogu workflow references at boot. Independent of `QWEN_IMAGE_PRECISION`. |
 | `CIVITAI_LORAS` | — | no | Comma-separated CivitAI **model version IDs** to download into `models/loras/`. |
 | `CIVITAI_CHECKPOINTS` | — | no | Comma-separated CivitAI **model version IDs** to download into `models/checkpoints/`. |
 | `civitai_token` | — | only if using `CIVITAI_*` | CivitAI API token. Accepts `CIVITAI_TOKEN` as well. |
@@ -65,6 +65,11 @@ Workflows are only copied into the user's workflow dir if their owning `DOWNLOAD
 
 **HMFemme** (`DOWNLOAD_HMFEMME=true`, advanced)
 - `HMFemme_Workflow.json` — uses the original `qwen_image_bf16` model plus several private HearmemanAI LoRAs. **You must supply these models yourself.**
+
+**Boogu** (`download_boogu=true`)
+- `Boogu_Base.json` — text-to-image
+- `Boogu_Edit.json` — image editing (uses the `ComfyUI-Boogu` custom node)
+- `Boogu_Turbo.json` — fast text-to-image
 
 ---
 
