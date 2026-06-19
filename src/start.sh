@@ -31,20 +31,6 @@ else
     echo "additional_params.sh not found in /workspace. Skipping..."
 fi
 
-# Background: build SageAttention
-echo "Starting SageAttention build..."
-(
-    export EXT_PARALLEL=4 NVCC_APPEND_FLAGS="--threads 8" MAX_JOBS=32
-    cd /tmp
-    git clone https://github.com/thu-ml/SageAttention.git
-    cd SageAttention
-    git reset --hard 68de379
-    pip install -e .
-    echo "SageAttention build completed" > /tmp/sage_build_done
-) > /tmp/sage_build.log 2>&1 &
-SAGE_PID=$!
-echo "SageAttention build started in background (PID: $SAGE_PID)"
-
 # Fallback: no network volume attached
 if [ ! -d "$NETWORK_VOLUME" ]; then
     echo "NETWORK_VOLUME directory '$NETWORK_VOLUME' does not exist. Falling back to /."
@@ -158,6 +144,28 @@ for entry in "${CUSTOM_REPOS[@]}"; do
     fi
 done
 
+# Boogu-Image package — installed into the same venv ComfyUI runs from (no conda).
+# The image already ships torch 2.11.0+cu128, which satisfies Boogu's
+# torch>=2.7.1,<2.12, so `pip install -e .` leaves torch untouched. We deliberately
+# DO NOT use requirements/torch*.txt — those pin exact versions and torch2.7-cu126
+# would downgrade torch and swap CUDA 128->126. get_flash_attn.py auto-detects the
+# runtime torch/CUDA and pulls the matching prebuilt flash-attn wheel.
+BOOGU_PKG_DIR="$NETWORK_VOLUME/Boogu-Image"
+if [ -d "$BOOGU_PKG_DIR/.git" ]; then
+    echo "🔄 Updating Boogu-Image..."
+    git -C "$BOOGU_PKG_DIR" pull --ff-only || true
+else
+    echo "📥 Cloning Boogu-Image..."
+    git clone https://github.com/boogu-project/Boogu-Image.git "$BOOGU_PKG_DIR" || echo "❌ Failed to clone Boogu-Image"
+fi
+if [ -d "$BOOGU_PKG_DIR" ]; then
+    (
+        /opt/venv/bin/python3 -m pip install -e "$BOOGU_PKG_DIR" \
+        && /opt/venv/bin/python3 "$BOOGU_PKG_DIR/utils/get_flash_attn.py"
+    ) > /tmp/pip_boogu_image.log 2>&1 &
+    INSTALL_PIDS[boogu_image]=$!
+fi
+
 # §5: model provisioning + download (replaces the entire hand-listed download block).
 echo "🧩 Provisioning workflows + manifest..."
 /opt/venv/bin/python3 "$REPO_DIR/src/provision_models.py"
@@ -241,24 +249,8 @@ if ! /opt/venv/bin/python3 -c 'import onnxruntime, sys; sys.exit(0 if "CUDAExecu
     /opt/venv/bin/python3 -m pip install onnxruntime-gpu
 fi
 
-# Wait for SageAttention build
-while kill -0 "$SAGE_PID" 2>/dev/null; do
-    echo "🛠️  SageAttention is currently installing... (this can take around 5 minutes)"
-    sleep 10
-done
-SAGE_ATTENTION_AVAILABLE=false
-if [ -f "/tmp/sage_build_done" ]; then
-    SAGE_ATTENTION_AVAILABLE=true
-    echo "✅ SageAttention build completed successfully"
-else
-    echo "⚠️  SageAttention build failed. Launching ComfyUI without --use-sage-attention flag"
-fi
-
 URL="http://127.0.0.1:8188"
 COMFYUI_CMD="python3 $COMFYUI_DIR/main.py --listen --enable-cors-header '*' $EXTRA_PATHS_FLAG"
-if [ "$SAGE_ATTENTION_AVAILABLE" = "true" ]; then
-    COMFYUI_CMD="$COMFYUI_CMD --use-sage-attention"
-fi
 
 nohup $COMFYUI_CMD > "$NETWORK_VOLUME/comfyui_${RUNPOD_POD_ID}_nohup.log" 2>&1 &
 until curl --silent --fail "$URL" --output /dev/null; do
