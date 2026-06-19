@@ -62,5 +62,41 @@
   "4xLSDIR.pth": {
     "baked": true,
     "dest_subdir": "models/upscale_models"
+  },
+  "boogu_image_base_bf16.safetensors": {
+    "url": "https://huggingface.co/Comfy-Org/Boogu-Image/resolve/main/diffusion_models/boogu_image_base_bf16.safetensors",
+    "dest_subdir": "models/diffusion_models"
+  },
+  "boogu_image_base_fp8_scaled.safetensors": {
+    "url": "https://huggingface.co/Comfy-Org/Boogu-Image/resolve/main/diffusion_models/boogu_image_base_fp8_scaled.safetensors",
+    "dest_subdir": "models/diffusion_models"
+  },
+  "boogu_image_edit_bf16.safetensors": {
+    "url": "https://huggingface.co/Comfy-Org/Boogu-Image/resolve/main/diffusion_models/boogu_image_edit_bf16.safetensors",
+    "dest_subdir": "models/diffusion_models"
+  },
+  "boogu_image_edit_fp8_scaled.safetensors": {
+    "url": "https://huggingface.co/Comfy-Org/Boogu-Image/resolve/main/diffusion_models/boogu_image_edit_fp8_scaled.safetensors",
+    "dest_subdir": "models/diffusion_models"
+  },
+  "boogu_image_turbo_bf16.safetensors": {
+    "url": "https://huggingface.co/Comfy-Org/Boogu-Image/resolve/main/diffusion_models/boogu_image_turbo_bf16.safetensors",
+    "dest_subdir": "models/diffusion_models"
+  },
+  "boogu_image_turbo_fp8_scaled.safetensors": {
+    "url": "https://huggingface.co/Comfy-Org/Boogu-Image/resolve/main/diffusion_models/boogu_image_turbo_fp8_scaled.safetensors",
+    "dest_subdir": "models/diffusion_models"
+  },
+  "boogu_image_turbo_lora_rank_128_bf16.safetensors": {
+    "url": "https://huggingface.co/Comfy-Org/Boogu-Image/resolve/main/loras/boogu_image_turbo_lora_rank_128_bf16.safetensors",
+    "dest_subdir": "models/loras"
+  },
+  "qwen3vl_8b_fp8_scaled.safetensors": {
+    "url": "https://huggingface.co/Comfy-Org/Boogu-Image/resolve/main/text_encoders/qwen3vl_8b_fp8_scaled.safetensors",
+    "dest_subdir": "models/text_encoders"
+  },
+  "flux1_vae_bf16.safetensors": {
+    "url": "https://huggingface.co/Comfy-Org/Boogu-Image/resolve/main/vae/flux1_vae_bf16.safetensors",
+    "dest_subdir": "models/vae"
   }
 }

@@ -33,6 +33,8 @@ Downloading LoRAs and checkpoints from CivitAI requires an API token.
 | `DOWNLOAD_QWEN_IMAGE_EDIT` | `true` | no | Downloads Qwen-Image-Edit 2511 and copies the three edit workflows. |
 | `DOWNLOAD_Z_IMAGE` | `false` | no | Downloads Z-Image Turbo + `qwen_3_4b` text encoder + `ae` VAE and copies the two Z-Image workflows. |
 | `DOWNLOAD_HMFEMME` | `false` | no | Copies the HMFemme workflow into the user dir. **Note:** this workflow references `qwen_image_bf16.safetensors` (the older non-2512 base) plus several private LoRAs that you must supply yourself — see warnings printed at boot. |
+| `download_boogu` | `false` | no | Downloads the Boogu-Image model set (base + edit + turbo diffusion models, turbo LoRA, `qwen3vl_8b` text encoder, `flux1` VAE). No workflow ships for it yet. |
+| `BOOGU_PRECISION` | `bf16` | no | `bf16` or `fp8`. Picks the Boogu base/edit/turbo diffusion variants. |
 | `CIVITAI_LORAS` | — | no | Comma-separated CivitAI **model version IDs** to download into `models/loras/`. |
 | `CIVITAI_CHECKPOINTS` | — | no | Comma-separated CivitAI **model version IDs** to download into `models/checkpoints/`. |
 | `civitai_token` | — | only if using `CIVITAI_*` | CivitAI API token. Accepts `CIVITAI_TOKEN` as well. |
