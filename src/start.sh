@@ -124,6 +124,7 @@ mkdir -p "$CUSTOM_NODES_DIR"
 CUSTOM_REPOS=(
     "https://github.com/spacepxl/ComfyUI-VAE-Utils.git|force"
     "https://github.com/obisin/ComfyUI-FSampler.git"
+    "https://github.com/boogu-project/ComfyUI-Boogu.git"
 )
 if [ -n "$GITHUB_PAT" ]; then
     CUSTOM_REPOS+=( "https://${GITHUB_PAT}@github.com/Hearmeman24/ComfyUI-HMNodes.git" )
