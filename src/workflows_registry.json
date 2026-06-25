@@ -38,5 +38,12 @@
       "Boogu_Edit.json",
       "Boogu_Turbo.json"
     ]
+  },
+  "download_krea2": {
+    "default": false,
+    "workflows": [
+      "Krea2_Workflow.json",
+      "Krea2_PiD_Workflow.json"
+    ]
   }
 }

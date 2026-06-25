@@ -35,6 +35,7 @@ Downloading LoRAs and checkpoints from CivitAI requires an API token.
 | `DOWNLOAD_HMFEMME` | `false` | no | Copies the HMFemme workflow into the user dir. **Note:** this workflow references `qwen_image_bf16.safetensors` (the older non-2512 base) plus several private LoRAs that you must supply yourself — see warnings printed at boot. |
 | `download_boogu` | `false` | no | Downloads Boogu-Image models and copies the three Boogu workflows (base / edit / turbo). |
 | `BOOGU_PRECISION` | `bf16` | no | `bf16` or `fp8`. Switches the Boogu diffusion variant AND rewrites the Boogu workflow references at boot. Independent of `QWEN_IMAGE_PRECISION`. |
+| `download_krea2` | `false` | no | Downloads Krea-2 Turbo (`krea2_turbo_mxfp8`) + `qwen3vl_4b_fp8_scaled` text encoder and copies the Krea-2 PiD workflow. Reuses the shared Qwen-Image PiD upscaler + VAE. The two `SummerVibesHM*` LoRAs it references are private — supply them yourself (see boot warnings). |
 | `CIVITAI_LORAS` | — | no | Comma-separated CivitAI **model version IDs** to download into `models/loras/`. |
 | `CIVITAI_CHECKPOINTS` | — | no | Comma-separated CivitAI **model version IDs** to download into `models/checkpoints/`. |
 | `civitai_token` | — | only if using `CIVITAI_*` | CivitAI API token. Accepts `CIVITAI_TOKEN` as well. |
@@ -70,6 +71,10 @@ Workflows are only copied into the user's workflow dir if their owning `DOWNLOAD
 - `Boogu_Base.json` — text-to-image
 - `Boogu_Edit.json` — image editing (uses the `ComfyUI-Boogu` custom node)
 - `Boogu_Turbo.json` — fast text-to-image
+
+**Krea-2** (`download_krea2=true`)
+- `Krea2_Workflow.json` — Krea-2 Turbo text-to-image. References the private `SummerVibesHM_krea2` LoRA you must supply yourself.
+- `Krea2_PiD_Workflow.json` — same plus the shared Qwen-Image PiD 4× upscaler. References two private `SummerVibesHM*` LoRAs you must supply yourself.
 
 ---
 
