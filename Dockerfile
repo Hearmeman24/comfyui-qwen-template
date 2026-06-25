@@ -1,5 +1,5 @@
 # Use multi-stage build with caching optimizations
-FROM nvidia/cuda:12.8.1-cudnn-devel-ubuntu24.04 AS base
+FROM nvidia/cuda:13.0.3-cudnn-devel-ubuntu24.04 AS base
 
 ENV DEBIAN_FRONTEND=noninteractive \
     PIP_PREFER_BINARY=1 \
@@ -30,7 +30,15 @@ ENV PATH="/opt/venv/bin:$PATH"
 
 RUN --mount=type=cache,target=/root/.cache/pip \
     pip install torch torchvision torchaudio \
-        --index-url https://download.pytorch.org/whl/cu128
+        --index-url https://download.pytorch.org/whl/cu130
+
+# Freeze the exact coherent torch trio this build resolved, then apply it as a
+# global PIP_CONSTRAINT. Every later pip install — here AND in start.sh's
+# custom-node requirements loop (which run with no --index-url) — is now forbidden
+# from upgrading/downgrading torch off the cu130 channel. This is the guard that
+# stops a custom-node requirements.txt silently pulling a mismatched torch.
+RUN pip freeze | grep -E "^(torch|torchvision|torchaudio|torchsde)==" > /torch-constraint.txt
+ENV PIP_CONSTRAINT=/torch-constraint.txt
 
 RUN --mount=type=cache,target=/root/.cache/pip \
     pip install packaging setuptools wheel

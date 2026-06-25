@@ -145,10 +145,10 @@ for entry in "${CUSTOM_REPOS[@]}"; do
 done
 
 # Boogu-Image package — installed into the same venv ComfyUI runs from (no conda).
-# The image already ships torch 2.11.0+cu128, which satisfies Boogu's
-# torch>=2.7.1,<2.12, so `pip install -e .` leaves torch untouched. We deliberately
-# DO NOT use requirements/torch*.txt — those pin exact versions and torch2.7-cu126
-# would downgrade torch and swap CUDA 128->126. get_flash_attn.py auto-detects the
+# The image ships a cu130 torch trio (see Dockerfile); PIP_CONSTRAINT=/torch-constraint.txt
+# is inherited here, so `pip install -e .` (and every other boot-time install) cannot
+# move torch off the cu130 channel — no upgrade, no downgrade, no CUDA-major swap.
+# We still skip requirements/torch*.txt on purpose. get_flash_attn.py auto-detects the
 # runtime torch/CUDA and pulls the matching prebuilt flash-attn wheel.
 BOOGU_PKG_DIR="$NETWORK_VOLUME/Boogu-Image"
 if [ -d "$BOOGU_PKG_DIR/.git" ]; then
