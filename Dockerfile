@@ -1,5 +1,5 @@
 # Use multi-stage build with caching optimizations
-FROM nvidia/cuda:13.0.3-cudnn-devel-ubuntu24.04 AS base
+FROM nvidia/cuda:12.8.1-cudnn-devel-ubuntu24.04 AS base
 
 ENV DEBIAN_FRONTEND=noninteractive \
     PIP_PREFER_BINARY=1 \
@@ -28,15 +28,22 @@ RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
 
 ENV PATH="/opt/venv/bin:$PATH"
 
+# cu128 (NOT cu13): cu128 torch ships Blackwell sm_120 kernels and runs NATIVELY
+# on R570 host drivers — the driver RunPod's RTX 5090/4090 hosts carry. A cu13
+# image instead triggers the container's forward-compat path on those pre-R580
+# hosts, and forward compat is Data-Center-GPU-only → consumer cards 804 with
+# "forward compatibility was attempted on non supported HW". cu128 sidesteps that
+# on every GPU class (consumer + data-center). NVFP4 would need a separate cu13
+# tag deployed only to H100/H200/B200.
 RUN --mount=type=cache,target=/root/.cache/pip \
     pip install torch torchvision torchaudio \
-        --index-url https://download.pytorch.org/whl/cu130
+        --index-url https://download.pytorch.org/whl/cu128
 
 # Freeze the exact coherent torch trio this build resolved, then apply it as a
 # global PIP_CONSTRAINT. Every later pip install — here AND in start.sh's
 # custom-node requirements loop (which run with no --index-url) — is now forbidden
-# from upgrading/downgrading torch off the cu130 channel. This is the guard that
-# stops a custom-node requirements.txt silently pulling a mismatched torch.
+# from upgrading/downgrading torch off the cu128 channel. This is the guard that
+# stops a custom-node requirements.txt silently pulling a mismatched (cu130) torch.
 RUN pip freeze | grep -E "^(torch|torchvision|torchaudio|torchsde)==" > /torch-constraint.txt
 ENV PIP_CONSTRAINT=/torch-constraint.txt
 
