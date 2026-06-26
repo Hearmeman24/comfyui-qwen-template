@@ -244,9 +244,11 @@ done
 # §8 runtime defensive: a custom-node requirements.txt may have just clobbered
 # onnxruntime-gpu with the CPU build. Re-assert GPU if so.
 if ! /opt/venv/bin/python3 -c 'import onnxruntime, sys; sys.exit(0 if "CUDAExecutionProvider" in onnxruntime.get_available_providers() else 1)' 2>/dev/null; then
-    echo "🩺 onnxruntime missing CUDAExecutionProvider — reinstalling onnxruntime-gpu..."
+    echo "🩺 onnxruntime missing CUDAExecutionProvider — reinstalling onnxruntime-gpu (cu12 build)..."
     /opt/venv/bin/python3 -m pip uninstall -y onnxruntime onnxruntime-gpu 2>/dev/null || true
-    /opt/venv/bin/python3 -m pip install onnxruntime-gpu
+    # PyPI onnxruntime-gpu links CUDA 13; pull the CUDA-12 build for this cu128 image.
+    /opt/venv/bin/python3 -m pip install onnxruntime-gpu \
+        --index-url https://aiinfra.pkgs.visualstudio.com/PublicPackages/_packaging/onnxruntime-cuda-12/pypi/simple/
 fi
 
 URL="http://127.0.0.1:8188"

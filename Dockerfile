@@ -119,9 +119,12 @@ RUN --mount=type=cache,target=/root/.cache/pip \
 # §8: Several custom-node requirements.txt files pull in CPU-only `onnxruntime`
 # alongside `onnxruntime-gpu`. They share a Python module, so last install wins.
 # Force GPU at end of build; start.sh defensively re-checks at boot.
+# onnxruntime-gpu on PyPI now links CUDA 13 (libcudart.so.13), which fails to import
+# on this cu128 base — so pull the CUDA-12 build from ORT's dedicated cu12 index.
 RUN --mount=type=cache,target=/root/.cache/pip \
     pip uninstall -y onnxruntime onnxruntime-gpu 2>/dev/null || true; \
-    pip install onnxruntime-gpu
+    pip install onnxruntime-gpu \
+        --index-url https://aiinfra.pkgs.visualstudio.com/PublicPackages/_packaging/onnxruntime-cuda-12/pypi/simple/
 
 # §12: Bake the CivitAI helper at build time so boot doesn't pay a git clone.
 RUN git clone --depth=1 https://github.com/Hearmeman24/CivitAI_Downloader.git /tmp/civitai-dl \
