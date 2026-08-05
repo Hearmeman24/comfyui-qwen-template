@@ -113,6 +113,18 @@ def main() -> int:
                 else:
                     user_supplied.add(basename)
 
+        # Models a flag ships that no workflow references (e.g. the raw Krea-2
+        # weights, for users who want to build their own graph).
+        for basename in cfg.get("extra_models", []):
+            entry = models_registry.get(basename)
+            if entry is None:
+                print(f"❌ {flag}: extra_models entry not in registry: {basename}")
+            elif not entry.get("baked"):
+                manifest[basename] = {
+                    "url": entry["url"],
+                    "dest_subdir": entry["dest_subdir"],
+                }
+
     if user_supplied:
         print()
         print("⚠️  The following model basenames are referenced in enabled workflows "

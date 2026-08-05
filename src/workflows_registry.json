@@ -44,6 +44,9 @@
     "workflows": [
       "Krea2_Workflow.json",
       "Krea2_PiD_Workflow.json"
+    ],
+    "extra_models": [
+      "krea2_raw_bf16.safetensors"
     ]
   }
 }
