@@ -103,6 +103,10 @@
     "url": "https://huggingface.co/Comfy-Org/Krea-2/resolve/main/diffusion_models/krea2_turbo_mxfp8.safetensors",
     "dest_subdir": "models/diffusion_models"
   },
+  "krea2_turbo_lora_rank_64_bf16.safetensors": {
+    "url": "https://huggingface.co/Comfy-Org/Krea-2/resolve/main/loras/krea2_turbo_lora_rank_64_bf16.safetensors",
+    "dest_subdir": "models/loras"
+  },
   "qwen3vl_4b_fp8_scaled.safetensors": {
     "url": "https://huggingface.co/Comfy-Org/Krea-2/resolve/main/text_encoders/qwen3vl_4b_fp8_scaled.safetensors",
     "dest_subdir": "models/text_encoders"
