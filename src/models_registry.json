@@ -95,6 +95,10 @@
     "url": "https://huggingface.co/Comfy-Org/Boogu-Image/resolve/main/vae/flux1_vae_bf16.safetensors",
     "dest_subdir": "models/vae"
   },
+  "krea2_raw_bf16.safetensors": {
+    "url": "https://huggingface.co/Comfy-Org/Krea-2/resolve/main/diffusion_models/krea2_raw_bf16.safetensors",
+    "dest_subdir": "models/diffusion_models"
+  },
   "krea2_turbo_mxfp8.safetensors": {
     "url": "https://huggingface.co/Comfy-Org/Krea-2/resolve/main/diffusion_models/krea2_turbo_mxfp8.safetensors",
     "dest_subdir": "models/diffusion_models"
