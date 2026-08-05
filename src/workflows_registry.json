@@ -46,7 +46,8 @@
       "Krea2_PiD_Workflow.json"
     ],
     "extra_models": [
-      "krea2_raw_bf16.safetensors"
+      "krea2_raw_bf16.safetensors",
+      "krea2_turbo_lora_rank_64_bf16.safetensors"
     ]
   }
 }
