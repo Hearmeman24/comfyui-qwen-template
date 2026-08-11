@@ -32,7 +32,7 @@ Downloading LoRAs and checkpoints from CivitAI requires an API token.
 | `DOWNLOAD_QWEN_IMAGE` | `true` | no | Downloads Qwen-Image base models and copies the three base workflows. Set `false` only if you don't need base text-to-image. |
 | `DOWNLOAD_QWEN_IMAGE_EDIT` | `true` | no | Downloads Qwen-Image-Edit 2511 and copies the three edit workflows. |
 | `DOWNLOAD_Z_IMAGE` | `false` | no | Downloads Z-Image Turbo + `qwen_3_4b` text encoder + `ae` VAE and copies the two Z-Image workflows. |
-| `DOWNLOAD_HMFEMME` | `false` | no | Copies the HMFemme workflow into the user dir. **Note:** this workflow references `qwen_image_bf16.safetensors` (the older non-2512 base) plus several private LoRAs that you must supply yourself — see warnings printed at boot. |
+| `DOWNLOAD_HMFEMME` | `false` | no | Downloads the Qwen-Image 2512 base (honouring `QWEN_IMAGE_PRECISION`) + text encoder + VAE, and copies the HMFemme workflow into the user dir. **Note:** the base model now ships with the template; only the private HearmemanAI LoRAs the workflow references must be supplied by you — see warnings printed at boot. |
 | `download_boogu` | `false` | no | Downloads Boogu-Image models and copies the three Boogu workflows (base / edit / turbo). |
 | `BOOGU_PRECISION` | `bf16` | no | `bf16` or `fp8`. Switches the Boogu diffusion variant AND rewrites the Boogu workflow references at boot. Independent of `QWEN_IMAGE_PRECISION`. |
 | `download_krea2` | `false` | no | Downloads Krea-2 Turbo (`krea2_turbo_mxfp8`) + the raw Krea-2 base (`krea2_raw_bf16`, 26 GB — no workflow ships for it, build your own graph) + the Turbo distill LoRA (`krea2_turbo_lora_rank_64_bf16`, into `models/loras/`) + `qwen3vl_4b_fp8_scaled` text encoder, and copies the Krea-2 PiD workflow. Reuses the shared Qwen-Image PiD upscaler + VAE. The two `SummerVibesHM*` LoRAs it references are private — supply them yourself (see boot warnings). |
@@ -65,7 +65,7 @@ Workflows are only copied into the user's workflow dir if their owning `DOWNLOAD
 - `Z_Image_Turbo_Upscale.json` — same plus 4× upscale pass
 
 **HMFemme** (`DOWNLOAD_HMFEMME=true`, advanced)
-- `HMFemme_Workflow.json` — uses the original `qwen_image_bf16` model plus several private HearmemanAI LoRAs. **You must supply these models yourself.**
+- `HMFemme_Workflow.json` — runs on the Qwen-Image 2512 base, which the template downloads for you, plus several private HearmemanAI LoRAs. **You must supply the LoRAs yourself.**
 
 **Boogu** (`download_boogu=true`)
 - `Boogu_Base.json` — text-to-image
