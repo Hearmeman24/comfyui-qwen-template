@@ -9,6 +9,7 @@ REPO_ROOT = Path(__file__).resolve().parents[1]
 
 RAW = "krea2_raw_bf16.safetensors"
 TURBO_LORA = "krea2_turbo_lora_rank_64_bf16.safetensors"
+IDENTITY_LORA = "krea2_identity_edit_v1_2_r128.safetensors"
 
 
 class Krea2ProvisioningTest(unittest.TestCase):
@@ -25,16 +26,28 @@ class Krea2ProvisioningTest(unittest.TestCase):
         self.assertIn(TURBO_LORA, models)
         self.assertEqual(models[TURBO_LORA]["dest_subdir"], "models/loras")
 
+    def test_registry_has_krea2_identity_edit_lora(self):
+        models = json.loads((REPO_ROOT / "src" / "models_registry.json").read_text())
+        self.assertIn(IDENTITY_LORA, models)
+        self.assertEqual(models[IDENTITY_LORA]["dest_subdir"], "models/loras")
+        self.assertEqual(
+            models[IDENTITY_LORA]["url"],
+            "https://huggingface.co/conradlocke/krea2-identity-edit/resolve/main/"
+            "krea2_identity_edit_v1_2_r128.safetensors",
+        )
+
     def test_krea2_enabled_downloads_raw_bf16(self):
         manifest, _ = run_provision({"download_krea2": "true"}, self.tmp)
         self.assertIn(RAW, manifest)
         self.assertIn(TURBO_LORA, manifest)
+        self.assertIn(IDENTITY_LORA, manifest)
         self.assertIn("krea2_turbo_mxfp8.safetensors", manifest)
 
     def test_krea2_disabled_downloads_nothing_krea2(self):
         manifest, _ = run_provision({"download_krea2": "false"}, self.tmp)
         self.assertNotIn(RAW, manifest)
         self.assertNotIn(TURBO_LORA, manifest)
+        self.assertNotIn(IDENTITY_LORA, manifest)
 
 
 if __name__ == "__main__":
