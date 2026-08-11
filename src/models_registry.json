@@ -107,6 +107,10 @@
     "url": "https://huggingface.co/Comfy-Org/Krea-2/resolve/main/loras/krea2_turbo_lora_rank_64_bf16.safetensors",
     "dest_subdir": "models/loras"
   },
+  "krea2_identity_edit_v1_2_r128.safetensors": {
+    "url": "https://huggingface.co/conradlocke/krea2-identity-edit/resolve/main/krea2_identity_edit_v1_2_r128.safetensors",
+    "dest_subdir": "models/loras"
+  },
   "qwen3vl_4b_fp8_scaled.safetensors": {
     "url": "https://huggingface.co/Comfy-Org/Krea-2/resolve/main/text_encoders/qwen3vl_4b_fp8_scaled.safetensors",
     "dest_subdir": "models/text_encoders"
