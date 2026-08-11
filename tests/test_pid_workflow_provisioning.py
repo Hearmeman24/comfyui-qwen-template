@@ -33,12 +33,15 @@ class PiDWorkflowProvisioningTest(unittest.TestCase):
                 "url": "https://huggingface.co/Comfy-Org/PixelDiT/resolve/main/text_encoders/gemma_2_2b_it_elm_bf16.safetensors",
                 "dest_subdir": "models/text_encoders",
             },
+            # Upstream deprecated the plain 2kto4k FLUX / Qwen-Image checkpoints and
+            # moved them to checkpoints_deprecated/; v1pt5 is the replacement.
             "qwen_image_pid.pth": {
-                "url": "https://huggingface.co/nvidia/PiD/resolve/main/checkpoints/PiD_res2kto4k_sr4x_official_qwenimage_distill_4step/model_ema_bf16.pth",
+                "url": "https://huggingface.co/nvidia/PiD/resolve/main/checkpoints/PiD_v1pt5_res2kto4k_sr4x_official_qwenimage_distill_4step/model_ema_bf16.pth",
                 "dest_subdir": "models/diffusion_models",
             },
+            # Z-Image has no PiD checkpoint of its own — it shares FLUX's latent space.
             "z_image_pid.pth": {
-                "url": "https://huggingface.co/nvidia/PiD/resolve/main/checkpoints/PiD_res2kto4k_sr4x_official_flux_distill_4step/model_ema_bf16.pth",
+                "url": "https://huggingface.co/nvidia/PiD/resolve/main/checkpoints/PiD_v1pt5_res2kto4k_sr4x_official_flux_distill_4step/model_ema_bf16.pth",
                 "dest_subdir": "models/diffusion_models",
             },
         }
