@@ -13,6 +13,12 @@ on:
       - 'workflows/**'
       - 'src/models_registry.json'
       - 'src/workflows_registry.json'
+  schedule:
+    # Weekly re-run against upstream rot: registry URLs can 404 without any
+    # push here, and path-filtered push validation leaves CI green over a
+    # broken template. Mondays 06:00 UTC. Path filters do not apply to
+    # schedule events; the full validator runs every time.
+    - cron: '0 6 * * 1'
 
 jobs:
   validate:
