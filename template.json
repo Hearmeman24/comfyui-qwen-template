@@ -4,13 +4,13 @@
   "provisioning_mode": "walk",
   "flags": {
     "DOWNLOAD_QWEN_IMAGE": {
-      "default": true,
+      "default": false,
       "folders": [
         "Qwen Image"
       ]
     },
     "DOWNLOAD_QWEN_IMAGE_EDIT": {
-      "default": true,
+      "default": false,
       "folders": [
         "Qwen Image Edit"
       ]

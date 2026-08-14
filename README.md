@@ -29,8 +29,8 @@ Downloading LoRAs and checkpoints from CivitAI requires an API token.
 | Variable | Default | Required | Description |
 |---|---|---|---|
 | `QWEN_IMAGE_PRECISION` | `bf16` | no | `bf16` or `fp8`. Switches the downloaded Qwen-Image / Qwen-Image-Edit variants AND rewrites workflow references at boot so the swap is seamless. |
-| `DOWNLOAD_QWEN_IMAGE` | `true` | no | Downloads Qwen-Image base models and copies the three base workflows. Set `false` only if you don't need base text-to-image. |
-| `DOWNLOAD_QWEN_IMAGE_EDIT` | `true` | no | Downloads Qwen-Image-Edit 2511 and copies the three edit workflows. |
+| `DOWNLOAD_QWEN_IMAGE` | `false` | no | Downloads Qwen-Image base models and copies the three base workflows. Every download flag is now off by default, so a pod with none of them set boots a bare ComfyUI: pick at least one. |
+| `DOWNLOAD_QWEN_IMAGE_EDIT` | `false` | no | Downloads Qwen-Image-Edit 2511 and copies the three edit workflows. |
 | `DOWNLOAD_Z_IMAGE` | `false` | no | Downloads Z-Image Turbo + `qwen_3_4b` text encoder + `ae` VAE and copies the two Z-Image workflows. |
 | `DOWNLOAD_HMFEMME` | `false` | no | Downloads the Qwen-Image 2512 base (honouring `QWEN_IMAGE_PRECISION`) + text encoder + VAE, and copies the HMFemme workflow into the user dir. **Note:** the base model now ships with the template; only the private HearmemanAI LoRAs the workflow references must be supplied by you — see warnings printed at boot. |
 | `download_boogu` | `false` | no | Downloads Boogu-Image models and copies the three Boogu workflows (base / edit / turbo). |
