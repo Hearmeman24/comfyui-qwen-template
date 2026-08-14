@@ -22,7 +22,7 @@ PAID_PACKS=("https://github.com/chflame163/ComfyUI_LayerStyle_Advance.git")
 HMNODES_OK=0
 
 if [ -z "${GITHUB_PAT:-}" ]; then
-    echo "⏭️  GITHUB_PAT not set. Skipping the private ComfyUI-HMNodes pack."
+    echo "ℹ️  No GITHUB_PAT set, so the optional HearmemanAI node pack is skipped. This is normal and everything in this template works without it."
 elif [ -d "$HMNODES_DIR/.git" ]; then
     echo "🔄 Updating ComfyUI-HMNodes..."
     git -C "$HMNODES_DIR" pull --ff-only --quiet 2>/dev/null \
@@ -37,8 +37,8 @@ else
         echo "✅ ComfyUI-HMNodes cloned"
         HMNODES_OK=1
     else
-        echo "⚠️  ComfyUI-HMNodes clone failed. Check that GITHUB_PAT is valid and has read access."
-        report_warn "ComfyUI-HMNodes clone failed; paid workflows using its nodes will show red nodes"
+        echo "ℹ️  Could not fetch the optional HearmemanAI node pack. Everything in this template still works. If you bought the add-on workflows, check your GITHUB_PAT; otherwise ignore this."
+        report_warn "Optional HearmemanAI node pack unavailable (only affects the paid add-on workflows)"
     fi
 fi
 
@@ -80,8 +80,8 @@ if [ "$HMNODES_OK" = "1" ]; then
                          report_warn "$name requirements install failed"; }
             fi
         else
-            echo "⚠️  $name clone failed. LayerMask: PersonMaskUltra V2 will show as a red node."
-            report_warn "$name clone failed; the paid img2img workflows need it"
+            echo "ℹ️  Could not fetch $name, an optional pack for the paid add-on workflows. The bundled workflows are unaffected."
+            report_warn "Optional pack $name unavailable (only affects the paid add-on workflows)"
         fi
     done
 

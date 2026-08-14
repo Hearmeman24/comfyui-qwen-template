@@ -7,14 +7,6 @@
     "url": "https://huggingface.co/Comfy-Org/Qwen-Image_ComfyUI/resolve/main/split_files/diffusion_models/qwen_image_2512_fp8_e4m3fn.safetensors",
     "subdir": "diffusion_models"
   },
-  "qwen_image_edit_2511_bf16.safetensors": {
-    "url": "https://huggingface.co/Comfy-Org/Qwen-Image-Edit_ComfyUI/resolve/main/split_files/diffusion_models/qwen_image_edit_2511_bf16.safetensors",
-    "subdir": "diffusion_models"
-  },
-  "qwen_image_edit_2511_fp8mixed.safetensors": {
-    "url": "https://huggingface.co/Comfy-Org/Qwen-Image-Edit_ComfyUI/resolve/main/split_files/diffusion_models/qwen_image_edit_2511_fp8mixed.safetensors",
-    "subdir": "diffusion_models"
-  },
   "qwen_2.5_vl_7b_fp8_scaled.safetensors": {
     "url": "https://huggingface.co/Comfy-Org/Qwen-Image_ComfyUI/resolve/main/split_files/text_encoders/qwen_2.5_vl_7b_fp8_scaled.safetensors",
     "subdir": "text_encoders"
@@ -99,10 +91,6 @@
     "url": "https://huggingface.co/Comfy-Org/Krea-2/resolve/main/diffusion_models/krea2_raw_bf16.safetensors",
     "subdir": "diffusion_models"
   },
-  "krea2_turbo_mxfp8.safetensors": {
-    "url": "https://huggingface.co/Comfy-Org/Krea-2/resolve/main/diffusion_models/krea2_turbo_mxfp8.safetensors",
-    "subdir": "diffusion_models"
-  },
   "krea2_turbo_lora_rank_64_bf16.safetensors": {
     "url": "https://huggingface.co/Comfy-Org/Krea-2/resolve/main/loras/krea2_turbo_lora_rank_64_bf16.safetensors",
     "subdir": "loras"
@@ -114,5 +102,9 @@
   "qwen3vl_4b_fp8_scaled.safetensors": {
     "url": "https://huggingface.co/Comfy-Org/Krea-2/resolve/main/text_encoders/qwen3vl_4b_fp8_scaled.safetensors",
     "subdir": "text_encoders"
+  },
+  "qwen_image_edit_2511_int8_convrot.safetensors": {
+    "url": "https://huggingface.co/Comfy-Org/Qwen-Image-Edit_ComfyUI/resolve/main/split_files/diffusion_models/qwen_image_edit_2511_int8_convrot.safetensors",
+    "subdir": "diffusion_models"
   }
 }

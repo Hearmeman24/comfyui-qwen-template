@@ -21,8 +21,8 @@ you deploy, or edit the variables on this pod and restart it.
 
 | Variable | Default | What it does |
 |---|---|---|
-| DOWNLOAD_QWEN_IMAGE | true | Qwen-Image base: downloads the models and copies the three base workflows. |
-| DOWNLOAD_QWEN_IMAGE_EDIT | true | Qwen-Image-Edit: downloads the models and copies the three edit workflows. |
+| DOWNLOAD_QWEN_IMAGE | false | Qwen-Image base: downloads the models and copies the three base workflows. |
+| DOWNLOAD_QWEN_IMAGE_EDIT | false | Qwen-Image-Edit: downloads the models and copies the three edit workflows. |
 | QWEN_IMAGE_PRECISION | bf16 | bf16 or fp8. One switch for the whole Qwen-Image family: it repoints both the base and the edit diffusion model, and rewrites every copied workflow that references them, at boot. |
 | DOWNLOAD_Z_IMAGE | false | Z-Image Turbo: downloads the models and copies the two Z-Image workflows. |
 | download_boogu | false | Boogu-Image: downloads the models and copies the three Boogu workflows (base / edit / turbo). |
