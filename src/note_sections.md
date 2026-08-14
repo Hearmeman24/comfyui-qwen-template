@@ -9,7 +9,7 @@ pod only downloads what you ask for.
   matching flag to `true` to pull them in.
 
 Every workflow ships with `Your_Character_LoRA_Here.safetensors` in its
-LoRA loader slots. That is a placeholder, not a real file — drop your own
+LoRA loader slots. That is a placeholder, not a real file: drop your own
 LoRA into `models/loras/` and point the loader at it. Turbo and Lightning
 distillation LoRAs are the exception: those ARE shipped and load by
 default, since the workflow needs them to run at all.
@@ -26,7 +26,7 @@ you deploy, or edit the variables on this pod and restart it.
 | QWEN_IMAGE_PRECISION | bf16 | bf16 or fp8. One switch for the whole Qwen-Image family: it repoints both the base and the edit diffusion model, and rewrites every copied workflow that references them, at boot. |
 | DOWNLOAD_Z_IMAGE | false | Z-Image Turbo: downloads the models and copies the two Z-Image workflows. |
 | download_boogu | false | Boogu-Image: downloads the models and copies the three Boogu workflows (base / edit / turbo). |
-| BOOGU_PRECISION | bf16 | bf16 or fp8. Same idea as QWEN_IMAGE_PRECISION, scoped to Boogu only — the two switches are independent. |
+| BOOGU_PRECISION | bf16 | bf16 or fp8. Same idea as QWEN_IMAGE_PRECISION, scoped to Boogu only: the two switches are independent. |
 | download_krea2 | false | Krea-2: downloads the Turbo checkpoint, the raw base, both Krea-2 LoRAs and the text encoder, and copies the two Krea-2 workflows. |
 | DOWNLOAD_HMFEMME | retired | HMFemme shipped no models of its own, only four personal LoRA slots on top of the standard Qwen-Image pipeline. Leaving this set is harmless; it now enables nothing. Use DOWNLOAD_QWEN_IMAGE instead. |
 | CIVITAI_LORAS | unset | Comma-separated CivitAI model version IDs to download into models/loras/. |
@@ -50,8 +50,8 @@ you set a value that is not bf16 or fp8, the pod tells you and uses bf16.
 ## Krea-2 extras
 
 `download_krea2` also pulls in the raw (undistilled) Krea-2 base and two
-LoRAs — the Turbo distillation as a rank-64 LoRA, and Krea-2 Identity Edit
-v1.2 — into `models/loras/`. No workflow ships for these; they are there
+LoRAs: the Turbo distillation as a rank-64 LoRA, and Krea-2 Identity Edit
+v1.2, into `models/loras/`. No workflow ships for these; they are there
 so you can wire your own graph instead of the baked-in Turbo checkpoint
 the two shipped Krea-2 workflows use.
 
