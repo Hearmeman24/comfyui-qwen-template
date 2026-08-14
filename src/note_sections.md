@@ -4,9 +4,9 @@ This template runs Qwen-Image (base + Edit), Z-Image Turbo, Boogu-Image and
 Krea-2 on ComfyUI. Each family ships behind its own `DOWNLOAD_*` flag, so a
 pod only downloads what you ask for.
 
-- Qwen-Image base and Qwen-Image-Edit download by default on every new pod.
-- Z-Image Turbo, Boogu-Image and Krea-2 are off by default; set the
-  matching flag to `true` to pull them in.
+Every family is off by default. Set the matching flag to `true` on the
+template to pull one in, and set as many as you want. Only the workflows
+belonging to the flags you enabled are installed.
 
 Every workflow ships with `Your_Character_LoRA_Here.safetensors` in its
 LoRA loader slots. That is a placeholder, not a real file: drop your own
