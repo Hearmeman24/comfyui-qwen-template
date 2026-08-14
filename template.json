@@ -5,47 +5,37 @@
   "flags": {
     "DOWNLOAD_QWEN_IMAGE": {
       "default": true,
-      "workflows": [
-        "Qwen_Workflow.json",
-        "Qwen_Workflow_Slower_Higher_Quality.json",
-        "QwenImage_2512_Workflow.json",
-        "QwenImage_2512_Workflow_PiD.json"
+      "folders": [
+        "Qwen Image"
       ]
     },
     "DOWNLOAD_QWEN_IMAGE_EDIT": {
       "default": true,
-      "workflows": [
-        "Qwen_image_edit.json",
-        "Qwen_MultiAngle_image_edit.json",
-        "Qwen_Image_To_Dateset_Workflow.json"
+      "folders": [
+        "Qwen Image Edit"
       ]
     },
     "DOWNLOAD_Z_IMAGE": {
       "default": false,
-      "workflows": [
-        "Z_Image_Turbo.json",
-        "Z_Image_Turbo_Upscale.json",
-        "Z_Image_Workflow_PiD.json"
+      "folders": [
+        "Z-Image"
       ]
     },
     "download_boogu": {
       "default": false,
-      "workflows": [
-        "Boogu_Base.json",
-        "Boogu_Edit.json",
-        "Boogu_Turbo.json"
+      "folders": [
+        "Boogu"
       ]
     },
     "download_krea2": {
       "default": false,
-      "workflows": [
-        "Krea2_Workflow.json",
-        "Krea2_PiD_Workflow.json"
-      ],
       "extra_models": [
         "krea2_raw_bf16.safetensors",
         "krea2_turbo_lora_rank_64_bf16.safetensors",
         "krea2_identity_edit_v1_2_r128.safetensors"
+      ],
+      "folders": [
+        "Krea 2"
       ]
     }
   },
@@ -53,7 +43,10 @@
     {
       "env": "QWEN_IMAGE_PRECISION",
       "default": "bf16",
-      "flags": ["DOWNLOAD_QWEN_IMAGE", "DOWNLOAD_QWEN_IMAGE_EDIT"],
+      "flags": [
+        "DOWNLOAD_QWEN_IMAGE",
+        "DOWNLOAD_QWEN_IMAGE_EDIT"
+      ],
       "profiles": {
         "bf16": {
           "qwen_image_2512": "qwen_image_2512_bf16.safetensors",
@@ -68,7 +61,9 @@
     {
       "env": "BOOGU_PRECISION",
       "default": "bf16",
-      "flags": ["download_boogu"],
+      "flags": [
+        "download_boogu"
+      ],
       "profiles": {
         "bf16": {
           "base": "boogu_image_base_bf16.safetensors",
@@ -87,6 +82,9 @@
     "DOWNLOAD_HMFEMME": "HMFemme is retired: it shipped no models of its own, only four personal LoRA slots layered on the standard Qwen Image pipeline. Use DOWNLOAD_QWEN_IMAGE instead. Models already on your network volume are untouched; the flag now enables nothing and queues nothing."
   },
   "models_symlink": true,
-  "custom_nodes": { "target": "image", "repos": [] },
+  "custom_nodes": {
+    "target": "image",
+    "repos": []
+  },
   "sage": true
 }

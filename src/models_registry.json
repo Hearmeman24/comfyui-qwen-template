@@ -99,10 +99,6 @@
     "url": "https://huggingface.co/Comfy-Org/Krea-2/resolve/main/diffusion_models/krea2_raw_bf16.safetensors",
     "subdir": "diffusion_models"
   },
-  "krea2_turbo_mxfp8.safetensors": {
-    "url": "https://huggingface.co/Comfy-Org/Krea-2/resolve/main/diffusion_models/krea2_turbo_mxfp8.safetensors",
-    "subdir": "diffusion_models"
-  },
   "krea2_turbo_lora_rank_64_bf16.safetensors": {
     "url": "https://huggingface.co/Comfy-Org/Krea-2/resolve/main/loras/krea2_turbo_lora_rank_64_bf16.safetensors",
     "subdir": "loras"

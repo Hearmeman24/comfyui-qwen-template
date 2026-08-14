@@ -1,52 +1,9 @@
 {
   "id": "2b3efc74-680f-49c8-9b03-448132505514",
   "revision": 0,
-  "last_node_id": 32,
-  "last_link_id": 39,
+  "last_node_id": 33,
+  "last_link_id": 41,
   "nodes": [
-    {
-      "id": 1,
-      "type": "UNETLoader",
-      "pos": [
-        -967.5177646188911,
-        165.3524752858519
-      ],
-      "size": [
-        282.24981964175936,
-        82
-      ],
-      "flags": {},
-      "order": 0,
-      "mode": 0,
-      "inputs": [],
-      "outputs": [
-        {
-          "name": "MODEL",
-          "type": "MODEL",
-          "slot_index": 0,
-          "links": [
-            16
-          ]
-        }
-      ],
-      "title": "UNET Loader - Krea2 Turbo FP8",
-      "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.24.0",
-        "Node name for S&R": "UNETLoader",
-        "ue_properties": {
-          "widget_ue_connectable": {},
-          "version": "7.8",
-          "input_ue_unconnectable": {}
-        }
-      },
-      "widgets_values": [
-        "krea2_turbo_mxfp8.safetensors",
-        "default"
-      ],
-      "color": "#223",
-      "bgcolor": "#335"
-    },
     {
       "id": 13,
       "type": "CLIPLoader",
@@ -59,7 +16,7 @@
         106
       ],
       "flags": {},
-      "order": 1,
+      "order": 0,
       "mode": 0,
       "inputs": [],
       "outputs": [
@@ -103,7 +60,7 @@
         79
       ],
       "flags": {},
-      "order": 2,
+      "order": 1,
       "mode": 0,
       "inputs": [],
       "outputs": [
@@ -134,55 +91,6 @@
       "bgcolor": "#335"
     },
     {
-      "id": 6,
-      "type": "CLIPTextEncode",
-      "pos": [
-        -128.86030255681837,
-        164.22606285511333
-      ],
-      "size": [
-        400,
-        200
-      ],
-      "flags": {},
-      "order": 7,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "clip",
-          "type": "CLIP",
-          "link": 14
-        }
-      ],
-      "outputs": [
-        {
-          "name": "CONDITIONING",
-          "type": "CONDITIONING",
-          "slot_index": 0,
-          "links": [
-            5,
-            12
-          ]
-        }
-      ],
-      "title": "Positive Prompt",
-      "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.24.0",
-        "Node name for S&R": "CLIPTextEncode",
-        "ue_properties": {
-          "widget_ue_connectable": {},
-          "version": "7.8",
-          "input_ue_unconnectable": {}
-        }
-      },
-      "widgets_values": [
-        ""
-      ],
-      "color": "#232",
-      "bgcolor": "#353"
-    },
-    {
       "id": 2,
       "type": "KSampler",
       "pos": [
@@ -194,7 +102,7 @@
         339
       ],
       "flags": {},
-      "order": 11,
+      "order": 12,
       "mode": 0,
       "inputs": [
         {
@@ -239,7 +147,7 @@
         }
       },
       "widgets_values": [
-        0,
+        136041254542596,
         "randomize",
         12,
         1,
@@ -262,7 +170,7 @@
       "flags": {
         "collapsed": true
       },
-      "order": 12,
+      "order": 13,
       "mode": 0,
       "inputs": [
         {
@@ -310,7 +218,7 @@
         861.468359375
       ],
       "flags": {},
-      "order": 13,
+      "order": 14,
       "mode": 0,
       "inputs": [
         {
@@ -354,7 +262,7 @@
       "flags": {
         "collapsed": true
       },
-      "order": 9,
+      "order": 8,
       "mode": 0,
       "inputs": [
         {
@@ -400,7 +308,7 @@
         106
       ],
       "flags": {},
-      "order": 3,
+      "order": 2,
       "mode": 0,
       "inputs": [],
       "outputs": [
@@ -443,7 +351,7 @@
         90.09794839833353
       ],
       "flags": {},
-      "order": 4,
+      "order": 3,
       "mode": 0,
       "inputs": [],
       "outputs": [],
@@ -455,65 +363,18 @@
       "bgcolor": "#653"
     },
     {
-      "id": 16,
-      "type": "LoraLoaderModelOnly",
-      "pos": [
-        -567.6679402215764,
-        291.0384180443039
-      ],
-      "size": [
-        270,
-        82
-      ],
-      "flags": {},
-      "order": 6,
-      "mode": 4,
-      "inputs": [
-        {
-          "name": "model",
-          "type": "MODEL",
-          "link": 16
-        }
-      ],
-      "outputs": [
-        {
-          "name": "MODEL",
-          "type": "MODEL",
-          "links": [
-            18
-          ]
-        }
-      ],
-      "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.25.0",
-        "Node name for S&R": "LoraLoaderModelOnly",
-        "ue_properties": {
-          "widget_ue_connectable": {},
-          "input_ue_unconnectable": {},
-          "version": "7.8"
-        }
-      },
-      "widgets_values": [
-        "Your_Character_LoRA_Here.safetensors",
-        1
-      ],
-      "color": "#323",
-      "bgcolor": "#535"
-    },
-    {
       "id": 17,
       "type": "LoraLoaderModelOnly",
       "pos": [
-        -561.8795879488508,
-        426.7705977963703
+        -560.4679621284585,
+        461.1444141650979
       ],
       "size": [
         270,
         82
       ],
       "flags": {},
-      "order": 8,
+      "order": 10,
       "mode": 4,
       "inputs": [
         {
@@ -549,18 +410,41 @@
       "bgcolor": "#535"
     },
     {
+      "id": 32,
+      "type": "Note",
+      "pos": [
+        -544.8185352938515,
+        -26.878625916865516
+      ],
+      "size": [
+        231.9227789256198,
+        88
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {},
+      "widgets_values": [
+        "To enable LoRA loaders, select it and CTRL B / CMD b"
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
       "id": 30,
       "type": "LoraLoaderModelOnly",
       "pos": [
-        -560.6722015852149,
-        571.3338080236424
+        -559.2605757648225,
+        605.7076243923701
       ],
       "size": [
         270,
         82
       ],
       "flags": {},
-      "order": 10,
+      "order": 11,
       "mode": 4,
       "inputs": [
         {
@@ -581,12 +465,12 @@
       "properties": {
         "cnr_id": "comfy-core",
         "ver": "0.25.0",
+        "Node name for S&R": "LoraLoaderModelOnly",
         "ue_properties": {
           "widget_ue_connectable": {},
           "input_ue_unconnectable": {},
           "version": "7.8"
-        },
-        "Node name for S&R": "LoraLoaderModelOnly"
+        }
       },
       "widgets_values": [
         "Your_Character_LoRA_Here.safetensors",
@@ -596,27 +480,191 @@
       "bgcolor": "#535"
     },
     {
-      "id": 32,
-      "type": "Note",
+      "id": 16,
+      "type": "LoraLoaderModelOnly",
       "pos": [
-        -546.2156082707352,
-        152.8999263740236
+        -566.256314401184,
+        325.4122344130315
       ],
       "size": [
-        231.9227789256198,
-        88
+        270,
+        82
+      ],
+      "flags": {},
+      "order": 9,
+      "mode": 4,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 41
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            18
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.25.0",
+        "Node name for S&R": "LoraLoaderModelOnly",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "input_ue_unconnectable": {},
+          "version": "7.8"
+        }
+      },
+      "widgets_values": [
+        "Your_Character_LoRA_Here.safetensors",
+        1
+      ],
+      "color": "#323",
+      "bgcolor": "#535"
+    },
+    {
+      "id": 33,
+      "type": "LoraLoaderModelOnly",
+      "pos": [
+        -564.5307041907536,
+        183.50613013550452
+      ],
+      "size": [
+        270,
+        82
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 40
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            41
+          ]
+        }
+      ],
+      "title": "Turbo LoRA - Don't Touch",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.25.0",
+        "Node name for S&R": "LoraLoaderModelOnly",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "input_ue_unconnectable": {},
+          "version": "7.8"
+        }
+      },
+      "widgets_values": [
+        "krea2_turbo_lora_rank_64_bf16.safetensors",
+        1
+      ],
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
+      "id": 6,
+      "type": "CLIPTextEncode",
+      "pos": [
+        -128.86030255681837,
+        164.22606285511333
+      ],
+      "size": [
+        400,
+        200
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 14
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "slot_index": 0,
+          "links": [
+            5,
+            12
+          ]
+        }
+      ],
+      "title": "Positive Prompt",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.24.0",
+        "Node name for S&R": "CLIPTextEncode",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "version": "7.8",
+          "input_ue_unconnectable": {}
+        }
+      },
+      "widgets_values": [
+        "Cute female"
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 1,
+      "type": "UNETLoader",
+      "pos": [
+        -967.5177646188911,
+        165.3524752858519
+      ],
+      "size": [
+        282.24981964175936,
+        82
       ],
       "flags": {},
       "order": 5,
       "mode": 0,
       "inputs": [],
-      "outputs": [],
-      "properties": {},
-      "widgets_values": [
-        "To enable LoRA loaders, select it and CTRL B / CMD b"
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "slot_index": 0,
+          "links": [
+            40
+          ]
+        }
       ],
-      "color": "#432",
-      "bgcolor": "#653"
+      "title": "UNET Loader - Krea2 BF16",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.24.0",
+        "Node name for S&R": "UNETLoader",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "version": "7.8",
+          "input_ue_unconnectable": {}
+        }
+      },
+      "widgets_values": [
+        "krea2_raw_bf16.safetensors",
+        "default"
+      ],
+      "color": "#223",
+      "bgcolor": "#335"
     }
   ],
   "links": [
@@ -677,14 +725,6 @@
       "CLIP"
     ],
     [
-      16,
-      1,
-      0,
-      16,
-      0,
-      "MODEL"
-    ],
-    [
       18,
       16,
       0,
@@ -715,6 +755,22 @@
       15,
       0,
       "IMAGE"
+    ],
+    [
+      40,
+      1,
+      0,
+      33,
+      0,
+      "MODEL"
+    ],
+    [
+      41,
+      33,
+      0,
+      16,
+      0,
+      "MODEL"
     ]
   ],
   "groups": [
@@ -770,16 +826,16 @@
   "config": {},
   "extra": {
     "ds": {
-      "scale": 1,
+      "scale": 0.9090909090909091,
       "offset": [
-        1077.0819241281733,
-        283.847103584654
+        1656.268630983648,
+        268.5287841814642
       ]
     },
     "workflow_notes": "Native ComfyUI 0.25.0+ Krea2 workflow. Uses official CLIPLoader/UNETLoader nodes. Requires 3 model files (see Note node).",
     "ue_links": [],
     "links_added_by_ue": [],
-    "frontendVersion": "1.44.19",
+    "frontendVersion": "1.48.7",
     "VHS_latentpreview": false,
     "VHS_latentpreviewrate": 0,
     "VHS_MetadataImage": true,

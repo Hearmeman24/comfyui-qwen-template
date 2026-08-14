@@ -1,8 +1,8 @@
 {
   "id": "0e795202-8c8d-45fd-89ae-0db75e25e1b1",
   "revision": 0,
-  "last_node_id": 259,
-  "last_link_id": 557,
+  "last_node_id": 260,
+  "last_link_id": 559,
   "nodes": [
     {
       "id": 208,
@@ -108,7 +108,7 @@
       "flags": {
         "collapsed": true
       },
-      "order": 12,
+      "order": 10,
       "mode": 0,
       "inputs": [
         {
@@ -216,7 +216,7 @@
       "flags": {
         "collapsed": true
       },
-      "order": 13,
+      "order": 11,
       "mode": 0,
       "inputs": [
         {
@@ -325,23 +325,27 @@
       ],
       "outputs": [
         {
+          "dir": 4,
           "name": "images",
           "type": "IMAGE",
           "links": null
         }
       ],
       "properties": {
-        "cnr_id": "rgthree-comfy",
+        "aux_id": "rgthree/rgthree-comfy",
         "ver": "738105af5fb14e96fbecaf406dc356e284797e8c",
-        "Node name for S&R": "Image Comparer (rgthree)",
         "comparer_mode": "Slide",
+        "cnr_id": "rgthree-comfy",
+        "Node name for S&R": "Image Comparer (rgthree)",
         "ue_properties": {
           "widget_ue_connectable": {},
           "input_ue_unconnectable": {},
           "version": "7.8"
         }
       },
-      "widgets_values": []
+      "widgets_values": [
+        []
+      ]
     },
     {
       "id": 232,
@@ -393,7 +397,7 @@
         106
       ],
       "flags": {},
-      "order": 11,
+      "order": 13,
       "mode": 0,
       "inputs": [
         {
@@ -445,7 +449,7 @@
         {
           "name": "model",
           "type": "MODEL",
-          "link": 461
+          "link": 559
         }
       ],
       "outputs": [
@@ -718,96 +722,6 @@
       "bgcolor": "#3f5159"
     },
     {
-      "id": 96,
-      "type": "UNETLoader",
-      "pos": [
-        -1322.2911800502325,
-        -292.738034344327
-      ],
-      "size": [
-        302.80438232421875,
-        82
-      ],
-      "flags": {},
-      "order": 5,
-      "mode": 0,
-      "inputs": [],
-      "outputs": [
-        {
-          "name": "MODEL",
-          "type": "MODEL",
-          "links": [
-            460
-          ]
-        }
-      ],
-      "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.3.52",
-        "Node name for S&R": "UNETLoader",
-        "ue_properties": {
-          "version": "7.0.1",
-          "widget_ue_connectable": {
-            "unet_name": true,
-            "weight_dtype": true
-          },
-          "input_ue_unconnectable": {}
-        }
-      },
-      "widgets_values": [
-        "krea2_turbo_mxfp8.safetensors",
-        "default"
-      ],
-      "color": "#223",
-      "bgcolor": "#335"
-    },
-    {
-      "id": 257,
-      "type": "UNETLoader",
-      "pos": [
-        -1325.8553890552955,
-        -169.70482849710848
-      ],
-      "size": [
-        302.80438232421875,
-        82
-      ],
-      "flags": {},
-      "order": 6,
-      "mode": 0,
-      "inputs": [],
-      "outputs": [
-        {
-          "name": "MODEL",
-          "type": "MODEL",
-          "links": [
-            553,
-            554
-          ]
-        }
-      ],
-      "title": "PiD Model",
-      "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.3.52",
-        "Node name for S&R": "UNETLoader",
-        "ue_properties": {
-          "version": "7.0.1",
-          "widget_ue_connectable": {
-            "unet_name": true,
-            "weight_dtype": true
-          },
-          "input_ue_unconnectable": {}
-        }
-      },
-      "widgets_values": [
-        "qwen_image_pid.pth",
-        "default"
-      ],
-      "color": "#223",
-      "bgcolor": "#335"
-    },
-    {
       "id": 99,
       "type": "CLIPLoader",
       "pos": [
@@ -819,7 +733,7 @@
         115.81897735595703
       ],
       "flags": {},
-      "order": 7,
+      "order": 5,
       "mode": 0,
       "inputs": [],
       "outputs": [
@@ -853,51 +767,6 @@
       ],
       "color": "#223",
       "bgcolor": "#335"
-    },
-    {
-      "id": 206,
-      "type": "LoraLoaderModelOnly",
-      "pos": [
-        -879.5931625904373,
-        -334.5557213367377
-      ],
-      "size": [
-        270,
-        82
-      ],
-      "flags": {},
-      "order": 10,
-      "mode": 4,
-      "inputs": [
-        {
-          "name": "model",
-          "type": "MODEL",
-          "link": 460
-        }
-      ],
-      "outputs": [
-        {
-          "name": "MODEL",
-          "type": "MODEL",
-          "links": [
-            461
-          ]
-        }
-      ],
-      "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.24.0",
-        "Node name for S&R": "LoraLoaderModelOnly",
-        "ue_properties": {
-          "widget_ue_connectable": {},
-          "input_ue_unconnectable": {},
-          "version": "7.8"
-        }
-      },
-      "widgets_values": [
-        "Your_Character_LoRA_Here.safetensors",
-        1
-      ]
     },
     {
       "id": 95,
@@ -997,16 +866,16 @@
         }
       ],
       "properties": {
-        "proxyWidgets": [],
         "cnr_id": "comfy-core",
         "ver": "0.24.0",
+        "proxyWidgets": [],
         "ue_properties": {
           "widget_ue_connectable": {},
           "input_ue_unconnectable": {},
           "version": "7.8"
-        }
+        },
+        "previewExposures": []
       },
-      "widgets_values": [],
       "color": "#322",
       "bgcolor": "#533"
     },
@@ -1069,21 +938,18 @@
         }
       ],
       "properties": {
-        "proxyWidgets": [
-          [
-            "246",
-            "text"
-          ]
-        ],
         "cnr_id": "comfy-core",
         "ver": "0.24.0",
         "ue_properties": {
           "widget_ue_connectable": {},
           "input_ue_unconnectable": {},
           "version": "7.8"
-        }
+        },
+        "previewExposures": []
       },
-      "widgets_values": [],
+      "widgets_values": [
+        ""
+      ],
       "color": "#322",
       "bgcolor": "#533"
     },
@@ -1099,7 +965,7 @@
         88
       ],
       "flags": {},
-      "order": 8,
+      "order": 6,
       "mode": 0,
       "inputs": [],
       "outputs": [],
@@ -1109,6 +975,144 @@
       ],
       "color": "#432",
       "bgcolor": "#653"
+    },
+    {
+      "id": 96,
+      "type": "UNETLoader",
+      "pos": [
+        -1322.2911800502325,
+        -292.738034344327
+      ],
+      "size": [
+        302.80438232421875,
+        82
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            558
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.52",
+        "Node name for S&R": "UNETLoader",
+        "ue_properties": {
+          "version": "7.0.1",
+          "widget_ue_connectable": {
+            "unet_name": true,
+            "weight_dtype": true
+          },
+          "input_ue_unconnectable": {}
+        }
+      },
+      "widgets_values": [
+        "krea2_raw_bf16.safetensors",
+        "default"
+      ],
+      "color": "#223",
+      "bgcolor": "#335"
+    },
+    {
+      "id": 260,
+      "type": "LoraLoaderModelOnly",
+      "pos": [
+        -882.8825459976105,
+        -327.92584741660903
+      ],
+      "size": [
+        270,
+        82
+      ],
+      "flags": {},
+      "order": 12,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 558
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            559
+          ]
+        }
+      ],
+      "title": "Turbo LoRA - Don't Touch",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.25.0",
+        "Node name for S&R": "LoraLoaderModelOnly",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "input_ue_unconnectable": {},
+          "version": "7.8"
+        }
+      },
+      "widgets_values": [
+        "krea2_turbo_lora_rank_64_bf16.safetensors",
+        1
+      ],
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
+      "id": 257,
+      "type": "UNETLoader",
+      "pos": [
+        -1325.8553890552955,
+        -169.70482849710848
+      ],
+      "size": [
+        302.80438232421875,
+        82
+      ],
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            553,
+            554
+          ]
+        }
+      ],
+      "title": "PiD Model",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.52",
+        "Node name for S&R": "UNETLoader",
+        "ue_properties": {
+          "version": "7.0.1",
+          "widget_ue_connectable": {
+            "unet_name": true,
+            "weight_dtype": true
+          },
+          "input_ue_unconnectable": {}
+        }
+      },
+      "widgets_values": [
+        "qwen_image_pid.pth",
+        "default"
+      ],
+      "color": "#223",
+      "bgcolor": "#335"
     }
   ],
   "links": [
@@ -1167,22 +1171,6 @@
       95,
       1,
       "INT"
-    ],
-    [
-      460,
-      96,
-      0,
-      206,
-      0,
-      "MODEL"
-    ],
-    [
-      461,
-      206,
-      0,
-      207,
-      0,
-      "MODEL"
     ],
     [
       462,
@@ -1311,6 +1299,22 @@
       204,
       0,
       "MODEL"
+    ],
+    [
+      558,
+      96,
+      0,
+      260,
+      0,
+      "MODEL"
+    ],
+    [
+      559,
+      260,
+      0,
+      207,
+      0,
+      "MODEL"
     ]
   ],
   "groups": [
@@ -1382,8 +1386,8 @@
         "version": 1,
         "state": {
           "lastGroupId": 5,
-          "lastNodeId": 259,
-          "lastLinkId": 557,
+          "lastNodeId": 260,
+          "lastLinkId": 559,
           "lastRerouteId": 0
         },
         "revision": 0,
@@ -2048,8 +2052,8 @@
         "version": 1,
         "state": {
           "lastGroupId": 5,
-          "lastNodeId": 259,
-          "lastLinkId": 557,
+          "lastNodeId": 260,
+          "lastLinkId": 559,
           "lastRerouteId": 0
         },
         "revision": 0,
@@ -2318,7 +2322,7 @@
   },
   "config": {},
   "extra": {
-    "frontendVersion": "1.44.19",
+    "frontendVersion": "1.48.7",
     "ue_links": [],
     "links_added_by_ue": [],
     "VHS_latentpreview": false,
@@ -2331,10 +2335,10 @@
       "outputs": []
     },
     "ds": {
-      "scale": 0.8524330229115109,
+      "scale": 0.9376763252026623,
       "offset": [
-        615.5894222616967,
-        877.2186409127768
+        1974.3294073985705,
+        730.4442253536048
       ]
     }
   },
