@@ -495,7 +495,7 @@
         }
       },
       "widgets_values": [
-        "SummerVibesHM_krea2_epoch2.safetensors",
+        "Your_Character_LoRA_Here.safetensors",
         1
       ],
       "color": "#323",
@@ -542,7 +542,7 @@
         }
       },
       "widgets_values": [
-        "SummerVibesHM_krea2_epoch2.safetensors",
+        "Your_Character_LoRA_Here.safetensors",
         1
       ],
       "color": "#323",
@@ -589,7 +589,7 @@
         "Node name for S&R": "LoraLoaderModelOnly"
       },
       "widgets_values": [
-        "SummerVibesHM_krea2_epoch2.safetensors",
+        "Your_Character_LoRA_Here.safetensors",
         1
       ],
       "color": "#323",

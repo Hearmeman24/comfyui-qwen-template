@@ -635,7 +635,7 @@
         }
       },
       "widgets_values": [
-        "SummerVibesHMV2_qwen-image-2512_epoch40.safetensors",
+        "Your_Character_LoRA_Here.safetensors",
         0.65
       ]
     },

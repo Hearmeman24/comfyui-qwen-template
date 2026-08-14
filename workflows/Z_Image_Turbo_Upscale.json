@@ -133,7 +133,7 @@
         }
       },
       "widgets_values": [
-        "Lily01_epoch80.safetensors",
+        "Your_Character_LoRA_Here.safetensors",
         0.45
       ]
     },
@@ -178,7 +178,7 @@
         }
       },
       "widgets_values": [
-        "HearmemanAI_V4_Rank128_BreastsLoRA_Epoch80.safetensors",
+        "Your_Character_LoRA_Here.safetensors",
         0.55
       ]
     },
@@ -226,7 +226,7 @@
         }
       },
       "widgets_values": [
-        "HMFemme_V1.safetensors",
+        "Your_Character_LoRA_Here.safetensors",
         0.89
       ],
       "color": "#232",
@@ -638,7 +638,7 @@
         }
       },
       "widgets_values": [
-        "Greta01_epoch80.safetensors",
+        "Your_Character_LoRA_Here.safetensors",
         0.8
       ],
       "color": "#323",
