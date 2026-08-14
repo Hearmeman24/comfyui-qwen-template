@@ -45,6 +45,23 @@ FROM ${BASE_IMAGE}
 # cg-image-picker, ComfyUI_LayerStyle(+Advance), ComfyUI-Impact-Subpack,
 # ComfyUI-Detail-Daemon, comfyui-mixlab-nodes, mikey_nodes and
 # cg-use-everywhere (referenced by nothing in the surviving workflows).
+# Cache-busters, one per pack (CLAUDE.md section 8; qwen-image had none).
+# docker_layer_caching serves the cached clone layer forever otherwise, so a
+# rebuild silently reships whatever HEAD the FIRST build happened to resolve.
+# Each ADD re-reads the GitHub API every build; any pack moving invalidates the
+# whole loop below. Branches resolved from the API, not guessed: Impact-Pack is
+# 'Main' with a capital M and ComfyLiterals is 'master'.
+
+ADD https://api.github.com/repos/kijai/ComfyUI-KJNodes/git/refs/heads/main /pack-refs/ComfyUI-KJNodes.json
+ADD https://api.github.com/repos/rgthree/rgthree-comfy/git/refs/heads/main /pack-refs/rgthree-comfy.json
+ADD https://api.github.com/repos/JPS-GER/ComfyUI_JPS-Nodes/git/refs/heads/main /pack-refs/ComfyUI_JPS-Nodes.json
+ADD https://api.github.com/repos/Suzie1/ComfyUI_Comfyroll_CustomNodes/git/refs/heads/main /pack-refs/ComfyUI_Comfyroll_CustomNodes.json
+ADD https://api.github.com/repos/ltdrdata/ComfyUI-Impact-Pack/git/refs/heads/Main /pack-refs/ComfyUI-Impact-Pack.json
+ADD https://api.github.com/repos/ClownsharkBatwing/RES4LYF/git/refs/heads/main /pack-refs/RES4LYF.json
+ADD https://api.github.com/repos/yolain/ComfyUI-Easy-Use/git/refs/heads/main /pack-refs/ComfyUI-Easy-Use.json
+ADD https://api.github.com/repos/cubiq/ComfyUI_essentials/git/refs/heads/main /pack-refs/ComfyUI_essentials.json
+ADD https://api.github.com/repos/M1kep/ComfyLiterals/git/refs/heads/master /pack-refs/ComfyLiterals.json
+ADD https://api.github.com/repos/ssitu/ComfyUI_UltimateSDUpscale/git/refs/heads/main /pack-refs/ComfyUI_UltimateSDUpscale.json
 # PIP_CONSTRAINT (base-owned) applies to every requirements install below.
 RUN for repo in \
     https://github.com/kijai/ComfyUI-KJNodes.git \
