@@ -45,7 +45,7 @@
         }
       },
       "widgets_values": [
-        "MultiAngle.safetensors",
+        "Your_Character_LoRA_Here.safetensors",
         1
       ]
     },
@@ -90,7 +90,7 @@
         }
       },
       "widgets_values": [
-        "MultiAngle.safetensors",
+        "Your_Character_LoRA_Here.safetensors",
         1
       ]
     },
