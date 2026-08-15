@@ -147,7 +147,7 @@ def main() -> int:
     assert set(by_env) == {"QWEN_IMAGE_PRECISION", "BOOGU_PRECISION"}, by_env
     qwen_group = by_env["QWEN_IMAGE_PRECISION"]
     boogu_group = by_env["BOOGU_PRECISION"]
-    assert set(qwen_group["flags"]) == {"DOWNLOAD_QWEN_IMAGE", "DOWNLOAD_QWEN_IMAGE_EDIT"}, qwen_group
+    assert set(qwen_group["flags"]) == {"DOWNLOAD_QWEN_IMAGE"}, qwen_group
     assert boogu_group["flags"] == ["download_boogu"], boogu_group
     for g in groups:
         assert g["default"] == "bf16", g
@@ -164,9 +164,15 @@ def main() -> int:
         "DOWNLOAD_HMFEMME must be retired via deprecated_flags, not deleted"
     for flag, count in EXPECTED_WORKFLOW_COUNTS.items():
         assert flag in template["flags"], f"missing flag: {flag}"
-        assert len(template["flags"][flag]["workflows"]) == count, (
-            f"{flag}: expected {count} workflows, "
-            f"got {len(template['flags'][flag]['workflows'])}"
+        # Flags carry "folders" since the per-model regrouping; the invariant
+        # worth holding is still the WORKFLOW count, so count the files under
+        # them rather than the folders (every flag has exactly one folder, so
+        # comparing folder counts would assert 4 == 1).
+        shipped = [w for d in template["flags"][flag]["folders"]
+                   for w in (REPO / "workflows" / d).rglob("*.json")]
+        assert len(shipped) == count, (
+            f"{flag}: expected {count} workflows, got {len(shipped)} "
+            f"under {template['flags'][flag]['folders']}"
         )
     assert sorted(template["flags"]["download_krea2"]["extra_models"]) == sorted(KREA2_EXTRA_MODELS)
     print(f"✅ flag map matches expected shape "
@@ -227,8 +233,12 @@ def main() -> int:
             dst = tmp / f"wf-{slug}"
             manifest = tmp / f"manifest-{slug}.tsv"
             # Qwen family pinned to bf16 throughout, to prove the two groups
-            # never cross-swap each other's files.
-            env = base_env(download_boogu="true", QWEN_IMAGE_PRECISION="bf16")
+            # never cross-swap each other's files. DOWNLOAD_QWEN_IMAGE must be
+            # ON for that to mean anything: a swap group is gated on its flags
+            # (provisioner.py:142), so with qwen off there is no qwen file in
+            # the manifest to cross-swap and the assertion below is vacuous.
+            env = base_env(download_boogu="true", DOWNLOAD_QWEN_IMAGE="true",
+                           QWEN_IMAGE_PRECISION="bf16")
             if raw is not None:
                 env["BOOGU_PRECISION"] = raw
             proc = run_provisioner(REPO / "template.json", REPO / "src" / "models_registry.json",
@@ -288,7 +298,8 @@ def main() -> int:
         defaults_off = {"DOWNLOAD_QWEN_IMAGE": "false", "DOWNLOAD_QWEN_IMAGE_EDIT": "false"}
         combos = {
             "none": dict(defaults_off),
-            "default": {},  # template.json defaults: qwen base + edit only
+            "default": {},  # every flag is now default:false (README:15), so this
+                            # is the same as "none": an unset pod boots empty
             "all": {f: "true" for f in EXPECTED_WORKFLOW_COUNTS},
             "krea2_only": {**defaults_off, "download_krea2": "true"},
             "z_image_only": {**defaults_off, "DOWNLOAD_Z_IMAGE": "true"},
@@ -309,7 +320,7 @@ def main() -> int:
             if combo_name == "none":
                 assert wf_count == 0 and len(lines) == 0, (combo_name, wf_count, len(lines))
             elif combo_name == "default":
-                assert wf_count == 7, (combo_name, wf_count)
+                assert wf_count == 0 and len(lines) == 0, (combo_name, wf_count, len(lines))
             elif combo_name == "all":
                 assert wf_count == 15, (combo_name, wf_count)
             elif combo_name == "krea2_only":
