@@ -20,10 +20,11 @@ AND in each node's `properties.models`, which is what the ComfyUI frontend's
 missing and offers to download it to their own PC.
 
 This is also the ONLY gate on template.json's `extra_models` key (krea2's
-three unreferenced files): the runtime validator ignores the key and the
-provisioner only prints an error line at boot, so a typo there is invisible
-everywhere else. It is also the gate that DOWNLOAD_HMFEMME, retired via
-deprecated_flags, truly enables and queues nothing.
+three unreferenced files plus the shared VAE Utils model): the runtime
+validator ignores the key and the provisioner only prints an error line at
+boot, so a typo there is invisible everywhere else. It is also the gate that
+DOWNLOAD_HMFEMME, retired via deprecated_flags, truly enables and queues
+nothing.
 
 Run: python3 tools/test_provisioner.py
 Stdlib only, no pytest. Needs template.json + pins.json in the repo root.
@@ -59,6 +60,8 @@ KREA2_EXTRA_MODELS = [
     "krea2_turbo_lora_rank_64_bf16.safetensors",
     "krea2_identity_edit_v1_2_r128.safetensors",
 ]
+VAE_UTILS_MODEL = "Wan2.1_VAE_upscale2x_imageonly_real_v1.safetensors"
+VAE_UTILS_REPO = "https://github.com/spacepxl/ComfyUI-VAE-Utils.git"
 
 
 def load_json(path: Path, hint: str) -> dict:
@@ -162,6 +165,16 @@ def main() -> int:
 
     assert "DOWNLOAD_HMFEMME" in (template.get("deprecated_flags") or {}), \
         "DOWNLOAD_HMFEMME must be retired via deprecated_flags, not deleted"
+    assert template["custom_nodes"]["repos"] == [VAE_UTILS_REPO], (
+        "VAE Utils must be cloned at boot from its upstream repository"
+    )
+    assert registry[VAE_UTILS_MODEL] == {
+        "url": (
+            "https://huggingface.co/spacepxl/Wan2.1-VAE-upscale2x/resolve/main/"
+            "Wan2.1_VAE_upscale2x_imageonly_real_v1.safetensors"
+        ),
+        "subdir": "vae",
+    }, "VAE Utils model must land in ComfyUI's native models/vae directory"
     for flag, count in EXPECTED_WORKFLOW_COUNTS.items():
         assert flag in template["flags"], f"missing flag: {flag}"
         # Flags carry "folders" since the per-model regrouping; the invariant
@@ -174,10 +187,17 @@ def main() -> int:
             f"{flag}: expected {count} workflows, got {len(shipped)} "
             f"under {template['flags'][flag]['folders']}"
         )
-    assert sorted(template["flags"]["download_krea2"]["extra_models"]) == sorted(KREA2_EXTRA_MODELS)
+        extras = set(template["flags"][flag].get("extra_models") or [])
+        expected_extras = {VAE_UTILS_MODEL}
+        if flag == "download_krea2":
+            expected_extras.update(KREA2_EXTRA_MODELS)
+        assert extras == expected_extras, (
+            f"{flag}: expected extra_models {sorted(expected_extras)}, got {sorted(extras)}"
+        )
     print(f"✅ flag map matches expected shape "
           f"({sum(EXPECTED_WORKFLOW_COUNTS.values())} workflows across "
-          f"{len(EXPECTED_WORKFLOW_COUNTS)} live flags, 1 deprecated)")
+          f"{len(EXPECTED_WORKFLOW_COUNTS)} live flags, 1 shared utility model, "
+          "1 deprecated)")
 
     runtime = runtime_dir()
     PROVISIONER = runtime / "src" / "provisioner.py"
@@ -292,18 +312,18 @@ def main() -> int:
         print("✅ DOWNLOAD_HMFEMME=true: announced RETIRED, enables and queues nothing")
 
         # --- Flag combinations: workflow + manifest counts ---
-        # DOWNLOAD_QWEN_IMAGE and DOWNLOAD_QWEN_IMAGE_EDIT default to true, so
-        # every combo below except "default" explicitly turns them off to
-        # isolate the flag(s) actually under test.
-        defaults_off = {"DOWNLOAD_QWEN_IMAGE": "false", "DOWNLOAD_QWEN_IMAGE_EDIT": "false"}
+        # Turn every live flag off explicitly for singleton cases so a future
+        # default change cannot leak another family's workflows or models into
+        # the case under test.
+        defaults_off = {flag: "false" for flag in EXPECTED_WORKFLOW_COUNTS}
         combos = {
             "none": dict(defaults_off),
             "default": {},  # every flag is now default:false (README:15), so this
                             # is the same as "none": an unset pod boots empty
             "all": {f: "true" for f in EXPECTED_WORKFLOW_COUNTS},
-            "krea2_only": {**defaults_off, "download_krea2": "true"},
-            "z_image_only": {**defaults_off, "DOWNLOAD_Z_IMAGE": "true"},
         }
+        for flag in EXPECTED_WORKFLOW_COUNTS:
+            combos[f"{flag}_only"] = {**defaults_off, flag: "true"}
 
         for combo_name, flags in combos.items():
             slug = re.sub(r"[^A-Za-z0-9]", "_", combo_name)
@@ -323,13 +343,21 @@ def main() -> int:
                 assert wf_count == 0 and len(lines) == 0, (combo_name, wf_count, len(lines))
             elif combo_name == "all":
                 assert wf_count == 15, (combo_name, wf_count)
-            elif combo_name == "krea2_only":
-                assert wf_count == 2, (combo_name, wf_count)
+            elif combo_name.endswith("_only"):
+                flag = combo_name.removesuffix("_only")
+                assert wf_count == EXPECTED_WORKFLOW_COUNTS[flag], (
+                    combo_name, wf_count
+                )
                 downloaded = {l.split("\t")[1].rsplit("/", 1)[1] for l in lines}
-                missing = set(KREA2_EXTRA_MODELS) - downloaded
-                assert not missing, f"krea2 extra_models missing from manifest: {sorted(missing)}"
-            elif combo_name == "z_image_only":
-                assert wf_count == 3, (combo_name, wf_count)
+                assert VAE_UTILS_MODEL in downloaded, (
+                    f"{flag}: shared VAE Utils model missing from manifest"
+                )
+                if flag == "download_krea2":
+                    missing = set(KREA2_EXTRA_MODELS) - downloaded
+                    assert not missing, (
+                        "krea2 extra_models missing from manifest: "
+                        f"{sorted(missing)}"
+                    )
 
     print("✅ every flag combination produces the expected workflow/manifest counts")
     return 0

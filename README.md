@@ -48,6 +48,10 @@ Turn on as many download flags as you want. A model that two of them share is on
 Only the workflows belonging to the flags you enabled are installed, so the menu shows you what your
 models can actually run.
 
+Enabling any model family also installs
+[ComfyUI-VAE-Utils](https://github.com/spacepxl/ComfyUI-VAE-Utils) and downloads its 2x Wan VAE to
+`models/vae`. A pod with every model-family flag disabled still stays empty.
+
 About the precision switches: bf16 is the default and runs everywhere. fp8 is a smaller download and
 is faster on cards with native fp8 support, which is the 4090, L40, H100, H200 and RTX 50xx. Only
 the precision you ask for is downloaded, and the copied workflows are pointed at those files for

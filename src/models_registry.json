@@ -27,6 +27,10 @@
     "url": "https://huggingface.co/Comfy-Org/Qwen-Image_ComfyUI/resolve/main/split_files/vae/qwen_image_vae.safetensors",
     "subdir": "vae"
   },
+  "Wan2.1_VAE_upscale2x_imageonly_real_v1.safetensors": {
+    "url": "https://huggingface.co/spacepxl/Wan2.1-VAE-upscale2x/resolve/main/Wan2.1_VAE_upscale2x_imageonly_real_v1.safetensors",
+    "subdir": "vae"
+  },
   "Qwen-Image-Lightning-8steps-V2.0.safetensors": {
     "url": "https://huggingface.co/lightx2v/Qwen-Image-Lightning/resolve/main/Qwen-Image-Lightning-8steps-V2.0.safetensors",
     "subdir": "loras"

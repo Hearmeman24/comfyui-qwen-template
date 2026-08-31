@@ -5,24 +5,36 @@
   "flags": {
     "DOWNLOAD_QWEN_IMAGE": {
       "default": false,
+      "extra_models": [
+        "Wan2.1_VAE_upscale2x_imageonly_real_v1.safetensors"
+      ],
       "folders": [
         "Qwen Image"
       ]
     },
     "DOWNLOAD_QWEN_IMAGE_EDIT": {
       "default": false,
+      "extra_models": [
+        "Wan2.1_VAE_upscale2x_imageonly_real_v1.safetensors"
+      ],
       "folders": [
         "Qwen Image Edit"
       ]
     },
     "DOWNLOAD_Z_IMAGE": {
       "default": false,
+      "extra_models": [
+        "Wan2.1_VAE_upscale2x_imageonly_real_v1.safetensors"
+      ],
       "folders": [
         "Z-Image"
       ]
     },
     "download_boogu": {
       "default": false,
+      "extra_models": [
+        "Wan2.1_VAE_upscale2x_imageonly_real_v1.safetensors"
+      ],
       "folders": [
         "Boogu"
       ]
@@ -32,7 +44,8 @@
       "extra_models": [
         "krea2_raw_bf16.safetensors",
         "krea2_turbo_lora_rank_64_bf16.safetensors",
-        "krea2_identity_edit_v1_2_r128.safetensors"
+        "krea2_identity_edit_v1_2_r128.safetensors",
+        "Wan2.1_VAE_upscale2x_imageonly_real_v1.safetensors"
       ],
       "folders": [
         "Krea 2"
@@ -81,7 +94,9 @@
   "models_symlink": true,
   "custom_nodes": {
     "target": "image",
-    "repos": []
+    "repos": [
+      "https://github.com/spacepxl/ComfyUI-VAE-Utils.git"
+    ]
   },
   "sage": true
 }
