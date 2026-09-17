@@ -1,0 +1,305 @@
+{
+  "schemaVersion": 1,
+  "workflows": [
+    {
+      "id": "boogu-base-text-to-image",
+      "file": "workflows/Boogu/Boogu_Base.json",
+      "title": "Boogu Base",
+      "description": "Generate images from a text prompt with Boogu Base.",
+      "model": "Boogu",
+      "output": "Image",
+      "tags": [
+        "Boogu",
+        "text-to-image",
+        "ComfyUI"
+      ],
+      "status": "published",
+      "publishedAt": "2026-06-19T09:57:07Z",
+      "notes": [
+        "Replace prompt placeholders and supply your own input images, video or audio before running."
+      ]
+    },
+    {
+      "id": "boogu-image-edit",
+      "file": "workflows/Boogu/Boogu_Edit.json",
+      "title": "Boogu Edit",
+      "description": "Transform a reference image with written editing instructions.",
+      "model": "Boogu",
+      "output": "Image",
+      "tags": [
+        "Boogu",
+        "editing",
+        "image-to-image",
+        "image-reference",
+        "ComfyUI"
+      ],
+      "status": "published",
+      "publishedAt": "2026-06-19T09:57:07Z",
+      "notes": [
+        "Replace prompt placeholders and supply your own input images, video or audio before running."
+      ]
+    },
+    {
+      "id": "boogu-turbo-text-to-image",
+      "file": "workflows/Boogu/Boogu_Turbo.json",
+      "title": "Boogu Turbo",
+      "description": "Generate images from a text prompt with the Boogu Turbo model.",
+      "model": "Boogu",
+      "output": "Image",
+      "tags": [
+        "Boogu",
+        "text-to-image",
+        "turbo",
+        "ComfyUI"
+      ],
+      "status": "published",
+      "publishedAt": "2026-06-19T09:57:07Z",
+      "notes": [
+        "Replace prompt placeholders and supply your own input images, video or audio before running."
+      ]
+    },
+    {
+      "id": "krea-2-turbo-pid",
+      "file": "workflows/Krea 2/Krea2_PiD_Workflow.json",
+      "title": "Krea 2 Turbo + PiD",
+      "description": "Generate with Krea 2 RAW and its Turbo LoRA, then upscale through PiD.",
+      "model": "Krea 2",
+      "output": "Image",
+      "tags": [
+        "Krea 2",
+        "text-to-image",
+        "turbo",
+        "upscale",
+        "PiD",
+        "ComfyUI"
+      ],
+      "status": "published",
+      "publishedAt": "2026-06-25T08:10:42Z",
+      "notes": [
+        "Replace prompt placeholders and supply your own input images, video or audio before running.",
+        "Save the PiD download as ComfyUI/models/diffusion_models/qwen_image_pid.pth."
+      ]
+    },
+    {
+      "id": "krea-2-turbo-base",
+      "file": "workflows/Krea 2/Krea2_Workflow.json",
+      "title": "Krea 2 Turbo",
+      "description": "Generate images with Krea 2 RAW and its Turbo LoRA.",
+      "model": "Krea 2",
+      "output": "Image",
+      "tags": [
+        "Krea 2",
+        "text-to-image",
+        "turbo",
+        "ComfyUI"
+      ],
+      "status": "published",
+      "publishedAt": "2026-06-25T08:10:42Z",
+      "notes": [
+        "Replace prompt placeholders and supply your own input images, video or audio before running."
+      ]
+    },
+    {
+      "id": "qwen-image-edit-2511",
+      "file": "workflows/Qwen Image Edit/Qwen_image_edit.json",
+      "title": "Qwen Image Edit 2511",
+      "description": "Edit a reference image with text instructions using Qwen Image Edit 2511.",
+      "model": "Qwen",
+      "output": "Image",
+      "tags": [
+        "Qwen",
+        "editing",
+        "image-to-image",
+        "image-reference",
+        "ComfyUI"
+      ],
+      "status": "published",
+      "publishedAt": "2025-08-21T07:07:53Z",
+      "notes": [
+        "Replace prompt placeholders and supply your own input images, video or audio before running."
+      ]
+    },
+    {
+      "id": "qwen-reference-to-dataset",
+      "file": "workflows/Qwen Image Edit/Qwen_Image_To_Dateset_Workflow.json",
+      "title": "Qwen reference to dataset",
+      "description": "Turn a character reference into a batch of images for dataset review.",
+      "model": "Qwen",
+      "output": "Image",
+      "tags": [
+        "Qwen",
+        "editing",
+        "image-reference",
+        "dataset",
+        "batch",
+        "upscale",
+        "ComfyUI"
+      ],
+      "status": "published",
+      "publishedAt": "2025-08-21T14:59:02Z",
+      "notes": [
+        "Replace prompt placeholders and supply your own input images, video or audio before running.",
+        "Select your own compatible character LoRA for the optional character LoRA node, or bypass that node."
+      ]
+    },
+    {
+      "id": "qwen-multiple-angles",
+      "file": "workflows/Qwen Image Edit/Qwen_MultiAngle_image_edit.json",
+      "title": "Qwen multiple angles",
+      "description": "Generate a batch of camera angles and framings from one reference image.",
+      "model": "Qwen",
+      "output": "Image",
+      "tags": [
+        "Qwen",
+        "editing",
+        "image-reference",
+        "camera-angles",
+        "batch",
+        "ComfyUI"
+      ],
+      "status": "published",
+      "publishedAt": "2025-11-11T17:01:03Z",
+      "notes": [
+        "Replace prompt placeholders and supply your own input images, video or audio before running."
+      ]
+    },
+    {
+      "id": "qwen-image-2512-detail-pass",
+      "file": "workflows/Qwen Image/Qwen_Workflow_Slower_Higher_Quality.json",
+      "title": "Qwen Image 2512 · detail pass",
+      "description": "Generate with Qwen Image 2512 and continue through an image detail and upscaling pass.",
+      "model": "Qwen",
+      "output": "Image",
+      "tags": [
+        "Qwen",
+        "text-to-image",
+        "upscale",
+        "ComfyUI"
+      ],
+      "status": "published",
+      "publishedAt": "2025-08-21T07:07:53Z",
+      "notes": [
+        "Replace prompt placeholders and supply your own input images, video or audio before running."
+      ]
+    },
+    {
+      "id": "qwen-image-2512-classic",
+      "file": "workflows/Qwen Image/Qwen_Workflow.json",
+      "title": "Qwen Image 2512 · classic",
+      "description": "Create images with Qwen Image 2512 and configurable sampling and LoRA controls.",
+      "model": "Qwen",
+      "output": "Image",
+      "tags": [
+        "Qwen",
+        "text-to-image",
+        "LoRA",
+        "ComfyUI"
+      ],
+      "status": "published",
+      "publishedAt": "2025-08-18T10:59:17Z",
+      "notes": [
+        "Replace prompt placeholders and supply your own input images, video or audio before running."
+      ]
+    },
+    {
+      "id": "qwen-image-pid",
+      "file": "workflows/Qwen Image/QwenImage_2512_Workflow_PiD.json",
+      "title": "Qwen Image 2512 + PiD",
+      "description": "Generate an image with Qwen Image 2512, then upscale it through PiD.",
+      "model": "Qwen",
+      "output": "Image",
+      "tags": [
+        "Qwen",
+        "text-to-image",
+        "upscale",
+        "PiD",
+        "ComfyUI"
+      ],
+      "status": "published",
+      "publishedAt": "2026-06-05T13:17:49Z",
+      "notes": [
+        "Replace prompt placeholders and supply your own input images, video or audio before running.",
+        "Save the PiD download as ComfyUI/models/diffusion_models/qwen_image_pid.pth."
+      ]
+    },
+    {
+      "id": "qwen-image-2512",
+      "file": "workflows/Qwen Image/QwenImage_2512_Workflow.json",
+      "title": "Qwen Image 2512",
+      "description": "Generate images from a written prompt using Qwen Image 2512.",
+      "model": "Qwen",
+      "output": "Image",
+      "tags": [
+        "Qwen",
+        "text-to-image",
+        "ComfyUI"
+      ],
+      "status": "published",
+      "publishedAt": "2026-03-30T09:12:12Z",
+      "notes": [
+        "Replace prompt placeholders and supply your own input images, video or audio before running."
+      ]
+    },
+    {
+      "id": "z-image-turbo-upscale",
+      "file": "workflows/Z-Image/Z_Image_Turbo_Upscale.json",
+      "title": "Z Image Turbo + upscale",
+      "description": "Generate with Z Image Turbo and add a tiled image-upscaling pass.",
+      "model": "Z Image",
+      "output": "Image",
+      "tags": [
+        "Z Image",
+        "text-to-image",
+        "turbo",
+        "upscale",
+        "ComfyUI"
+      ],
+      "status": "published",
+      "publishedAt": "2025-11-29T08:47:13Z",
+      "notes": [
+        "Replace prompt placeholders and supply your own input images, video or audio before running."
+      ]
+    },
+    {
+      "id": "z-image-turbo",
+      "file": "workflows/Z-Image/Z_Image_Turbo.json",
+      "title": "Z Image Turbo",
+      "description": "Generate images from a written prompt using Z Image Turbo.",
+      "model": "Z Image",
+      "output": "Image",
+      "tags": [
+        "Z Image",
+        "text-to-image",
+        "turbo",
+        "ComfyUI"
+      ],
+      "status": "published",
+      "publishedAt": "2025-11-29T08:47:13Z",
+      "notes": [
+        "Replace prompt placeholders and supply your own input images, video or audio before running."
+      ]
+    },
+    {
+      "id": "z-image-turbo-pid",
+      "file": "workflows/Z-Image/Z_Image_Workflow_PiD.json",
+      "title": "Z Image Turbo + PiD",
+      "description": "Generate with Z Image Turbo, then enlarge the image through PiD.",
+      "model": "Z Image",
+      "output": "Image",
+      "tags": [
+        "Z Image",
+        "text-to-image",
+        "turbo",
+        "upscale",
+        "PiD",
+        "ComfyUI"
+      ],
+      "status": "published",
+      "publishedAt": "2026-06-07T14:57:55Z",
+      "notes": [
+        "Replace prompt placeholders and supply your own input images, video or audio before running.",
+        "Save the PiD download as ComfyUI/models/diffusion_models/z_image_pid.pth."
+      ]
+    }
+  ]
+}
