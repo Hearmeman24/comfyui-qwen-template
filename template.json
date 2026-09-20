@@ -21,6 +21,15 @@
         "Qwen Image Edit"
       ]
     },
+    "download_qwen_21": {
+      "default": false,
+      "extra_models": [
+        "Wan2.1_VAE_upscale2x_imageonly_real_v1.safetensors"
+      ],
+      "folders": [
+        "Qwen Image 2.1"
+      ]
+    },
     "DOWNLOAD_Z_IMAGE": {
       "default": false,
       "extra_models": [

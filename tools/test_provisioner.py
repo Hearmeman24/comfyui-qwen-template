@@ -51,6 +51,7 @@ PLACEHOLDER = "Your_Character_LoRA_Here.safetensors"
 EXPECTED_WORKFLOW_COUNTS = {
     "DOWNLOAD_QWEN_IMAGE": 4,
     "DOWNLOAD_QWEN_IMAGE_EDIT": 3,
+    "download_qwen_21": 1,
     "DOWNLOAD_Z_IMAGE": 3,
     "download_boogu": 3,
     "download_krea2": 2,
@@ -62,6 +63,11 @@ KREA2_EXTRA_MODELS = [
 ]
 VAE_UTILS_MODEL = "Wan2.1_VAE_upscale2x_imageonly_real_v1.safetensors"
 VAE_UTILS_REPO = "https://github.com/spacepxl/ComfyUI-VAE-Utils.git"
+QWEN_21_MODELS = {
+    "qwen_image_2.1_int8_convrot.safetensors",
+    "qwen3vl_8b_int8_convrot.safetensors",
+    "qwen_image_2.1_vae_bf16.safetensors",
+}
 
 
 def load_json(path: Path, hint: str) -> dict:
@@ -168,6 +174,8 @@ def main() -> int:
     assert template["custom_nodes"]["repos"] == [VAE_UTILS_REPO], (
         "VAE Utils must be cloned at boot from its upstream repository"
     )
+    assert set(template["flags"]["download_qwen_21"].get("extra_models") or []) == {VAE_UTILS_MODEL}
+    assert QWEN_21_MODELS <= set(registry), "Qwen Image 2.1 files must be in the registry"
     assert registry[VAE_UTILS_MODEL] == {
         "url": (
             "https://huggingface.co/spacepxl/Wan2.1-VAE-upscale2x/resolve/main/"
@@ -342,7 +350,7 @@ def main() -> int:
             elif combo_name == "default":
                 assert wf_count == 0 and len(lines) == 0, (combo_name, wf_count, len(lines))
             elif combo_name == "all":
-                assert wf_count == 15, (combo_name, wf_count)
+                assert wf_count == 16, (combo_name, wf_count)
             elif combo_name.endswith("_only"):
                 flag = combo_name.removesuffix("_only")
                 assert wf_count == EXPECTED_WORKFLOW_COUNTS[flag], (
@@ -356,6 +364,12 @@ def main() -> int:
                     missing = set(KREA2_EXTRA_MODELS) - downloaded
                     assert not missing, (
                         "krea2 extra_models missing from manifest: "
+                        f"{sorted(missing)}"
+                    )
+                if flag == "download_qwen_21":
+                    missing = QWEN_21_MODELS - downloaded
+                    assert not missing, (
+                        "download_qwen_21 models missing from manifest: "
                         f"{sorted(missing)}"
                     )
 

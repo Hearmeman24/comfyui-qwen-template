@@ -7,6 +7,18 @@
     "url": "https://huggingface.co/Comfy-Org/Qwen-Image_ComfyUI/resolve/main/split_files/diffusion_models/qwen_image_2512_fp8_e4m3fn.safetensors",
     "subdir": "diffusion_models"
   },
+  "qwen_image_2.1_int8_convrot.safetensors": {
+    "url": "https://huggingface.co/Comfy-Org/Qwen-Image-2.1/resolve/main/diffusion_models/qwen_image_2.1_int8_convrot.safetensors",
+    "subdir": "diffusion_models"
+  },
+  "qwen3vl_8b_int8_convrot.safetensors": {
+    "url": "https://huggingface.co/Comfy-Org/Qwen-Image-2.1/resolve/main/text_encoders/qwen3vl_8b_int8_convrot.safetensors",
+    "subdir": "text_encoders"
+  },
+  "qwen_image_2.1_vae_bf16.safetensors": {
+    "url": "https://huggingface.co/Comfy-Org/Qwen-Image-2.1/resolve/main/vae/qwen_image_2.1_vae_bf16.safetensors",
+    "subdir": "vae"
+  },
   "qwen_2.5_vl_7b_fp8_scaled.safetensors": {
     "url": "https://huggingface.co/Comfy-Org/Qwen-Image_ComfyUI/resolve/main/split_files/text_encoders/qwen_2.5_vl_7b_fp8_scaled.safetensors",
     "subdir": "text_encoders"
