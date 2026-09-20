@@ -51,7 +51,7 @@ PLACEHOLDER = "Your_Character_LoRA_Here.safetensors"
 EXPECTED_WORKFLOW_COUNTS = {
     "DOWNLOAD_QWEN_IMAGE": 4,
     "DOWNLOAD_QWEN_IMAGE_EDIT": 3,
-    "download_qwen_21": 1,
+    "download_qwen_21": 2,
     "DOWNLOAD_Z_IMAGE": 3,
     "download_boogu": 3,
     "download_krea2": 2,
@@ -350,7 +350,7 @@ def main() -> int:
             elif combo_name == "default":
                 assert wf_count == 0 and len(lines) == 0, (combo_name, wf_count, len(lines))
             elif combo_name == "all":
-                assert wf_count == 16, (combo_name, wf_count)
+                assert wf_count == 17, (combo_name, wf_count)
             elif combo_name.endswith("_only"):
                 flag = combo_name.removesuffix("_only")
                 assert wf_count == EXPECTED_WORKFLOW_COUNTS[flag], (

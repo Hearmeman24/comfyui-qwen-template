@@ -23,7 +23,7 @@ you deploy, or edit the variables on this pod and restart it.
 |---|---|---|
 | DOWNLOAD_QWEN_IMAGE | false | Qwen-Image base: downloads the models and copies the four base workflows. |
 | DOWNLOAD_QWEN_IMAGE_EDIT | false | Qwen-Image-Edit: downloads the models and copies the three edit workflows. |
-| download_qwen_21 | false | Qwen Image 2.1: downloads the INT8 diffusion model, INT8 Qwen3-VL text encoder and BF16 VAE, and copies its text-to-image workflow. |
+| download_qwen_21 | false | Qwen Image 2.1: downloads the INT8 diffusion model, INT8 Qwen3-VL text encoder and BF16 VAE, and copies its text-to-image and image-edit workflows. |
 | QWEN_IMAGE_PRECISION | bf16 | bf16 or fp8 for the Qwen-Image base model. It repoints the model and rewrites every copied workflow that references it, at boot. Qwen-Image-Edit is not affected: it ships as a single int8 build. |
 | DOWNLOAD_Z_IMAGE | false | Z-Image Turbo: downloads the models and copies the three Z-Image workflows. |
 | download_boogu | false | Boogu-Image: downloads the models and copies the three Boogu workflows (base / edit / turbo). |
