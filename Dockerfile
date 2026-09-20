@@ -6,7 +6,7 @@
 # The base owns: python 3.12 + /opt/venv (on PATH), the pinned torch trio +
 # /torch-constraint.txt applied via ENV PIP_CONSTRAINT, pip tooling, pyyaml/
 # gdown/triton/jupyterlab, huggingface_hub + hf_xet, opencv-python, ComfyUI
-# pinned at COMFYUI_REF (v0.32.0, which ships TextEncodeBooguEdit,
+# pinned at the approved ComfyUI 0.36.0 post-release SHA, which ships Qwen Image 2.1,
 # TextEncodeQwenImageEditPlus and PiDConditioning as core nodes) with
 # /comfyui-approved-ref, ComfyUI-Manager, both SageAttention wheels under
 # /opt/sage/, the CivitAI downloader, and ENV ORT_INDEX_ARGS (the
@@ -16,7 +16,7 @@
 # the entrypoint. BASE_IMAGE is passed by CI from pins.json's "base_image";
 # the default below mirrors that pin so a plain build stays coherent.
 # ============================================================================
-ARG BASE_IMAGE=hearmeman/comfyui-base:cu130-comfy0.34.0-torch2.11.0
+ARG BASE_IMAGE=hearmeman/comfyui-base:cu130-comfy0.36.0-3dd559d8-torch2.11.0
 FROM ${BASE_IMAGE}
 
 # The qwen node set, culled 2026-08-14 to the packs the 15 shipped workflows
