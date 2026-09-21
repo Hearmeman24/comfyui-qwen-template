@@ -63,6 +63,7 @@ KREA2_EXTRA_MODELS = [
 ]
 VAE_UTILS_MODEL = "Wan2.1_VAE_upscale2x_imageonly_real_v1.safetensors"
 VAE_UTILS_REPO = "https://github.com/spacepxl/ComfyUI-VAE-Utils.git"
+QWEN_REFPACK_REPO = "https://github.com/Hearmeman24/ComfyUI-QwenImageRefPack.git"
 QWEN_21_MODELS = {
     "qwen_image_2.1_int8_convrot.safetensors",
     "qwen3vl_8b_int8_convrot.safetensors",
@@ -171,8 +172,8 @@ def main() -> int:
 
     assert "DOWNLOAD_HMFEMME" in (template.get("deprecated_flags") or {}), \
         "DOWNLOAD_HMFEMME must be retired via deprecated_flags, not deleted"
-    assert template["custom_nodes"]["repos"] == [VAE_UTILS_REPO], (
-        "VAE Utils must be cloned at boot from its upstream repository"
+    assert template["custom_nodes"]["repos"] == [VAE_UTILS_REPO, QWEN_REFPACK_REPO], (
+        "VAE Utils and the Qwen Image reference manager must be cloned at boot"
     )
     assert set(template["flags"]["download_qwen_21"].get("extra_models") or []) == {VAE_UTILS_MODEL}
     assert QWEN_21_MODELS <= set(registry), "Qwen Image 2.1 files must be in the registry"
