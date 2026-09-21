@@ -1,0 +1,19 @@
+{
+  "name": "@hearmemanai/workflow-catalog",
+  "version": "1.0.0",
+  "private": false,
+  "type": "module",
+  "exports": "./tools/catalog-contract.mjs",
+  "bin": {
+    "catalog-check": "./tools/catalog-contract.mjs"
+  },
+  "scripts": {
+    "test": "node --test tools/catalog-contract.test.mjs"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "files": [
+    "tools/catalog-contract.mjs"
+  ]
+}
