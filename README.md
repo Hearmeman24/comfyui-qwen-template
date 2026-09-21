@@ -53,6 +53,10 @@ Enabling any model family also installs
 [ComfyUI-VAE-Utils](https://github.com/spacepxl/ComfyUI-VAE-Utils) and downloads its 2x Wan VAE to
 `models/vae`. A pod with every model-family flag disabled still stays empty.
 
+Every pod also installs
+[Qwen Image References Manager](https://github.com/Hearmeman24/ComfyUI-QwenImageRefPack) at boot.
+It manages up to ten image references for Qwen Image 2.1 and does not generate prompts.
+
 About the precision switches: bf16 is the default and runs everywhere. fp8 is a smaller download and
 is faster on cards with native fp8 support, which is the 4090, L40, H100, H200 and RTX 50xx. Only
 the precision you ask for is downloaded, and the copied workflows are pointed at those files for

@@ -104,7 +104,8 @@
   "custom_nodes": {
     "target": "image",
     "repos": [
-      "https://github.com/spacepxl/ComfyUI-VAE-Utils.git"
+      "https://github.com/spacepxl/ComfyUI-VAE-Utils.git",
+      "https://github.com/Hearmeman24/ComfyUI-QwenImageRefPack.git"
     ]
   },
   "sage": true
