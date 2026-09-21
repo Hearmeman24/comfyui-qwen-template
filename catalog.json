@@ -17,6 +17,13 @@
       "publishedAt": "2026-06-19T09:57:07Z",
       "notes": [
         "Replace prompt placeholders and supply your own input images, video or audio before running."
+      ],
+      "difficulty": "Beginner",
+      "inputs": [
+        "Text"
+      ],
+      "outputs": [
+        "Image"
       ]
     },
     {
@@ -37,6 +44,14 @@
       "publishedAt": "2026-06-19T09:57:07Z",
       "notes": [
         "Replace prompt placeholders and supply your own input images, video or audio before running."
+      ],
+      "difficulty": "Beginner",
+      "inputs": [
+        "Image",
+        "Text"
+      ],
+      "outputs": [
+        "Image"
       ]
     },
     {
@@ -56,6 +71,13 @@
       "publishedAt": "2026-06-19T09:57:07Z",
       "notes": [
         "Replace prompt placeholders and supply your own input images, video or audio before running."
+      ],
+      "difficulty": "Beginner",
+      "inputs": [
+        "Text"
+      ],
+      "outputs": [
+        "Image"
       ]
     },
     {
@@ -78,6 +100,13 @@
       "notes": [
         "Replace prompt placeholders and supply your own input images, video or audio before running.",
         "Save the PiD download as ComfyUI/models/diffusion_models/qwen_image_pid.pth."
+      ],
+      "difficulty": "Advanced",
+      "inputs": [
+        "Text"
+      ],
+      "outputs": [
+        "Image"
       ]
     },
     {
@@ -97,6 +126,13 @@
       "publishedAt": "2026-06-25T08:10:42Z",
       "notes": [
         "Replace prompt placeholders and supply your own input images, video or audio before running."
+      ],
+      "difficulty": "Beginner",
+      "inputs": [
+        "Text"
+      ],
+      "outputs": [
+        "Image"
       ]
     },
     {
@@ -117,6 +153,14 @@
       "publishedAt": "2025-08-21T07:07:53Z",
       "notes": [
         "Replace prompt placeholders and supply your own input images, video or audio before running."
+      ],
+      "difficulty": "Beginner",
+      "inputs": [
+        "Image",
+        "Text"
+      ],
+      "outputs": [
+        "Image"
       ]
     },
     {
@@ -140,6 +184,14 @@
       "notes": [
         "Replace prompt placeholders and supply your own input images, video or audio before running.",
         "Select your own compatible character LoRA for the optional character LoRA node, or bypass that node."
+      ],
+      "difficulty": "Advanced",
+      "inputs": [
+        "Image",
+        "Text"
+      ],
+      "outputs": [
+        "Image"
       ]
     },
     {
@@ -161,12 +213,20 @@
       "publishedAt": "2025-11-11T17:01:03Z",
       "notes": [
         "Replace prompt placeholders and supply your own input images, video or audio before running."
+      ],
+      "difficulty": "Advanced",
+      "inputs": [
+        "Image",
+        "Text"
+      ],
+      "outputs": [
+        "Image"
       ]
     },
     {
       "id": "qwen-image-2512-detail-pass",
       "file": "workflows/Qwen Image/Qwen_Workflow_Slower_Higher_Quality.json",
-      "title": "Qwen Image 2512 · detail pass",
+      "title": "Qwen Image 2512 \u00b7 detail pass",
       "description": "Generate with Qwen Image 2512 and continue through an image detail and upscaling pass.",
       "model": "Qwen",
       "output": "Image",
@@ -180,12 +240,19 @@
       "publishedAt": "2025-08-21T07:07:53Z",
       "notes": [
         "Replace prompt placeholders and supply your own input images, video or audio before running."
+      ],
+      "difficulty": "Advanced",
+      "inputs": [
+        "Text"
+      ],
+      "outputs": [
+        "Image"
       ]
     },
     {
       "id": "qwen-image-2512-classic",
       "file": "workflows/Qwen Image/Qwen_Workflow.json",
-      "title": "Qwen Image 2512 · classic",
+      "title": "Qwen Image 2512 \u00b7 classic",
       "description": "Create images with Qwen Image 2512 and configurable sampling and LoRA controls.",
       "model": "Qwen",
       "output": "Image",
@@ -199,6 +266,13 @@
       "publishedAt": "2025-08-18T10:59:17Z",
       "notes": [
         "Replace prompt placeholders and supply your own input images, video or audio before running."
+      ],
+      "difficulty": "Advanced",
+      "inputs": [
+        "Text"
+      ],
+      "outputs": [
+        "Image"
       ]
     },
     {
@@ -220,6 +294,13 @@
       "notes": [
         "Replace prompt placeholders and supply your own input images, video or audio before running.",
         "Save the PiD download as ComfyUI/models/diffusion_models/qwen_image_pid.pth."
+      ],
+      "difficulty": "Advanced",
+      "inputs": [
+        "Text"
+      ],
+      "outputs": [
+        "Image"
       ]
     },
     {
@@ -238,6 +319,13 @@
       "publishedAt": "2026-03-30T09:12:12Z",
       "notes": [
         "Replace prompt placeholders and supply your own input images, video or audio before running."
+      ],
+      "difficulty": "Beginner",
+      "inputs": [
+        "Text"
+      ],
+      "outputs": [
+        "Image"
       ]
     },
     {
@@ -258,6 +346,13 @@
       "publishedAt": "2025-11-29T08:47:13Z",
       "notes": [
         "Replace prompt placeholders and supply your own input images, video or audio before running."
+      ],
+      "difficulty": "Advanced",
+      "inputs": [
+        "Text"
+      ],
+      "outputs": [
+        "Image"
       ]
     },
     {
@@ -277,6 +372,13 @@
       "publishedAt": "2025-11-29T08:47:13Z",
       "notes": [
         "Replace prompt placeholders and supply your own input images, video or audio before running."
+      ],
+      "difficulty": "Beginner",
+      "inputs": [
+        "Text"
+      ],
+      "outputs": [
+        "Image"
       ]
     },
     {
@@ -299,6 +401,63 @@
       "notes": [
         "Replace prompt placeholders and supply your own input images, video or audio before running.",
         "Save the PiD download as ComfyUI/models/diffusion_models/z_image_pid.pth."
+      ],
+      "difficulty": "Advanced",
+      "inputs": [
+        "Text"
+      ],
+      "outputs": [
+        "Image"
+      ]
+    },
+    {
+      "id": "qwen-image-2-1",
+      "file": "workflows/Qwen Image 2.1/qwen_image_2.1_workflow.json",
+      "title": "Qwen Image 2.1 text to image",
+      "description": "Generate an image from a text prompt with Qwen Image 2.1.",
+      "model": "Qwen",
+      "output": "Image",
+      "tags": [
+        "Qwen",
+        "Qwen Image 2.1",
+        "text-to-image",
+        "ComfyUI"
+      ],
+      "notes": [],
+      "status": "published",
+      "publishedAt": "2026-09-21T15:25:56Z",
+      "difficulty": "Beginner",
+      "inputs": [
+        "Text"
+      ],
+      "outputs": [
+        "Image"
+      ]
+    },
+    {
+      "id": "qwen-image-2-1-reference",
+      "file": "workflows/Qwen Image 2.1/qwen_image_2.1_reference_workflow.json",
+      "title": "Qwen Image 2.1 reference editing",
+      "description": "Edit an image from a text prompt and reference image with Qwen Image 2.1.",
+      "model": "Qwen",
+      "output": "Image",
+      "tags": [
+        "Qwen",
+        "Qwen Image 2.1",
+        "image-editing",
+        "reference",
+        "ComfyUI"
+      ],
+      "notes": [],
+      "status": "published",
+      "publishedAt": "2026-09-21T15:25:56Z",
+      "difficulty": "Beginner",
+      "inputs": [
+        "Text",
+        "Image"
+      ],
+      "outputs": [
+        "Image"
       ]
     }
   ]
