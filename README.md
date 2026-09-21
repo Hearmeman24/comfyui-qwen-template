@@ -33,7 +33,7 @@ FYI: this template is built for CUDA 13.0 and above.
 |---|---|---|
 | `DOWNLOAD_QWEN_IMAGE` | false | Qwen-Image base, with its four workflows |
 | `DOWNLOAD_QWEN_IMAGE_EDIT` | false | Qwen-Image-Edit, with its three workflows |
-| `download_qwen_21` | false | Qwen Image 2.1, with text-to-image and image-edit workflows |
+| `download_qwen_21` | false | Qwen Image 2.1, with text-to-image and ten-image reference workflows |
 | `DOWNLOAD_Z_IMAGE` | false | Z-Image Turbo, with its three workflows |
 | `download_boogu` | false | Boogu-Image, with its three workflows: base, edit and turbo |
 | `download_krea2` | false | Krea-2, with its two workflows |
