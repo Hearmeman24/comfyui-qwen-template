@@ -69,6 +69,10 @@ QWEN_21_MODELS = {
     "qwen3vl_8b_int8_convrot.safetensors",
     "qwen_image_2.1_vae_bf16.safetensors",
 }
+QWEN_21_WORKFLOWS = {
+    "qwen_image_2.1_reference_workflow.json",
+    "qwen_image_2.1_workflow.json",
+}
 
 
 def load_json(path: Path, hint: str) -> dict:
@@ -177,6 +181,18 @@ def main() -> int:
     )
     assert set(template["flags"]["download_qwen_21"].get("extra_models") or []) == {VAE_UTILS_MODEL}
     assert QWEN_21_MODELS <= set(registry), "Qwen Image 2.1 files must be in the registry"
+    qwen_21_dir = REPO / "workflows" / "Qwen Image 2.1"
+    assert {p.name for p in qwen_21_dir.glob("*.json")} == QWEN_21_WORKFLOWS, (
+        "Qwen Image 2.1 must ship only the approved base and reference workflows"
+    )
+    reference_doc = load_json(
+        qwen_21_dir / "qwen_image_2.1_reference_workflow.json",
+        "Qwen Image 2.1 reference workflow",
+    )
+    assert any(
+        node.get("type") == "QwenImageReferencePack"
+        for node in reference_doc.get("nodes", [])
+    ), "the Qwen Image 2.1 reference workflow must use the reference manager"
     assert registry[VAE_UTILS_MODEL] == {
         "url": (
             "https://huggingface.co/spacepxl/Wan2.1-VAE-upscale2x/resolve/main/"
