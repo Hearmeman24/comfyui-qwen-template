@@ -4,7 +4,10 @@ import {readFile,lstat,readdir,realpath} from 'node:fs/promises';
 import {resolve,relative,sep} from 'node:path';
 import {fileURLToPath} from 'node:url';
 
-const entryFields=new Set(['id','file','title','description','model','output','tags','status','notes','publishedAt','coverImage','difficulty','inputs','outputs']);
+const entryFields=new Set(['id','file','title','description','body','model','output','tags','status','notes','publishedAt','coverImage','difficulty','inputs','outputs']);
+const bodyLimit=20000;
+// Bodies publish without review; raw HTML is rejected at the source, not left to the renderer.
+const htmlTag=/<\/?[a-z!][^>]*>/i;
 const media=new Set(['Text','Image','Video','Audio','Reference pack']);
 const isObject=value=>value!==null&&typeof value==='object'&&!Array.isArray(value);
 const nonempty=value=>typeof value==='string'&&value.trim().length>0;
@@ -26,6 +29,7 @@ export function validateCatalog(value,{baseCatalog,now=new Date()}={}){
   if(!['Beginner','Advanced'].includes(entry.difficulty))fail(`${entry.id} has invalid difficulty`);
   for(const key of ['inputs','outputs'])if(!Array.isArray(entry[key])||!entry[key].length||new Set(entry[key]).size!==entry[key].length||entry[key].some(item=>!media.has(item)))fail(`${entry.id} has invalid ${key}`);
   if(!list(entry.tags)||entry.notes!==undefined&&(!Array.isArray(entry.notes)||entry.notes.some(note=>!nonempty(note))))fail(`${entry.id} has invalid tags or notes`);
+  if(entry.body!==undefined&&(!nonempty(entry.body)||entry.body.length>bodyLimit||htmlTag.test(entry.body)))fail(`${entry.id} body must be nonempty Markdown under ${bodyLimit} characters without HTML tags`);
   if(entry.coverImage!==undefined&&(!safePath(entry.coverImage)||! /^catalog\/assets\/.+\.(?:webp|png|jpe?g)$/i.test(entry.coverImage)))fail(`${entry.id} has unsafe coverImage`);
   const base=baseById.get(entry.id),sameFileBase=baseByFile.get(entry.file);if(sameFileBase&&sameFileBase.id!==entry.id)fail(`stable id changed for ${entry.file}`);
   if(base?.publishedAt){if(entry.publishedAt!==base.publishedAt)fail(`${entry.id} publishedAt is immutable`);}
