@@ -5,7 +5,7 @@
       "id": "boogu-base-text-to-image",
       "file": "workflows/Boogu/Boogu_Base.json",
       "title": "Boogu Base",
-      "description": "Generate images from a text prompt with Boogu Base.",
+      "description": "Free Boogu Base text-to-image ComfyUI workflow. Create AI character art, cartoon images and AI influencer photos from a prompt.",
       "model": "Boogu",
       "output": "Image",
       "tags": [
@@ -24,13 +24,20 @@
       ],
       "outputs": [
         "Image"
+      ],
+      "body": "Boogu is an open-source image model for creative, stylized and realistic images. The base model gives you the most detail and control.\n\n**Great for:**\n- AI character and cartoon art\n- Stylized AI influencer images\n- Creative concept images\n\n### How it works\n1. Write your prompt.\n2. Run it with the default settings.\n3. Add LoRAs for your character or style.\n\n### Make it yours with LoRAs\nThis workflow supports LoRAs. Grab character, style, anime or cartoon LoRAs from [CivitAI](https://civitai.com) or [Hugging Face](https://huggingface.co), drop them into the LoRA loader, and keep your AI character looking the same in every shot.",
+      "settings": [
+        {
+          "label": "Settings",
+          "value": "Keep the workflow defaults. They are already tuned, so don't change them."
+        }
       ]
     },
     {
       "id": "boogu-image-edit",
       "file": "workflows/Boogu/Boogu_Edit.json",
       "title": "Boogu Edit",
-      "description": "Transform a reference image with written editing instructions.",
+      "description": "Edit images with text using Boogu Edit. Change outfits, styles and scenes for your AI character or cartoon art in ComfyUI.",
       "model": "Boogu",
       "output": "Image",
       "tags": [
@@ -52,13 +59,20 @@
       ],
       "outputs": [
         "Image"
+      ],
+      "body": "Boogu is an open-source image model for creative, stylized and realistic images. Boogu Edit changes an image from a text instruction, using up to three reference images.\n\n**Great for:**\n- Restyling characters into cartoon or anime looks\n- Changing an AI influencer's outfit or scene\n- Combining characters and objects\n\n### How it works\n1. Load your reference images.\n2. Describe the edit.\n3. Run it with the default settings.\n\n### Make it yours with LoRAs\nThis workflow supports LoRAs. Grab character, style, anime or cartoon LoRAs from [CivitAI](https://civitai.com) or [Hugging Face](https://huggingface.co), drop them into the LoRA loader, and keep your AI character looking the same in every shot.",
+      "settings": [
+        {
+          "label": "Settings",
+          "value": "Keep the workflow defaults. They are already tuned, so don't change them."
+        }
       ]
     },
     {
       "id": "boogu-turbo-text-to-image",
       "file": "workflows/Boogu/Boogu_Turbo.json",
       "title": "Boogu Turbo",
-      "description": "Generate images from a text prompt with the Boogu Turbo model.",
+      "description": "Boogu Turbo text-to-image in 4 steps: fast AI images for characters, cartoons and AI influencers. Free ComfyUI workflow.",
       "model": "Boogu",
       "output": "Image",
       "tags": [
@@ -78,13 +92,20 @@
       ],
       "outputs": [
         "Image"
+      ],
+      "body": "Boogu is an open-source image model for creative, stylized and realistic images. The turbo version needs only 4 steps, so it's perfect for trying ideas fast.\n\n**Great for:**\n- Fast AI character and cartoon art\n- Quick AI influencer image ideas\n- Batch testing prompts\n\n### How it works\n1. Write your prompt.\n2. Run it with the default settings.\n3. Add LoRAs for your character or style.\n\n### Make it yours with LoRAs\nThis workflow supports LoRAs. Grab character, style, anime or cartoon LoRAs from [CivitAI](https://civitai.com) or [Hugging Face](https://huggingface.co), drop them into the LoRA loader, and keep your AI character looking the same in every shot.",
+      "settings": [
+        {
+          "label": "Settings",
+          "value": "Keep the workflow defaults. They are already tuned, so don't change them."
+        }
       ]
     },
     {
       "id": "krea-2-turbo-pid",
       "file": "workflows/Krea 2/Krea2_PiD_Workflow.json",
       "title": "Krea 2 Turbo + PiD",
-      "description": "Generate with Krea 2 RAW and its Turbo LoRA, then upscale through PiD.",
+      "description": "Krea 2 Turbo plus the PiD upscaler: realistic AI influencer photos at 4K. Free ComfyUI workflow for sharp, natural-looking images.",
       "model": "Krea 2",
       "output": "Image",
       "tags": [
@@ -107,13 +128,51 @@
       ],
       "outputs": [
         "Image"
+      ],
+      "body": "Krea 2 is an open-source image model with a natural, photographic look that feels like a real camera shot instead of AI. This version generates a square image, then the PiD upscaler turns it into a sharp 4096x4096 picture.\n\n**Great for:**\n- 4K AI influencer portraits\n- Realistic character images for print\n- Detailed profile pictures\n\n### How it works\n1. Write your prompt.\n2. Keep the image square (1:1). Other sizes break PiD.\n3. Run it and compare the base image with the 4K result.\n\n### Make it yours with LoRAs\nThis workflow supports LoRAs. Grab character, style, anime or cartoon LoRAs from [CivitAI](https://civitai.com) or [Hugging Face](https://huggingface.co), drop them into the LoRA loader, and keep your AI character looking the same in every shot.",
+      "settings": [
+        {
+          "label": "GPU",
+          "value": [
+            "RTX PRO 6000",
+            "RTX 5090"
+          ]
+        },
+        {
+          "label": "Sampler",
+          "value": [
+            "res_2s",
+            "euler",
+            "lcm"
+          ]
+        },
+        {
+          "label": "Scheduler",
+          "value": [
+            "beta",
+            "simple",
+            "sgm_uniform"
+          ]
+        },
+        {
+          "label": "Steps",
+          "value": "12 with the turbo LoRA"
+        },
+        {
+          "label": "Resolution",
+          "value": "Keep 1:1 (square) so the PiD upscale works"
+        },
+        {
+          "label": "CFG",
+          "value": "1"
+        }
       ]
     },
     {
       "id": "krea-2-turbo-base",
       "file": "workflows/Krea 2/Krea2_Workflow.json",
       "title": "Krea 2 Turbo",
-      "description": "Generate images with Krea 2 RAW and its Turbo LoRA.",
+      "description": "Free Krea 2 Turbo ComfyUI workflow for natural, photorealistic AI images. Make AI influencer photos that look like real phone pictures.",
       "model": "Krea 2",
       "output": "Image",
       "tags": [
@@ -133,13 +192,54 @@
       ],
       "outputs": [
         "Image"
+      ],
+      "body": "Krea 2 is an open-source image model with a natural, photographic look that feels like a real camera shot instead of AI. The turbo LoRA keeps it fast, and the default size matches an iPhone photo.\n\n**Great for:**\n- AI influencer photos that look like real phone shots\n- Natural lifestyle and portrait images\n- Character images with your own LoRAs\n\n### How it works\n1. Write your prompt.\n2. Keep the default size or choose one between 720p and 1080p.\n3. Run it.\n\n### Make it yours with LoRAs\nThis workflow supports LoRAs. Grab character, style, anime or cartoon LoRAs from [CivitAI](https://civitai.com) or [Hugging Face](https://huggingface.co), drop them into the LoRA loader, and keep your AI character looking the same in every shot.",
+      "settings": [
+        {
+          "label": "GPU",
+          "value": [
+            "RTX PRO 6000",
+            "RTX 5090"
+          ]
+        },
+        {
+          "label": "Sampler",
+          "value": [
+            "res_2s",
+            "euler",
+            "lcm"
+          ]
+        },
+        {
+          "label": "Scheduler",
+          "value": [
+            "beta",
+            "simple",
+            "sgm_uniform"
+          ]
+        },
+        {
+          "label": "Steps",
+          "value": "12 with the turbo LoRA"
+        },
+        {
+          "label": "Resolution",
+          "value": [
+            "1224x1632",
+            "Any size between 720p and 1080p"
+          ]
+        },
+        {
+          "label": "CFG",
+          "value": "1"
+        }
       ]
     },
     {
       "id": "qwen-image-edit-2511",
       "file": "workflows/Qwen Image Edit/Qwen_image_edit.json",
       "title": "Qwen Image Edit 2511",
-      "description": "Edit a reference image with text instructions using Qwen Image Edit 2511.",
+      "description": "Edit images with text using Qwen Image Edit 2511. Change outfits, poses and backgrounds of your AI influencer or character in ComfyUI.",
       "model": "Qwen",
       "output": "Image",
       "tags": [
@@ -161,13 +261,47 @@
       ],
       "outputs": [
         "Image"
+      ],
+      "body": "Qwen Image Edit lets you change an image just by describing the edit. Load up to three reference images and say what to change.\n\n**Great for:**\n- Changing an AI influencer's outfit, pose or background\n- Combining a character with a product or place\n- Fixing and restyling cartoon art\n\n### How it works\n1. Load your reference images.\n2. Describe the edit, like \"put her in a red dress on a beach\".\n3. Run it.\n\n### Fast or best quality?\nWith the Lightning LoRA, Qwen needs only 8 steps at CFG 1, so images come out much faster. Without it, use about 25 steps and a CFG above 1: generation takes longer, but quality is noticeably better.\n\n### Make it yours with LoRAs\nThis workflow supports LoRAs. Grab character, style, anime or cartoon LoRAs from [CivitAI](https://civitai.com) or [Hugging Face](https://huggingface.co), drop them into the LoRA loader, and keep your AI character looking the same in every shot.",
+      "settings": [
+        {
+          "label": "GPU",
+          "value": [
+            "H100",
+            "RTX PRO 6000",
+            "RTX 5090 (fp8 weights only)"
+          ]
+        },
+        {
+          "label": "Sampler",
+          "value": [
+            "res_2s",
+            "euler"
+          ]
+        },
+        {
+          "label": "Scheduler",
+          "value": [
+            "beta",
+            "simple",
+            "sgm_uniform"
+          ]
+        },
+        {
+          "label": "Fast (Lightning LoRA)",
+          "value": "8 steps, CFG 1"
+        },
+        {
+          "label": "Best quality (no Lightning)",
+          "value": "25 steps, the workflow's default CFG (above 1)"
+        }
       ]
     },
     {
       "id": "qwen-reference-to-dataset",
       "file": "workflows/Qwen Image Edit/Qwen_Image_To_Dateset_Workflow.json",
       "title": "Qwen reference to dataset",
-      "description": "Turn a character reference into a batch of images for dataset review.",
+      "description": "Build a LoRA training dataset from one image: Qwen Image Edit makes a batch of outfits and poses of your AI character, with realistic skin.",
       "model": "Qwen",
       "output": "Image",
       "tags": [
@@ -192,13 +326,47 @@
       ],
       "outputs": [
         "Image"
+      ],
+      "body": "Need a dataset to train a character LoRA? This workflow takes one reference image and creates a batch of 12 varied images of the same character, with different outfits, poses and lenses, then adds realistic skin detail.\n\n**Great for:**\n- Training data for an AI influencer LoRA\n- Consistent character variations\n- Quick lookbooks for one character\n\n### How it works\n1. Load one reference image.\n2. Run it. The 12 prompts are already set up.\n3. Review the batch and use the best images for training.\n\n### Fast or best quality?\nWith the Lightning LoRA, Qwen needs only 8 steps at CFG 1, so images come out much faster. Without it, use about 25 steps and a CFG above 1: generation takes longer, but quality is noticeably better.\n\n### Make it yours with LoRAs\nThis workflow supports LoRAs. Grab character, style, anime or cartoon LoRAs from [CivitAI](https://civitai.com) or [Hugging Face](https://huggingface.co), drop them into the LoRA loader, and keep your AI character looking the same in every shot.",
+      "settings": [
+        {
+          "label": "GPU",
+          "value": [
+            "H100",
+            "RTX PRO 6000",
+            "RTX 5090 (fp8 weights only)"
+          ]
+        },
+        {
+          "label": "Sampler",
+          "value": [
+            "res_2s",
+            "euler"
+          ]
+        },
+        {
+          "label": "Scheduler",
+          "value": [
+            "beta",
+            "simple",
+            "sgm_uniform"
+          ]
+        },
+        {
+          "label": "Fast (Lightning LoRA)",
+          "value": "8 steps, CFG 1"
+        },
+        {
+          "label": "Best quality (no Lightning)",
+          "value": "25 steps, the workflow's default CFG (above 1)"
+        }
       ]
     },
     {
       "id": "qwen-multiple-angles",
       "file": "workflows/Qwen Image Edit/Qwen_MultiAngle_image_edit.json",
       "title": "Qwen multiple angles",
-      "description": "Generate a batch of camera angles and framings from one reference image.",
+      "description": "Generate dozens of camera angles of your AI character from one image with Qwen Image Edit. Perfect for AI influencer photo sets.",
       "model": "Qwen",
       "output": "Image",
       "tags": [
@@ -221,13 +389,47 @@
       ],
       "outputs": [
         "Image"
+      ],
+      "body": "Turn one picture into a full set of camera angles. This workflow runs your image through a batch of camera moves: rotations, close-ups, low and high angles and lens changes.\n\n**Great for:**\n- AI influencer photo sets from one image\n- Character sheets for animation or cartoons\n- Building a LoRA training dataset\n\n### How it works\n1. Load one image of your character.\n2. Run it. The camera prompts are already set up.\n3. Pick the best angles from the batch.\n\n### Fast or best quality?\nWith the Lightning LoRA, Qwen needs only 8 steps at CFG 1, so images come out much faster. Without it, use about 25 steps and a CFG above 1: generation takes longer, but quality is noticeably better.\n\n### Make it yours with LoRAs\nThis workflow supports LoRAs. Grab character, style, anime or cartoon LoRAs from [CivitAI](https://civitai.com) or [Hugging Face](https://huggingface.co), drop them into the LoRA loader, and keep your AI character looking the same in every shot.",
+      "settings": [
+        {
+          "label": "GPU",
+          "value": [
+            "H100",
+            "RTX PRO 6000",
+            "RTX 5090 (fp8 weights only)"
+          ]
+        },
+        {
+          "label": "Sampler",
+          "value": [
+            "res_2s",
+            "euler"
+          ]
+        },
+        {
+          "label": "Scheduler",
+          "value": [
+            "beta",
+            "simple",
+            "sgm_uniform"
+          ]
+        },
+        {
+          "label": "Fast (Lightning LoRA)",
+          "value": "8 steps, CFG 1"
+        },
+        {
+          "label": "Best quality (no Lightning)",
+          "value": "25 steps, the workflow's default CFG (above 1)"
+        }
       ]
     },
     {
       "id": "qwen-image-2512-detail-pass",
       "file": "workflows/Qwen Image/Qwen_Workflow_Slower_Higher_Quality.json",
-      "title": "Qwen Image 2512 \u00b7 detail pass",
-      "description": "Generate with Qwen Image 2512 and continue through an image detail and upscaling pass.",
+      "title": "Qwen Image 2512 · detail pass",
+      "description": "Qwen Image 2512 with a detail pass and upscale for ultra-realistic AI influencer photos. Free ComfyUI text-to-image workflow.",
       "model": "Qwen",
       "output": "Image",
       "tags": [
@@ -247,13 +449,47 @@
       ],
       "outputs": [
         "Image"
+      ],
+      "body": "Qwen Image is a powerful open-source AI image model, excellent at realistic people, text in images and following detailed prompts. This version adds a detail pass that upscales the image and sharpens skin, hair and fabric.\n\n**Great for:**\n- Ultra-realistic AI influencer photos\n- Close-up portraits\n- Print-quality character images\n\n### How it works\n1. Write your prompt.\n2. Add a realism LoRA (highly recommended).\n3. Run it to get the base image and a detailed upscale.\n\n### Fast or best quality?\nWith the Lightning LoRA, Qwen needs only 8 steps at CFG 1, so images come out much faster. Without it, use about 25 steps and a CFG above 1: generation takes longer, but quality is noticeably better.\n\n### Make it yours with LoRAs\nThis workflow supports LoRAs. Grab character, style, anime or cartoon LoRAs from [CivitAI](https://civitai.com) or [Hugging Face](https://huggingface.co), drop them into the LoRA loader, and keep your AI character looking the same in every shot.",
+      "settings": [
+        {
+          "label": "GPU",
+          "value": [
+            "H100",
+            "RTX PRO 6000",
+            "RTX 5090 (fp8 weights only)"
+          ]
+        },
+        {
+          "label": "Sampler",
+          "value": [
+            "res_2s",
+            "euler"
+          ]
+        },
+        {
+          "label": "Scheduler",
+          "value": [
+            "beta",
+            "simple",
+            "sgm_uniform"
+          ]
+        },
+        {
+          "label": "Fast (Lightning LoRA)",
+          "value": "8 steps, CFG 1"
+        },
+        {
+          "label": "Best quality (no Lightning)",
+          "value": "25 steps, the workflow's default CFG (above 1)"
+        }
       ]
     },
     {
       "id": "qwen-image-2512-classic",
       "file": "workflows/Qwen Image/Qwen_Workflow.json",
-      "title": "Qwen Image 2512 \u00b7 classic",
-      "description": "Create images with Qwen Image 2512 and configurable sampling and LoRA controls.",
+      "title": "Qwen Image 2512 · classic",
+      "description": "Qwen Image 2512 text-to-image with easy prompt boxes and a resolution multiplier. Make AI influencer photos and characters in ComfyUI.",
       "model": "Qwen",
       "output": "Image",
       "tags": [
@@ -273,13 +509,47 @@
       ],
       "outputs": [
         "Image"
+      ],
+      "body": "Qwen Image is a powerful open-source AI image model, excellent at realistic people, text in images and following detailed prompts. The classic layout gives you simple prompt boxes and a resolution multiplier, plus ready-made LoRA slots.\n\n**Great for:**\n- AI influencer photo sets\n- Character art with your own LoRAs\n- Quick size changes without editing nodes\n\n### How it works\n1. Write your prompt in the prompt boxes.\n2. Set the resolution and multiplier.\n3. Enable the LoRAs you want and run it.\n\n### Fast or best quality?\nWith the Lightning LoRA, Qwen needs only 8 steps at CFG 1, so images come out much faster. Without it, use about 25 steps and a CFG above 1: generation takes longer, but quality is noticeably better.\n\n### Make it yours with LoRAs\nThis workflow supports LoRAs. Grab character, style, anime or cartoon LoRAs from [CivitAI](https://civitai.com) or [Hugging Face](https://huggingface.co), drop them into the LoRA loader, and keep your AI character looking the same in every shot.",
+      "settings": [
+        {
+          "label": "GPU",
+          "value": [
+            "H100",
+            "RTX PRO 6000",
+            "RTX 5090 (fp8 weights only)"
+          ]
+        },
+        {
+          "label": "Sampler",
+          "value": [
+            "res_2s",
+            "euler"
+          ]
+        },
+        {
+          "label": "Scheduler",
+          "value": [
+            "beta",
+            "simple",
+            "sgm_uniform"
+          ]
+        },
+        {
+          "label": "Fast (Lightning LoRA)",
+          "value": "8 steps, CFG 1"
+        },
+        {
+          "label": "Best quality (no Lightning)",
+          "value": "25 steps, the workflow's default CFG (above 1)"
+        }
       ]
     },
     {
       "id": "qwen-image-pid",
       "file": "workflows/Qwen Image/QwenImage_2512_Workflow_PiD.json",
       "title": "Qwen Image 2512 + PiD",
-      "description": "Generate an image with Qwen Image 2512, then upscale it through PiD.",
+      "description": "Make 4K AI images with Qwen Image and the PiD upscaler. Fast Lightning generation for sharp AI influencer and character portraits.",
       "model": "Qwen",
       "output": "Image",
       "tags": [
@@ -301,13 +571,47 @@
       ],
       "outputs": [
         "Image"
+      ],
+      "body": "Qwen Image is a powerful open-source AI image model, excellent at realistic people, text in images and following detailed prompts. This version uses the Lightning LoRA for fast generation, then the PiD upscaler turns it into a sharp 4096x4096 image.\n\n**Great for:**\n- 4K AI influencer portraits\n- Detailed character art\n- Wallpapers and prints\n\n### How it works\n1. Write your prompt.\n2. Keep the image square (1:1) for PiD.\n3. Run it and compare the base image with the 4K result.\n\n### Fast or best quality?\nWith the Lightning LoRA, Qwen needs only 8 steps at CFG 1, so images come out much faster. Without it, use about 25 steps and a CFG above 1: generation takes longer, but quality is noticeably better.\n\n### Make it yours with LoRAs\nThis workflow supports LoRAs. Grab character, style, anime or cartoon LoRAs from [CivitAI](https://civitai.com) or [Hugging Face](https://huggingface.co), drop them into the LoRA loader, and keep your AI character looking the same in every shot.",
+      "settings": [
+        {
+          "label": "GPU",
+          "value": [
+            "H100",
+            "RTX PRO 6000",
+            "RTX 5090 (fp8 weights only)"
+          ]
+        },
+        {
+          "label": "Sampler",
+          "value": [
+            "res_2s",
+            "euler"
+          ]
+        },
+        {
+          "label": "Scheduler",
+          "value": [
+            "beta",
+            "simple",
+            "sgm_uniform"
+          ]
+        },
+        {
+          "label": "Fast (Lightning LoRA)",
+          "value": "8 steps, CFG 1"
+        },
+        {
+          "label": "Best quality (no Lightning)",
+          "value": "25 steps, the workflow's default CFG (above 1)"
+        }
       ]
     },
     {
       "id": "qwen-image-2512",
       "file": "workflows/Qwen Image/QwenImage_2512_Workflow.json",
       "title": "Qwen Image 2512",
-      "description": "Generate images from a written prompt using Qwen Image 2512.",
+      "description": "Free Qwen Image 2512 text-to-image ComfyUI workflow. Create realistic AI influencer photos, AI characters and cartoon art from a prompt.",
       "model": "Qwen",
       "output": "Image",
       "tags": [
@@ -326,13 +630,47 @@
       ],
       "outputs": [
         "Image"
+      ],
+      "body": "Qwen Image is a powerful open-source AI image model, excellent at realistic people, text in images and following detailed prompts. This is the simplest way to start: type a prompt and get an image.\n\n**Great for:**\n- Realistic AI influencer photos\n- AI character and cartoon art\n- Images with readable text\n\n### How it works\n1. Write your prompt.\n2. Pick a size from the resolution table in the workflow.\n3. Run it.\n\n### Fast or best quality?\nWith the Lightning LoRA, Qwen needs only 8 steps at CFG 1, so images come out much faster. Without it, use about 25 steps and a CFG above 1: generation takes longer, but quality is noticeably better.\n\n### Make it yours with LoRAs\nThis workflow supports LoRAs. Grab character, style, anime or cartoon LoRAs from [CivitAI](https://civitai.com) or [Hugging Face](https://huggingface.co), drop them into the LoRA loader, and keep your AI character looking the same in every shot.",
+      "settings": [
+        {
+          "label": "GPU",
+          "value": [
+            "H100",
+            "RTX PRO 6000",
+            "RTX 5090 (fp8 weights only)"
+          ]
+        },
+        {
+          "label": "Sampler",
+          "value": [
+            "res_2s",
+            "euler"
+          ]
+        },
+        {
+          "label": "Scheduler",
+          "value": [
+            "beta",
+            "simple",
+            "sgm_uniform"
+          ]
+        },
+        {
+          "label": "Fast (Lightning LoRA)",
+          "value": "8 steps, CFG 1"
+        },
+        {
+          "label": "Best quality (no Lightning)",
+          "value": "25 steps, the workflow's default CFG (above 1)"
+        }
       ]
     },
     {
       "id": "z-image-turbo-upscale",
       "file": "workflows/Z-Image/Z_Image_Turbo_Upscale.json",
       "title": "Z Image Turbo + upscale",
-      "description": "Generate with Z Image Turbo and add a tiled image-upscaling pass.",
+      "description": "Z Image Turbo with a 1.5x upscale for sharper realistic AI images. Free ComfyUI workflow for AI influencer and character photos.",
       "model": "Z Image",
       "output": "Image",
       "tags": [
@@ -353,13 +691,54 @@
       ],
       "outputs": [
         "Image"
+      ],
+      "body": "Z Image Turbo is a fast open-source image model that makes realistic photos in just a few steps. This version adds a 1.5x upscale pass for extra detail.\n\n**Great for:**\n- Sharper AI influencer photos\n- Detailed character portraits\n- Images ready for posting\n\n### How it works\n1. Write your prompt.\n2. Pick a size up to 1080p.\n3. Run it to get the upscaled image.\n\n### Make it yours with LoRAs\nThis workflow supports LoRAs. Grab character, style, anime or cartoon LoRAs from [CivitAI](https://civitai.com) or [Hugging Face](https://huggingface.co), drop them into the LoRA loader, and keep your AI character looking the same in every shot.",
+      "settings": [
+        {
+          "label": "GPU",
+          "value": [
+            "RTX PRO 6000",
+            "RTX 5090"
+          ]
+        },
+        {
+          "label": "Sampler",
+          "value": [
+            "res_2s",
+            "euler",
+            "lcm"
+          ]
+        },
+        {
+          "label": "Scheduler",
+          "value": [
+            "beta",
+            "simple",
+            "sgm_uniform"
+          ]
+        },
+        {
+          "label": "Steps",
+          "value": "12 (no turbo LoRA needed)"
+        },
+        {
+          "label": "Resolution",
+          "value": [
+            "1224x1632",
+            "Any size between 720p and 1080p"
+          ]
+        },
+        {
+          "label": "CFG",
+          "value": "1"
+        }
       ]
     },
     {
       "id": "z-image-turbo",
       "file": "workflows/Z-Image/Z_Image_Turbo.json",
       "title": "Z Image Turbo",
-      "description": "Generate images from a written prompt using Z Image Turbo.",
+      "description": "Free Z Image Turbo ComfyUI workflow: fast, realistic AI images from text. Great for AI influencer photos and character art.",
       "model": "Z Image",
       "output": "Image",
       "tags": [
@@ -379,13 +758,54 @@
       ],
       "outputs": [
         "Image"
+      ],
+      "body": "Z Image Turbo is a fast open-source image model that makes realistic photos in just a few steps. Type a prompt and get a vertical, social-ready image.\n\n**Great for:**\n- Fast AI influencer photos\n- Character and cartoon art with LoRAs\n- Testing many prompts quickly\n\n### How it works\n1. Write your prompt.\n2. Keep the vertical default or pick a size between 720p and 1080p.\n3. Run it.\n\n### Make it yours with LoRAs\nThis workflow supports LoRAs. Grab character, style, anime or cartoon LoRAs from [CivitAI](https://civitai.com) or [Hugging Face](https://huggingface.co), drop them into the LoRA loader, and keep your AI character looking the same in every shot.",
+      "settings": [
+        {
+          "label": "GPU",
+          "value": [
+            "RTX PRO 6000",
+            "RTX 5090"
+          ]
+        },
+        {
+          "label": "Sampler",
+          "value": [
+            "res_2s",
+            "euler",
+            "lcm"
+          ]
+        },
+        {
+          "label": "Scheduler",
+          "value": [
+            "beta",
+            "simple",
+            "sgm_uniform"
+          ]
+        },
+        {
+          "label": "Steps",
+          "value": "12 (no turbo LoRA needed)"
+        },
+        {
+          "label": "Resolution",
+          "value": [
+            "1224x1632",
+            "Any size between 720p and 1080p"
+          ]
+        },
+        {
+          "label": "CFG",
+          "value": "1"
+        }
       ]
     },
     {
       "id": "z-image-turbo-pid",
       "file": "workflows/Z-Image/Z_Image_Workflow_PiD.json",
       "title": "Z Image Turbo + PiD",
-      "description": "Generate with Z Image Turbo, then enlarge the image through PiD.",
+      "description": "Z Image Turbo plus the PiD upscaler for 4K AI images. Fast, realistic AI influencer and character portraits in ComfyUI.",
       "model": "Z Image",
       "output": "Image",
       "tags": [
@@ -408,17 +828,54 @@
       ],
       "outputs": [
         "Image"
+      ],
+      "body": "Z Image Turbo is a fast open-source image model that makes realistic photos in just a few steps. This version generates a square image, then the PiD upscaler turns it into a sharp 4096x4096 picture.\n\n**Great for:**\n- 4K AI influencer portraits\n- Detailed character art\n- Wallpapers and prints\n\n### How it works\n1. Write your prompt.\n2. Keep the image square (1:1) for PiD.\n3. Run it and compare the base image with the 4K result.\n\n### Make it yours with LoRAs\nThis workflow supports LoRAs. Grab character, style, anime or cartoon LoRAs from [CivitAI](https://civitai.com) or [Hugging Face](https://huggingface.co), drop them into the LoRA loader, and keep your AI character looking the same in every shot.",
+      "settings": [
+        {
+          "label": "GPU",
+          "value": [
+            "RTX PRO 6000",
+            "RTX 5090"
+          ]
+        },
+        {
+          "label": "Sampler",
+          "value": [
+            "res_2s",
+            "euler",
+            "lcm"
+          ]
+        },
+        {
+          "label": "Scheduler",
+          "value": [
+            "beta",
+            "simple",
+            "sgm_uniform"
+          ]
+        },
+        {
+          "label": "Steps",
+          "value": "12 (no turbo LoRA needed)"
+        },
+        {
+          "label": "Resolution",
+          "value": "Keep 1:1 (square) so the PiD upscale works"
+        },
+        {
+          "label": "CFG",
+          "value": "1"
+        }
       ]
     },
     {
       "id": "qwen-image-2-1",
       "file": "workflows/Qwen Image 2.1/qwen_image_2.1_workflow.json",
       "title": "Qwen Image 2.1 text to image",
-      "description": "Generate an image from a text prompt with Qwen Image 2.1.",
-      "model": "Qwen",
+      "description": "Free Qwen Image 2.1 text-to-image ComfyUI workflow. Generate high-resolution AI influencer photos, AI characters and cartoon art.",
+      "model": "Qwen Image 2.1",
       "output": "Image",
       "tags": [
-        "Qwen",
         "Qwen Image 2.1",
         "text-to-image",
         "ComfyUI"
@@ -432,17 +889,45 @@
       ],
       "outputs": [
         "Image"
+      ],
+      "body": "Qwen Image 2.1 is the newest Qwen image model: sharper, higher resolution (up to 2048 and beyond) and much better at following prompts. Type a prompt and get a crisp, high-resolution image.\n\n**Great for:**\n- High-resolution AI influencer photos\n- Detailed AI character and cartoon art\n- Posters and images with text\n\n### How it works\n1. Write your prompt.\n2. Pick a size from the resolution table in the workflow.\n3. Run it.\n\n### Make it yours with LoRAs\nThis workflow supports LoRAs. Grab character, style, anime or cartoon LoRAs from [CivitAI](https://civitai.com) or [Hugging Face](https://huggingface.co), drop them into the LoRA loader, and keep your AI character looking the same in every shot.",
+      "settings": [
+        {
+          "label": "GPU",
+          "value": [
+            "RTX 5090",
+            "RTX PRO 6000"
+          ]
+        },
+        {
+          "label": "Sampler",
+          "value": "euler"
+        },
+        {
+          "label": "Scheduler",
+          "value": [
+            "beta",
+            "simple"
+          ]
+        },
+        {
+          "label": "Steps",
+          "value": "25-40"
+        },
+        {
+          "label": "CFG",
+          "value": "1"
+        }
       ]
     },
     {
       "id": "qwen-image-2-1-reference",
       "file": "workflows/Qwen Image 2.1/qwen_image_2.1_reference_workflow.json",
       "title": "Qwen Image 2.1 reference editing",
-      "description": "Edit an image from a text prompt and reference image with Qwen Image 2.1.",
-      "model": "Qwen",
+      "description": "Keep your AI character consistent with Qwen Image 2.1: add up to 10 reference images and a prompt. Free ComfyUI reference editing workflow.",
+      "model": "Qwen Image 2.1",
       "output": "Image",
       "tags": [
-        "Qwen",
         "Qwen Image 2.1",
         "image-editing",
         "reference",
@@ -458,6 +943,35 @@
       ],
       "outputs": [
         "Image"
+      ],
+      "body": "Qwen Image 2.1 is the newest Qwen image model: sharper, higher resolution (up to 2048 and beyond) and much better at following prompts. This version accepts up to 10 reference images, so it can keep your character, outfit or product the same in a new scene.\n\n**Great for:**\n- Consistent AI influencer photos across scenes\n- Placing a character with products or locations\n- Editing and restyling images\n\n### How it works\n1. Load your reference images.\n2. Describe the new image.\n3. Run it.\n\n### Make it yours with LoRAs\nThis workflow supports LoRAs. Grab character, style, anime or cartoon LoRAs from [CivitAI](https://civitai.com) or [Hugging Face](https://huggingface.co), drop them into the LoRA loader, and keep your AI character looking the same in every shot.",
+      "settings": [
+        {
+          "label": "GPU",
+          "value": [
+            "RTX 5090",
+            "RTX PRO 6000"
+          ]
+        },
+        {
+          "label": "Sampler",
+          "value": "euler"
+        },
+        {
+          "label": "Scheduler",
+          "value": [
+            "beta",
+            "simple"
+          ]
+        },
+        {
+          "label": "Steps",
+          "value": "25-40"
+        },
+        {
+          "label": "CFG",
+          "value": "1"
+        }
       ]
     }
   ]
