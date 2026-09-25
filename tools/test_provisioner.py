@@ -139,6 +139,7 @@ def run_provisioner(template_path: Path, registry_path: Path, env: dict,
 
 def base_env(**overrides) -> dict:
     env = dict(os.environ)
+    env.pop("influencer_maxxing", None)
     for f in EXPECTED_WORKFLOW_COUNTS:
         env.pop(f, None)
     env.pop("QWEN_IMAGE_PRECISION", None)
@@ -221,7 +222,7 @@ def main() -> int:
         )
     print(f"✅ flag map matches expected shape "
           f"({sum(EXPECTED_WORKFLOW_COUNTS.values())} workflows across "
-          f"{len(EXPECTED_WORKFLOW_COUNTS)} live flags, 1 shared utility model, "
+          f"{len(EXPECTED_WORKFLOW_COUNTS)} workflow flags, 1 shared utility model, "
           "1 deprecated)")
 
     runtime = runtime_dir()
@@ -391,6 +392,8 @@ def main() -> int:
                     )
 
     print("✅ every flag combination produces the expected workflow/manifest counts")
+    from test_influencer_maxxing import main as test_premium_dependencies
+    test_premium_dependencies()
     return 0
 
 

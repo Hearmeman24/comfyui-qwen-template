@@ -59,6 +59,20 @@
       "folders": [
         "Krea 2"
       ]
+    },
+    "influencer_maxxing": {
+      "default": false,
+      "folders": [],
+      "extra_models": [
+        "krea2_turbo_bf16.safetensors",
+        "qwen3vl_4b_bf16.safetensors",
+        "qwen3.5_9b_qwen_image_2.1_pe_t2i.int8_convrot.safetensors",
+        "Wan2_1_VAE_fp32.safetensors",
+        "Krea2_TextFusion_Refusal_Reduction.safetensors",
+        "seedvr2_ema_7b_fp16.safetensors",
+        "ema_vae_fp16.safetensors",
+        "qwen3vl_4b_fp8_scaled.safetensors"
+      ]
     }
   },
   "swap_groups": [
@@ -106,7 +120,16 @@
     "repos": [
       "https://github.com/spacepxl/ComfyUI-VAE-Utils.git",
       "https://github.com/Hearmeman24/ComfyUI-QwenImageRefPack.git"
-    ]
+    ],
+    "flag_repos": {
+      "influencer_maxxing": [
+        "https://github.com/numz/ComfyUI-SeedVR2_VideoUpscaler.git|4490bd1f482e026674543386bb2a4d176da245b9",
+        "https://github.com/Jonseed/ComfyUI-Detail-Daemon.git|3394e44afea04ed0188fb37b21f0d9952469766b"
+      ]
+    }
   },
-  "sage": true
+  "sage": true,
+  "extra_model_paths": [
+    "SEEDVR2"
+  ]
 }
