@@ -122,5 +122,33 @@
   "qwen_image_edit_2511_int8_convrot.safetensors": {
     "url": "https://huggingface.co/Comfy-Org/Qwen-Image-Edit_ComfyUI/resolve/main/split_files/diffusion_models/qwen_image_edit_2511_int8_convrot.safetensors",
     "subdir": "diffusion_models"
+  },
+  "krea2_turbo_bf16.safetensors": {
+    "url": "https://huggingface.co/Comfy-Org/Krea-2/resolve/main/diffusion_models/krea2_turbo_bf16.safetensors",
+    "subdir": "diffusion_models"
+  },
+  "qwen3vl_4b_bf16.safetensors": {
+    "url": "https://huggingface.co/Comfy-Org/Krea-2/resolve/main/text_encoders/qwen3vl_4b_bf16.safetensors",
+    "subdir": "text_encoders"
+  },
+  "qwen3.5_9b_qwen_image_2.1_pe_t2i.int8_convrot.safetensors": {
+    "url": "https://huggingface.co/Comfy-Org/Qwen-Image-2.1/resolve/main/text_encoders/qwen3.5_9b_qwen_image_2.1_pe_t2i.int8_convrot.safetensors",
+    "subdir": "text_encoders"
+  },
+  "Wan2_1_VAE_fp32.safetensors": {
+    "url": "https://huggingface.co/Kijai/WanVideo_comfy/resolve/main/Wan2_1_VAE_fp32.safetensors",
+    "subdir": "vae"
+  },
+  "Krea2_TextFusion_Refusal_Reduction.safetensors": {
+    "url": "https://huggingface.co/Quiho/Krea2_TextFusion_Refusal-Reduction_LoRA_v1.0_lora/resolve/main/Krea2_TextFusion_Refusal_Reduction.safetensors",
+    "subdir": "loras"
+  },
+  "seedvr2_ema_7b_fp16.safetensors": {
+    "url": "https://huggingface.co/numz/SeedVR2_comfyUI/resolve/main/seedvr2_ema_7b_fp16.safetensors",
+    "subdir": "SEEDVR2"
+  },
+  "ema_vae_fp16.safetensors": {
+    "url": "https://huggingface.co/numz/SeedVR2_comfyUI/resolve/main/ema_vae_fp16.safetensors",
+    "subdir": "SEEDVR2"
   }
 }
