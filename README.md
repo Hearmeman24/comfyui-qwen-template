@@ -1,10 +1,10 @@
-# Qwen-Image, Z-Image, Boogu and Krea-2, ComfyUI on RunPod
+# Qwen-Image, Z-Image, Boogu, Krea-2 and Flux Klein 3, ComfyUI on RunPod
 
 Created by HearmemanAI. Something not working, or a question about a workflow? Ask in
 help-and-support on [my Discord](https://discord.gg/ZVWVhT43GW). That is the only place I do
 support, and it is also where new releases are announced.
 
-Four image model families on one pod, each behind its own flag, so you only download the ones you
+Five image model families on one pod, each behind its own flag, so you only download the ones you
 want.
 
 ## Before you deploy
@@ -37,19 +37,20 @@ FYI: this template is built for CUDA 13.0 and above.
 | `DOWNLOAD_Z_IMAGE` | false | Z-Image Turbo, with its three workflows |
 | `download_boogu` | false | Boogu-Image, with its three workflows: base, edit and turbo |
 | `download_krea2` | false | Krea-2, with its two workflows |
+| `DOWNLOAD_KLEIN3` | false | FLUX.3 Klein distilled INT8, with official Comfy-Org text-to-image and image-edit workflows. Requires `HF_TOKEN` and model access; failed preflight skips Klein 3 and continues setup. |
 | `QWEN_IMAGE_PRECISION` | bf16 | bf16 or fp8 for the Qwen-Image base model. Qwen-Image-Edit is not affected, it ships as a single build. |
 | `BOOGU_PRECISION` | bf16 | bf16 or fp8 for the Boogu models. Independent of the one above. |
 | `civitai_token` | empty | Your CivitAI API token |
 | `CIVITAI_LORAS` | empty | Comma-separated CivitAI version IDs. They go to `models/loras`. |
 | `CIVITAI_CHECKPOINTS` | empty | Comma-separated CivitAI version IDs. They go to `models/checkpoints`. |
-| `HF_TOKEN` | empty | Optional. Raises your Hugging Face rate limit, which makes a first boot less likely to stall. |
+| `HF_TOKEN` | empty | Required for Klein 3: an explicit read token from an account with access to its gated model repository. Optional for other model families; raises your Hugging Face rate limit. |
 | `GITHUB_PAT` | empty | Only for my paid workflows. It installs the extra node packs those graphs need. Everything in this template works without it. |
 
 Turn on as many download flags as you want. A model that two of them share is only downloaded once.
 Only the workflows belonging to the flags you enabled are installed, so the menu shows you what your
 models can actually run.
 
-Enabling any model family also installs
+Enabling the Qwen, Z-Image, Boogu or Krea-2 model families also installs
 [ComfyUI-VAE-Utils](https://github.com/spacepxl/ComfyUI-VAE-Utils) and downloads its 2x Wan VAE to
 `models/vae`. A pod with every model-family flag disabled still stays empty.
 
@@ -61,6 +62,29 @@ About the precision switches: bf16 is the default and runs everywhere. fp8 is a 
 is faster on cards with native fp8 support, which is the 4090, L40, H100, H200 and RTX 50xx. Only
 the precision you ask for is downloaded, and the copied workflows are pointed at those files for
 you, so you never touch a dropdown.
+
+## Flux Klein 3
+
+Accept the model license at
+[black-forest-labs/flux-3-image-klein-comfy](https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy),
+then set `DOWNLOAD_KLEIN3=true` and `HF_TOKEN` to a read token from that account.
+Fine-grained tokens must allow reading that gated repository. A cached Hugging Face login alone
+does not enable this set.
+
+Before queueing downloads, setup validates the token with Hugging Face and checks access to all
+four required files: the distilled INT8 diffusion model, INT8 Qwen3-VL encoder, W4A8 prompt
+upsampler and Flux 2 VAE. Each request has a 10-second timeout. Missing, invalid or expired tokens,
+denied model access, and network failures produce a clear `ERROR [Klein 3]` in
+`/workspace/comfyui.log`. Only Klein 3 models and workflows are skipped for that boot; the rest of
+setup continues. Fix the reported issue and restart to retry. Tokens are never printed.
+
+Klein 3 requires the updated template image based on ComfyUI v0.41.0. Redeploy using the new
+image after the shared base release; restarting an older image does not upgrade its approved core.
+The standard `COMFYUI_VERSION=approved` behavior is retained. If an explicit version override or
+an older image lacks FLUX.3 support, Klein 3 is skipped with a clear error.
+
+The two bundled workflows are copied from Comfy-Org's official workflow templates. The image-edit
+example expects an input image; upload your own in its image loader before running.
 
 ## Once it is up
 

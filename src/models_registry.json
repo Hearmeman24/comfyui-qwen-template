@@ -150,5 +150,25 @@
   "ema_vae_fp16.safetensors": {
     "url": "https://huggingface.co/numz/SeedVR2_comfyUI/resolve/main/ema_vae_fp16.safetensors",
     "subdir": "SEEDVR2"
+  },
+  "flux3-image-klein-int8-convrot.safetensors": {
+    "url": "https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy/resolve/main/diffusion_models/flux3-image-klein-int8-convrot.safetensors",
+    "subdir": "diffusion_models",
+    "gated": true
+  },
+  "qwen3vl_4b_int8_convrot.safetensors": {
+    "url": "https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy/resolve/main/text_encoders/qwen3vl_4b_int8_convrot.safetensors",
+    "subdir": "text_encoders",
+    "gated": true
+  },
+  "qwen3.5_9b_flux3_prompt_upsampler_w4a8.safetensors": {
+    "url": "https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy/resolve/main/text_encoders/qwen3.5_9b_flux3_prompt_upsampler_w4a8.safetensors",
+    "subdir": "text_encoders",
+    "gated": true
+  },
+  "flux2-vae.safetensors": {
+    "url": "https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy/resolve/main/vae/flux2-vae.safetensors",
+    "subdir": "vae",
+    "gated": true
   }
 }

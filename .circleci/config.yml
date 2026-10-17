@@ -87,6 +87,9 @@ jobs:
       - run:
           name: Provisioner self-check (every precision profile, every flag combination)
           command: python3 tools/test_provisioner.py
+      - run:
+          name: Klein 3 token preflight and setup continuation
+          command: python3 tools/test_klein3.py
 
   validate_models:
     executor: python
