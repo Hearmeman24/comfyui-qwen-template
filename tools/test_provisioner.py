@@ -55,6 +55,13 @@ EXPECTED_WORKFLOW_COUNTS = {
     "DOWNLOAD_Z_IMAGE": 3,
     "download_boogu": 3,
     "download_krea2": 2,
+    "DOWNLOAD_KLEIN3": 2,
+}
+KLEIN3_MODELS = {
+    "flux3-image-klein-int8-convrot.safetensors",
+    "qwen3vl_4b_int8_convrot.safetensors",
+    "qwen3.5_9b_flux3_prompt_upsampler_w4a8.safetensors",
+    "flux2-vae.safetensors",
 }
 KREA2_EXTRA_MODELS = [
     "krea2_raw_bf16.safetensors",
@@ -215,6 +222,8 @@ def main() -> int:
         )
         extras = set(template["flags"][flag].get("extra_models") or [])
         expected_extras = {VAE_UTILS_MODEL}
+        if flag == "DOWNLOAD_KLEIN3":
+            expected_extras = KLEIN3_MODELS
         if flag == "download_krea2":
             expected_extras.update(KREA2_EXTRA_MODELS)
         assert extras == expected_extras, (
@@ -368,16 +377,19 @@ def main() -> int:
             elif combo_name == "default":
                 assert wf_count == 0 and len(lines) == 0, (combo_name, wf_count, len(lines))
             elif combo_name == "all":
-                assert wf_count == 17, (combo_name, wf_count)
+                assert wf_count == sum(EXPECTED_WORKFLOW_COUNTS.values()), (combo_name, wf_count)
             elif combo_name.endswith("_only"):
                 flag = combo_name.removesuffix("_only")
                 assert wf_count == EXPECTED_WORKFLOW_COUNTS[flag], (
                     combo_name, wf_count
                 )
                 downloaded = {l.split("\t")[1].rsplit("/", 1)[1] for l in lines}
-                assert VAE_UTILS_MODEL in downloaded, (
-                    f"{flag}: shared VAE Utils model missing from manifest"
-                )
+                if flag == "DOWNLOAD_KLEIN3":
+                    assert downloaded == KLEIN3_MODELS, (flag, downloaded)
+                else:
+                    assert VAE_UTILS_MODEL in downloaded, (
+                        f"{flag}: shared VAE Utils model missing from manifest"
+                    )
                 if flag == "download_krea2":
                     missing = set(KREA2_EXTRA_MODELS) - downloaded
                     assert not missing, (

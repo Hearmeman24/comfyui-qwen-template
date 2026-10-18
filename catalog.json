@@ -973,6 +973,57 @@
           "value": "1"
         }
       ]
+    },
+    {
+      "id": "flux-klein-3-text-to-image",
+      "file": "workflows/Flux Klein 3/image_flux3_klein_distilled_t2i.json",
+      "title": "Flux Klein 3 Text to Image",
+      "description": "Official Comfy-Org FLUX.3 Klein distilled INT8 text-to-image workflow with optional prompt upsampling.",
+      "model": "Flux Klein 3",
+      "output": "Image",
+      "tags": [
+        "Flux Klein 3",
+        "text-to-image",
+        "ComfyUI"
+      ],
+      "status": "published",
+      "publishedAt": "2026-10-17T00:00:00Z",
+      "difficulty": "Beginner",
+      "inputs": [
+        "Text"
+      ],
+      "outputs": [
+        "Image"
+      ],
+      "notes": [
+        "Enable DOWNLOAD_KLEIN3 and provide HF_TOKEN with access to black-forest-labs/flux-3-image-klein-comfy. Requires ComfyUI v0.41.0 or newer with FLUX.3 support."
+      ]
+    },
+    {
+      "id": "flux-klein-3-image-edit",
+      "file": "workflows/Flux Klein 3/image_flux3_klein_distilled_image_edit.json",
+      "title": "Flux Klein 3 Image Edit",
+      "description": "Official Comfy-Org FLUX.3 Klein distilled INT8 image-edit workflow with optional prompt upsampling.",
+      "model": "Flux Klein 3",
+      "output": "Image",
+      "tags": [
+        "Flux Klein 3",
+        "image-edit",
+        "ComfyUI"
+      ],
+      "status": "published",
+      "publishedAt": "2026-10-17T00:00:00Z",
+      "difficulty": "Beginner",
+      "inputs": [
+        "Text",
+        "Image"
+      ],
+      "outputs": [
+        "Image"
+      ],
+      "notes": [
+        "Enable DOWNLOAD_KLEIN3 and provide HF_TOKEN with access to black-forest-labs/flux-3-image-klein-comfy. Requires ComfyUI v0.41.0 or newer with FLUX.3 support."
+      ]
     }
   ]
 }

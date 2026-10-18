@@ -1,7 +1,7 @@
 ## What is in this template
 
 This template runs Qwen-Image (base + Edit), Z-Image Turbo, Boogu-Image and
-Krea-2 on ComfyUI. Each family ships behind its own `DOWNLOAD_*` flag, so a
+Krea-2 and Flux Klein 3 on ComfyUI. Each family ships behind its own download flag, so a
 pod only downloads what you ask for.
 
 Every family is off by default. Set the matching flag to `true` on the
@@ -29,10 +29,24 @@ you deploy, or edit the variables on this pod and restart it.
 | download_boogu | false | Boogu-Image: downloads the models and copies the three Boogu workflows (base / edit / turbo). |
 | BOOGU_PRECISION | bf16 | bf16 or fp8. Same idea as QWEN_IMAGE_PRECISION, scoped to Boogu only: the two switches are independent. |
 | download_krea2 | false | Krea-2: downloads the Turbo checkpoint, the raw base, both Krea-2 LoRAs and the text encoder, and copies the two Krea-2 workflows. |
+| DOWNLOAD_KLEIN3 | false | FLUX.3 Klein distilled INT8, with official text-to-image and image-edit workflows. Requires an explicit HF_TOKEN and gated model access. Failed preflight skips Klein 3 and continues setup. |
 | CIVITAI_LORAS | unset | Comma-separated CivitAI model version IDs to download into models/loras/. |
 | CIVITAI_CHECKPOINTS | unset | Comma-separated CivitAI model version IDs to download into models/checkpoints/. |
 | civitai_token | unset | Your CivitAI API token. CIVITAI_TOKEN and CIVITAI_API_KEY are also accepted. |
-| HF_TOKEN | unset | Your Hugging Face token. Recommended: unauthenticated downloads get rate-limited on a fresh pod. |
+| HF_TOKEN | unset | Required for Klein 3, optional otherwise. Use a read token from the account that accepted the Klein 3 model license; fine-grained tokens need gated repository access. |
+
+## Flux Klein 3 access
+
+Accept the license at https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy,
+set `HF_TOKEN` and `DOWNLOAD_KLEIN3=true`, then restart. Setup checks token validity and access to
+all four required files before queueing downloads. Missing or rejected tokens, missing model access,
+and network failures print `ERROR [Klein 3]` in `/workspace/comfyui.log`; only Klein 3 is skipped.
+Each request times out after 10 seconds. Fix the issue and restart to retry.
+
+Klein 3 needs the updated template image based on ComfyUI v0.41.0. Redeploy on the new image;
+restarting an older image does not upgrade its approved core. `COMFYUI_VERSION=approved` remains
+the default. An older core without FLUX.3 support causes Klein 3 to be skipped. Upload your own
+input image for the edit example.
 
 ## Picking a precision
 

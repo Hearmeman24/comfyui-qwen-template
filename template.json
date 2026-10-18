@@ -73,6 +73,18 @@
         "ema_vae_fp16.safetensors",
         "qwen3vl_4b_fp8_scaled.safetensors"
       ]
+    },
+    "DOWNLOAD_KLEIN3": {
+      "default": false,
+      "folders": [
+        "Flux Klein 3"
+      ],
+      "extra_models": [
+        "flux3-image-klein-int8-convrot.safetensors",
+        "qwen3vl_4b_int8_convrot.safetensors",
+        "qwen3.5_9b_flux3_prompt_upsampler_w4a8.safetensors",
+        "flux2-vae.safetensors"
+      ]
     }
   },
   "swap_groups": [
