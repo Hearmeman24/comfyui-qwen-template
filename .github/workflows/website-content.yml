@@ -1,12 +1,6 @@
 name: Request platform catalogue publication
 on:
-  push:
-    branches: [master]
-    paths:
-      - 'workflows/**'
-      - 'catalog.json'
-      - 'catalog/assets/**'
-      - '.github/workflows/website-content.yml'
+  # Website workflow publication is manual; template releases must not alter the catalogue.
   workflow_dispatch:
 permissions: {}
 concurrency:
