@@ -43,7 +43,7 @@ all four required files before queueing downloads. Missing or rejected tokens, m
 and network failures print `ERROR [Klein 3]` in `/workspace/comfyui.log`; only Klein 3 is skipped.
 Each request times out after 10 seconds. Fix the issue and restart to retry.
 
-Klein 3 needs the updated template image based on ComfyUI v0.41.0. Redeploy on the new image;
+Klein 3 needs the updated template image based on ComfyUI v0.42.1. Redeploy on the new image;
 restarting an older image does not upgrade its approved core. `COMFYUI_VERSION=approved` remains
 the default. An older core without FLUX.3 support causes Klein 3 to be skipped. Upload your own
 input image for the edit example.
