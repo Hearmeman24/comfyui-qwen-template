@@ -50,7 +50,7 @@ def check(root, env, opener=None):
             return f"Could not verify {name}: network/TLS timeout or invalid Hugging Face response. Retry on the next boot."
     comfy = Path(env.get("COMFYUI_DIR", "/ComfyUI"))
     if not (comfy / "comfy/ldm/flux3/model.py").is_file():
-        return "Installed ComfyUI lacks FLUX.3 support. Redeploy with the updated Qwen image (ComfyUI v0.41.0) and use COMFYUI_VERSION=approved."
+        return "Installed ComfyUI lacks FLUX.3 support. Redeploy with the updated Qwen image (ComfyUI v0.42.1) and use COMFYUI_VERSION=approved."
     return None
 
 

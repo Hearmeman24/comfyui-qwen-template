@@ -78,7 +78,7 @@ denied model access, and network failures produce a clear `ERROR [Klein 3]` in
 `/workspace/comfyui.log`. Only Klein 3 models and workflows are skipped for that boot; the rest of
 setup continues. Fix the reported issue and restart to retry. Tokens are never printed.
 
-Klein 3 requires the updated template image based on ComfyUI v0.41.0. Redeploy using the new
+Klein 3 requires the updated template image based on ComfyUI v0.42.1. Redeploy using the new
 image after the shared base release; restarting an older image does not upgrade its approved core.
 The standard `COMFYUI_VERSION=approved` behavior is retained. If an explicit version override or
 an older image lacks FLUX.3 support, Klein 3 is skipped with a clear error.
