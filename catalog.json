@@ -428,7 +428,7 @@
     {
       "id": "qwen-image-2512-detail-pass",
       "file": "workflows/Qwen Image/Qwen_Workflow_Slower_Higher_Quality.json",
-      "title": "Qwen Image 2512 · detail pass",
+      "title": "Qwen Image 2512 \u00b7 detail pass",
       "description": "Qwen Image 2512 with a detail pass and upscale for ultra-realistic AI influencer photos. Free ComfyUI text-to-image workflow.",
       "model": "Qwen",
       "output": "Image",
@@ -488,7 +488,7 @@
     {
       "id": "qwen-image-2512-classic",
       "file": "workflows/Qwen Image/Qwen_Workflow.json",
-      "title": "Qwen Image 2512 · classic",
+      "title": "Qwen Image 2512 \u00b7 classic",
       "description": "Qwen Image 2512 text-to-image with easy prompt boxes and a resolution multiplier. Make AI influencer photos and characters in ComfyUI.",
       "model": "Qwen",
       "output": "Image",
@@ -1029,7 +1029,7 @@
       "id": "moss-image-text-to-image",
       "file": "workflows/MOSS Image/MOSS_Image_Workflow.json",
       "title": "MOSS Image",
-      "description": "MOSS-Image SFT and Kromoss text-to-image in ComfyUI, with a switch between the 25-step film look and the 8-step LoRA path.",
+      "description": "MOSS-Image SFT and Kromoss text-to-image with optional Power LoRAs and one toggle for the model and sampling path.",
       "model": "MOSS Image",
       "output": "Image",
       "tags": [
@@ -1048,9 +1048,9 @@
         "Image"
       ],
       "notes": [
-        "Enable DOWNLOAD_MOSS. Public weights; ComfyUI 0.42.1 loads them with built-in nodes. Leave KROMOSS off for MOSS SFT, or on for Kromoss plus the 8-step LoRA."
+        "Enable DOWNLOAD_MOSS. Public weights; requires ComfyUI 0.42.1 or newer and rgthree-comfy, included in the Image Generation template. KROMOSS selects MOSS SFT or Kromoss with its 8-step DMD LoRA. Optional Power LoRAs apply to the selected model."
       ],
-      "body": "MOSS Image is a text-to-image workflow for the MOSS-Image SFT checkpoint and the Kromoss fine-tune.\n\n**Great for:**\n- Prompted still images at 1024\n- Switching between a slower film-like pass and a fast 8-step pass\n\n### How it works\n1. Enable `DOWNLOAD_MOSS` and restart so the weights are on the pod.\n2. Edit the positive prompt and the image size. Width and height need to be multiples of 16.\n3. Leave KROMOSS off for MOSS SFT, or turn it on for Kromoss with the 8-step DMD LoRA.\n4. Queue the graph. The built-in switch runs only the selected sampler.\n\n### Settings\nMOSS SFT uses 25 steps, CFG 2.5, er_sde, and simple. Kromoss uses 8 steps, CFG 1, euler, and simple, with the LoRA at strength 1.",
+      "body": "MOSS Image is a text-to-image workflow for the MOSS-Image SFT checkpoint and the Kromoss fine-tune.\n\n**Great for:**\n- Prompted still images at 1024\n- Switching between a slower film-like pass and a fast 8-step pass\n\n### How it works\n1. Enable `DOWNLOAD_MOSS` and restart so the weights are on the pod.\n2. Edit the positive prompt and the image size. Width and height need to be multiples of 16.\n3. Leave KROMOSS off for MOSS SFT, or turn it on for Kromoss with the 8-step DMD LoRA.\n4. Optionally add compatible LoRAs in Power LoRA Loader, or leave it empty.\n5. Queue the graph. The toggle selects both the model and sampler; only the chosen path runs. Kromoss receives its DMD LoRA before any optional Power LoRAs.\n\nInstructions are shown in Markdown Note nodes. The Power LoRA Loader comes from rgthree-comfy, already included in the template.\n\n### Settings\nMOSS SFT uses 25 steps, CFG 2.5, er_sde, and simple. Kromoss uses 8 steps, CFG 1, euler, and simple, with the LoRA at strength 1.",
       "settings": [
         {
           "label": "Resolution",
