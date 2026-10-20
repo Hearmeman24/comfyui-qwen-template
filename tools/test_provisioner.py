@@ -275,7 +275,8 @@ def main() -> int:
             exts = (".safetensors", ".bin", ".onnx", ".pth", ".pt", ".ckpt", ".gguf")
             referenced = set()
             for node in moss_graph.get("nodes") or []:
-                assert node.get("properties", {}).get("cnr_id") == "comfy-core", node.get("type")
+                if node["type"] not in ("MarkdownNote", "Power Lora Loader (rgthree)"):
+                    assert node.get("properties", {}).get("cnr_id") == "comfy-core", node.get("type")
                 for value in node.get("widgets_values") or []:
                     if isinstance(value, str) and value.lower().endswith(exts):
                         referenced.add(Path(value).name)
@@ -475,6 +476,7 @@ def main() -> int:
     print("✅ every flag combination produces the expected workflow/manifest counts")
     from test_influencer_maxxing import main as test_premium_dependencies
     test_premium_dependencies()
+    subprocess.run([sys.executable, str(REPO / "tools" / "test_moss.py")], check=True)
     return 0
 
 

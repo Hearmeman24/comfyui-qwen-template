@@ -1,8 +1,8 @@
 {
   "id": "8b06ba6c-0b24-4e9e-bf0b-f87c94b7f63c",
   "revision": 0,
-  "last_node_id": 16,
-  "last_link_id": 17,
+  "last_node_id": 18,
+  "last_link_id": 22,
   "nodes": [
     {
       "id": 1,
@@ -25,11 +25,11 @@
           "type": "MODEL",
           "slot_index": 0,
           "links": [
-            4
+            18
           ]
         }
       ],
-      "title": "Diffusion Model — MOSS SFT",
+      "title": "Diffusion Model \u2014 MOSS SFT",
       "properties": {
         "Node name for S&R": "UNETLoader",
         "cnr_id": "comfy-core"
@@ -66,7 +66,7 @@
           ]
         }
       ],
-      "title": "Diffusion Model — Kromoss",
+      "title": "Diffusion Model \u2014 Kromoss",
       "properties": {
         "Node name for S&R": "UNETLoader",
         "cnr_id": "comfy-core"
@@ -99,12 +99,11 @@
           "type": "CLIP",
           "slot_index": 0,
           "links": [
-            2,
-            3
+            22
           ]
         }
       ],
-      "title": "CLIP Loader — MOSS Image",
+      "title": "CLIP Loader \u2014 MOSS Image",
       "properties": {
         "Node name for S&R": "CLIPLoader",
         "cnr_id": "comfy-core"
@@ -142,7 +141,7 @@
           ]
         }
       ],
-      "title": "VAE Loader — FLUX.2 Small",
+      "title": "VAE Loader \u2014 FLUX.2 Small",
       "properties": {
         "Node name for S&R": "VAELoader",
         "cnr_id": "comfy-core"
@@ -180,7 +179,7 @@
           "type": "MODEL",
           "slot_index": 0,
           "links": [
-            8
+            19
           ]
         }
       ],
@@ -217,11 +216,12 @@
           "type": "BOOLEAN",
           "slot_index": 0,
           "links": [
-            14
+            14,
+            20
           ]
         }
       ],
-      "title": "KROMOSS — OFF: SFT / ON: 8-Step",
+      "title": "KROMOSS \u2014 OFF: SFT / ON: 8-Step",
       "properties": {
         "Node name for S&R": "PrimitiveBoolean",
         "cnr_id": "comfy-core"
@@ -234,7 +234,7 @@
     },
     {
       "id": 7,
-      "type": "CLIPTextEncode",
+      "type": "MarkdownNote",
       "pos": [
         -150,
         290
@@ -245,29 +245,13 @@
       ],
       "flags": {},
       "order": 6,
-      "mode": 2,
-      "inputs": [
-        {
-          "name": "clip",
-          "type": "CLIP",
-          "link": null
-        }
-      ],
-      "outputs": [
-        {
-          "name": "CONDITIONING",
-          "type": "CONDITIONING",
-          "slot_index": 0,
-          "links": null
-        }
-      ],
-      "title": "Kromoss Info — Not Executed",
-      "properties": {
-        "Node name for S&R": "CLIPTextEncode",
-        "cnr_id": "comfy-core"
-      },
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "title": "MOSS / Kromoss mode",
+      "properties": {},
       "widgets_values": [
-        "Kromoss is about 4–5× faster (about 1.5s vs 6.9s per 1024px image) with brighter, sharper, more saturated phone-photo realism. Downsides: occasional artifacts (e.g. a black border) and less of SFT's film-like look and prompt adherence. Both are uncensored; keep \"nsfw\" in the negative for SFW output."
+        "## Choose a sampling path\n\n- **KROMOSS off:** MOSS SFT, 25 steps.\n- **KROMOSS on:** Kromoss with its 8-step DMD LoRA.\n\nThe same toggle selects the model and sampler. Your optional Power LoRAs are applied to the selected model only."
       ],
       "color": "#432",
       "bgcolor": "#653"
@@ -384,7 +368,7 @@
           ]
         }
       ],
-      "title": "Image Size — 1024 × 1024",
+      "title": "Image Size \u2014 1024 \u00d7 1024",
       "properties": {
         "Node name for S&R": "EmptyFlux2LatentImage",
         "cnr_id": "comfy-core"
@@ -443,7 +427,7 @@
           ]
         }
       ],
-      "title": "MOSS SFT — 25 Steps / Film-Like",
+      "title": "MOSS SFT \u2014 25 Steps / Film-Like",
       "properties": {
         "Node name for S&R": "KSampler",
         "cnr_id": "comfy-core"
@@ -504,7 +488,7 @@
           ]
         }
       ],
-      "title": "Kromoss — 8 Steps / Fast",
+      "title": "Kromoss \u2014 8 Steps / Fast",
       "properties": {
         "Node name for S&R": "KSampler",
         "cnr_id": "comfy-core"
@@ -563,7 +547,7 @@
           ]
         }
       ],
-      "title": "Select Mode — Only Chosen Branch Runs",
+      "title": "Select Mode \u2014 Only Chosen Branch Runs",
       "properties": {
         "Node name for S&R": "ComfySwitchNode",
         "cnr_id": "comfy-core"
@@ -644,7 +628,7 @@
           "links": null
         }
       ],
-      "title": "HearmemanAI — MOSS Image",
+      "title": "HearmemanAI \u2014 MOSS Image",
       "properties": {
         "Node name for S&R": "SaveImage",
         "cnr_id": "comfy-core"
@@ -655,43 +639,154 @@
     },
     {
       "id": 16,
-      "type": "CLIPTextEncode",
+      "type": "MarkdownNote",
       "pos": [
-        -550,
-        565
+        -960,
+        1300
       ],
       "size": [
-        330,
-        590
+        1340,
+        400
       ],
       "flags": {},
       "order": 15,
-      "mode": 2,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "title": "HearmemanAI \u2014 Workflow guide",
+      "properties": {},
+      "widgets_values": [
+        "# HearmemanAI | MOSS Image\n\n1. Edit the positive prompt and choose image size.\n2. Leave **KROMOSS off** for MOSS SFT, or turn it **on** for the 8-step Kromoss path.\n3. Optionally add compatible LoRAs in **Power LoRA Loader**. Leave it empty to use the base models. The Kromoss DMD LoRA is applied separately, before your LoRAs, only in Kromoss mode.\n4. Queue the workflow. Only the selected model and sampler run.\n\nDefault: **1024 \u00d7 1024**, batch 1. Width and height must be multiples of 16. Both samplers use seed 1, fixed; change the active sampler seed for a new variation.\n\nOutputs: `HearmemanAI/MOSS`. Requires ComfyUI **0.42.1 or newer** and **rgthree-comfy**, included in the Image Generation template.\n\nThe negative prompt is not a safety filter or guarantee."
+      ],
+      "color": "#233",
+      "bgcolor": "#355"
+    },
+    {
+      "id": 17,
+      "type": "ComfySwitchNode",
+      "pos": [
+        -550,
+        535
+      ],
+      "size": [
+        330,
+        110
+      ],
+      "flags": {},
+      "order": 16,
+      "mode": 0,
       "inputs": [
         {
-          "name": "clip",
-          "type": "CLIP",
-          "link": null
+          "name": "on_false",
+          "type": "MODEL",
+          "link": 18
+        },
+        {
+          "name": "on_true",
+          "type": "MODEL",
+          "link": 19
+        },
+        {
+          "name": "switch",
+          "type": "BOOLEAN",
+          "widget": {
+            "name": "switch"
+          },
+          "link": 20
         }
       ],
       "outputs": [
         {
-          "name": "CONDITIONING",
-          "type": "CONDITIONING",
+          "name": "MODEL",
+          "type": "MODEL",
           "slot_index": 0,
-          "links": null
+          "links": [
+            21
+          ]
         }
       ],
-      "title": "HearmemanAI — Info (Not Executed)",
+      "title": "Select Model \u2014 MOSS / Kromoss",
       "properties": {
-        "Node name for S&R": "CLIPTextEncode",
+        "Node name for S&R": "ComfySwitchNode",
         "cnr_id": "comfy-core"
       },
       "widgets_values": [
-        "HearmemanAI | MOSS Image\n\n1. Edit the positive prompt and choose image size.\n2. Leave KROMOSS OFF for SFT, or switch ON for the 8-step model + DMD LoRA.\n3. Queue the workflow. Only the selected sampling branch executes.\n\nDefault: 1024 × 1024, batch 1. Width and height must be multiples of 16.\n\nBoth samplers use seed 1, fixed. Change the seed in the active sampler for a new variation.\n\nOutputs: HearmemanAI/MOSS\n\nRequires ComfyUI 0.42.1 or newer, which includes MOSS Image support and the built-in If/Else switch. These information panels are muted CLIPTextEncode nodes, not part of image generation.\n\nSpeed figures are supplied reference timings, not a hardware-independent guarantee. The negative prompt is not a safety filter or guarantee."
+        false
+      ]
+    },
+    {
+      "id": 18,
+      "type": "Power Lora Loader (rgthree)",
+      "pos": [
+        -550,
+        740
       ],
-      "color": "#233",
-      "bgcolor": "#355"
+      "size": [
+        330,
+        200
+      ],
+      "flags": {},
+      "order": 17,
+      "mode": 0,
+      "inputs": [
+        {
+          "dir": 3,
+          "name": "model",
+          "type": "MODEL",
+          "link": 21
+        },
+        {
+          "dir": 3,
+          "name": "clip",
+          "type": "CLIP",
+          "link": 22
+        }
+      ],
+      "outputs": [
+        {
+          "dir": 4,
+          "name": "MODEL",
+          "shape": 3,
+          "type": "MODEL",
+          "links": [
+            4,
+            8
+          ]
+        },
+        {
+          "dir": 4,
+          "name": "CLIP",
+          "shape": 3,
+          "type": "CLIP",
+          "links": [
+            2,
+            3
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "rgthree-comfy",
+        "ver": "35c9f1e186603ba312d3b15350e89aa50b860ee6",
+        "Show Strengths": "Single Strength",
+        "Match": ""
+      },
+      "widgets_values": [
+        {},
+        {
+          "type": "PowerLoraLoaderHeaderWidget"
+        },
+        {},
+        ""
+      ],
+      "widgets_values_named": {
+        "divider": {},
+        "PowerLoraLoaderHeaderWidget": {
+          "type": "PowerLoraLoaderHeaderWidget"
+        },
+        "divider#1": {},
+        "\u2795 Add Lora": ""
+      },
+      "title": "Power LoRA Loader \u2014 Optional LoRAs"
     }
   ],
   "links": [
@@ -705,23 +800,23 @@
     ],
     [
       2,
-      3,
-      0,
+      18,
+      1,
       8,
       0,
       "CLIP"
     ],
     [
       3,
-      3,
-      0,
+      18,
+      1,
       9,
       0,
       "CLIP"
     ],
     [
       4,
-      1,
+      18,
       0,
       11,
       0,
@@ -753,7 +848,7 @@
     ],
     [
       8,
-      5,
+      18,
       0,
       12,
       0,
@@ -830,17 +925,57 @@
       15,
       0,
       "IMAGE"
+    ],
+    [
+      18,
+      1,
+      0,
+      17,
+      0,
+      "MODEL"
+    ],
+    [
+      19,
+      5,
+      0,
+      17,
+      1,
+      "MODEL"
+    ],
+    [
+      20,
+      6,
+      0,
+      17,
+      2,
+      "BOOLEAN"
+    ],
+    [
+      21,
+      17,
+      0,
+      18,
+      0,
+      "MODEL"
+    ],
+    [
+      22,
+      3,
+      0,
+      18,
+      1,
+      "CLIP"
     ]
   ],
   "groups": [
     {
       "id": 1,
-      "title": "HearmemanAI | MOSS Image — Text to Image",
+      "title": "HearmemanAI | MOSS Image \u2014 Text to Image",
       "bounding": [
         -1010,
         -40,
         3090,
-        1280
+        1790
       ],
       "color": "#3f789e",
       "font_size": 32,

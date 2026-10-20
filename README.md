@@ -101,7 +101,10 @@ downloader as the other families:
 ComfyUI 0.42.1, the version pinned by this template, loads MOSS-Image with its built-in nodes.
 `HF_TOKEN` stays optional for this flag and only raises the Hugging Face rate limit. The flag
 copies `workflows/MOSS Image/MOSS_Image_Workflow.json`. Leave KROMOSS off for the 25-step MOSS SFT
-pass, or turn it on for Kromoss with the 8-step LoRA. The built-in switch runs only the selected sampler.
+pass, or turn it on for Kromoss with the 8-step LoRA. The toggle selects both the model and sampler, and only the selected path runs. Add compatible
+optional LoRAs in Power LoRA Loader (rgthree), already included in the image. Kromoss receives its
+8-step DMD LoRA before your optional LoRAs; MOSS SFT does not. Leave Power LoRA Loader empty
+for generation without extra LoRAs. Workflow instructions use Markdown Note nodes.
 
 ## Once it is up
 
