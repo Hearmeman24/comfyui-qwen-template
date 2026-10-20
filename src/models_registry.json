@@ -170,5 +170,25 @@
     "url": "https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy/resolve/main/vae/flux2-vae.safetensors",
     "subdir": "vae",
     "gated": true
+  },
+  "moss_image_sft_int8_convrot.safetensors": {
+    "url": "https://huggingface.co/Comfy-Org/MOSS-Image/resolve/main/diffusion_models/moss_image_sft_int8_convrot.safetensors",
+    "subdir": "diffusion_models"
+  },
+  "qwen3.5_9b_w4a8_gptq.safetensors": {
+    "url": "https://huggingface.co/Comfy-Org/MOSS-Image/resolve/main/text_encoders/qwen3.5_9b_w4a8_gptq.safetensors",
+    "subdir": "text_encoders"
+  },
+  "flux2-vae_small.safetensors": {
+    "url": "https://huggingface.co/Comfy-Org/MOSS-Image/resolve/main/vae/flux2-vae_small.safetensors",
+    "subdir": "vae"
+  },
+  "kromoss_int8_convrot.safetensors": {
+    "url": "https://huggingface.co/lodestones/Kromoss/resolve/main/diffusion_models/kromoss_int8_convrot.safetensors",
+    "subdir": "diffusion_models"
+  },
+  "8-steps-dmd-lora.safetensors": {
+    "url": "https://huggingface.co/lodestones/Kromoss/resolve/main/8-steps-dmd-lora.safetensors",
+    "subdir": "loras"
   }
 }

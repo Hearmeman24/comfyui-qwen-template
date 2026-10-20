@@ -56,12 +56,49 @@ EXPECTED_WORKFLOW_COUNTS = {
     "download_boogu": 3,
     "download_krea2": 2,
     "DOWNLOAD_KLEIN3": 2,
+    "DOWNLOAD_MOSS": 1,
 }
 KLEIN3_MODELS = {
     "flux3-image-klein-int8-convrot.safetensors",
     "qwen3vl_4b_int8_convrot.safetensors",
     "qwen3.5_9b_flux3_prompt_upsampler_w4a8.safetensors",
     "flux2-vae.safetensors",
+}
+MOSS_MODELS = {
+    "moss_image_sft_int8_convrot.safetensors",
+    "qwen3.5_9b_w4a8_gptq.safetensors",
+    "flux2-vae_small.safetensors",
+    "kromoss_int8_convrot.safetensors",
+    "8-steps-dmd-lora.safetensors",
+}
+MOSS_DESTINATIONS = {
+    "diffusion_models/moss_image_sft_int8_convrot.safetensors",
+    "text_encoders/qwen3.5_9b_w4a8_gptq.safetensors",
+    "vae/flux2-vae_small.safetensors",
+    "diffusion_models/kromoss_int8_convrot.safetensors",
+    "loras/8-steps-dmd-lora.safetensors",
+}
+MOSS_URLS = {
+    "moss_image_sft_int8_convrot.safetensors": (
+        "https://huggingface.co/Comfy-Org/MOSS-Image/resolve/main/"
+        "diffusion_models/moss_image_sft_int8_convrot.safetensors"
+    ),
+    "qwen3.5_9b_w4a8_gptq.safetensors": (
+        "https://huggingface.co/Comfy-Org/MOSS-Image/resolve/main/"
+        "text_encoders/qwen3.5_9b_w4a8_gptq.safetensors"
+    ),
+    "flux2-vae_small.safetensors": (
+        "https://huggingface.co/Comfy-Org/MOSS-Image/resolve/main/"
+        "vae/flux2-vae_small.safetensors"
+    ),
+    "kromoss_int8_convrot.safetensors": (
+        "https://huggingface.co/lodestones/Kromoss/resolve/main/"
+        "diffusion_models/kromoss_int8_convrot.safetensors"
+    ),
+    "8-steps-dmd-lora.safetensors": (
+        "https://huggingface.co/lodestones/Kromoss/resolve/main/"
+        "8-steps-dmd-lora.safetensors"
+    ),
 }
 KREA2_EXTRA_MODELS = [
     "krea2_raw_bf16.safetensors",
@@ -224,6 +261,28 @@ def main() -> int:
         expected_extras = {VAE_UTILS_MODEL}
         if flag == "DOWNLOAD_KLEIN3":
             expected_extras = KLEIN3_MODELS
+        if flag == "DOWNLOAD_MOSS":
+            expected_extras = MOSS_MODELS
+            assert template["flags"][flag]["folders"] == ["MOSS Image"]
+            for dest in MOSS_DESTINATIONS:
+                subdir, name = dest.rsplit("/", 1)
+                assert registry[name]["url"] == MOSS_URLS[name], name
+                assert registry[name]["subdir"] == subdir, name
+            moss_graph = load_json(
+                REPO / "workflows" / "MOSS Image" / "MOSS_Image_Workflow.json",
+                "MOSS Image workflow",
+            )
+            exts = (".safetensors", ".bin", ".onnx", ".pth", ".pt", ".ckpt", ".gguf")
+            referenced = set()
+            for node in moss_graph.get("nodes") or []:
+                assert node.get("properties", {}).get("cnr_id") == "comfy-core", node.get("type")
+                for value in node.get("widgets_values") or []:
+                    if isinstance(value, str) and value.lower().endswith(exts):
+                        referenced.add(Path(value).name)
+            assert referenced == MOSS_MODELS, sorted(referenced)
+            assert any(node.get("type") == "ComfySwitchNode" for node in moss_graph["nodes"])
+            serialized = json.dumps(moss_graph).lower()
+            assert "lazyswitchkj" not in serialized and "kjnodes" not in serialized
         if flag == "download_krea2":
             expected_extras.update(KREA2_EXTRA_MODELS)
         assert extras == expected_extras, (
@@ -386,6 +445,16 @@ def main() -> int:
                 downloaded = {l.split("\t")[1].rsplit("/", 1)[1] for l in lines}
                 if flag == "DOWNLOAD_KLEIN3":
                     assert downloaded == KLEIN3_MODELS, (flag, downloaded)
+                elif flag == "DOWNLOAD_MOSS":
+                    models_root = tmp / f"models-combo-{slug}"
+                    queued = {}
+                    for line in lines:
+                        url, dest = line.split("\t")[:2]
+                        rel = Path(dest).relative_to(models_root).as_posix()
+                        queued[rel] = url
+                    assert set(queued) == MOSS_DESTINATIONS, (flag, set(queued))
+                    for rel, url in queued.items():
+                        assert url == MOSS_URLS[rel.rsplit("/", 1)[1]], (rel, url)
                 else:
                     assert VAE_UTILS_MODEL in downloaded, (
                         f"{flag}: shared VAE Utils model missing from manifest"

@@ -1024,6 +1024,67 @@
       "notes": [
         "Enable DOWNLOAD_KLEIN3 and provide HF_TOKEN with access to black-forest-labs/flux-3-image-klein-comfy. Requires ComfyUI v0.41.0 or newer with FLUX.3 support."
       ]
+    },
+    {
+      "id": "moss-image-text-to-image",
+      "file": "workflows/MOSS Image/MOSS_Image_Workflow.json",
+      "title": "MOSS Image",
+      "description": "MOSS-Image SFT and Kromoss text-to-image in ComfyUI, with a switch between the 25-step film look and the 8-step LoRA path.",
+      "model": "MOSS Image",
+      "output": "Image",
+      "tags": [
+        "MOSS Image",
+        "Kromoss",
+        "text-to-image",
+        "ComfyUI"
+      ],
+      "status": "published",
+      "publishedAt": "2026-10-20T06:00:00Z",
+      "difficulty": "Beginner",
+      "inputs": [
+        "Text"
+      ],
+      "outputs": [
+        "Image"
+      ],
+      "notes": [
+        "Enable DOWNLOAD_MOSS. Public weights; ComfyUI 0.42.1 loads them with built-in nodes. Leave KROMOSS off for MOSS SFT, or on for Kromoss plus the 8-step LoRA."
+      ],
+      "body": "MOSS Image is a text-to-image workflow for the MOSS-Image SFT checkpoint and the Kromoss fine-tune.\n\n**Great for:**\n- Prompted still images at 1024\n- Switching between a slower film-like pass and a fast 8-step pass\n\n### How it works\n1. Enable `DOWNLOAD_MOSS` and restart so the weights are on the pod.\n2. Edit the positive prompt and the image size. Width and height need to be multiples of 16.\n3. Leave KROMOSS off for MOSS SFT, or turn it on for Kromoss with the 8-step DMD LoRA.\n4. Queue the graph. The built-in switch runs only the selected sampler.\n\n### Settings\nMOSS SFT uses 25 steps, CFG 2.5, er_sde, and simple. Kromoss uses 8 steps, CFG 1, euler, and simple, with the LoRA at strength 1.",
+      "settings": [
+        {
+          "label": "Resolution",
+          "value": "1024 x 1024"
+        },
+        {
+          "label": "MOSS SFT sampler",
+          "value": "er_sde"
+        },
+        {
+          "label": "MOSS SFT steps",
+          "value": "25"
+        },
+        {
+          "label": "MOSS SFT CFG",
+          "value": "2.5"
+        },
+        {
+          "label": "Kromoss sampler",
+          "value": "euler"
+        },
+        {
+          "label": "Kromoss steps",
+          "value": "8"
+        },
+        {
+          "label": "Kromoss CFG",
+          "value": "1"
+        },
+        {
+          "label": "Scheduler",
+          "value": "simple"
+        }
+      ]
     }
   ]
 }

@@ -1,10 +1,10 @@
-# Qwen-Image, Z-Image, Boogu, Krea-2 and Flux Klein 3, ComfyUI on RunPod
+# Qwen-Image, Z-Image, Boogu, Krea-2, Flux Klein 3 and MOSS-Image, ComfyUI on RunPod
 
 Created by HearmemanAI. Something not working, or a question about a workflow? Ask in
 help-and-support on [my Discord](https://discord.gg/ZVWVhT43GW). That is the only place I do
 support, and it is also where new releases are announced.
 
-Five image model families on one pod, each behind its own flag, so you only download the ones you
+Six image model families on one pod, each behind its own flag, so you only download the ones you
 want.
 
 ## Before you deploy
@@ -38,6 +38,7 @@ FYI: this template is built for CUDA 13.0 and above.
 | `download_boogu` | false | Boogu-Image, with its three workflows: base, edit and turbo |
 | `download_krea2` | false | Krea-2, with its two workflows |
 | `DOWNLOAD_KLEIN3` | false | FLUX.3 Klein distilled INT8, with official Comfy-Org text-to-image and image-edit workflows. Requires `HF_TOKEN` and model access; failed preflight skips Klein 3 and continues setup. |
+| `DOWNLOAD_MOSS` | false | MOSS-Image SFT INT8 and Kromoss INT8, with the Qwen3.5-9B W4A8 text encoder, small Flux 2 VAE, Kromoss 8-step LoRA, and the MOSS Image workflow. Public weights; ComfyUI 0.42.1 loads them with built-in nodes. |
 | `QWEN_IMAGE_PRECISION` | bf16 | bf16 or fp8 for the Qwen-Image base model. Qwen-Image-Edit is not affected, it ships as a single build. |
 | `BOOGU_PRECISION` | bf16 | bf16 or fp8 for the Boogu models. Independent of the one above. |
 | `civitai_token` | empty | Your CivitAI API token |
@@ -85,6 +86,22 @@ an older image lacks FLUX.3 support, Klein 3 is skipped with a clear error.
 
 The two bundled workflows are copied from Comfy-Org's official workflow templates. The image-edit
 example expects an input image; upload your own in its image loader before running.
+
+## MOSS-Image and Kromoss
+
+Set `DOWNLOAD_MOSS=true`. Setup then queues five public files through the same Hugging Face
+downloader as the other families:
+
+- `moss_image_sft_int8_convrot.safetensors` from Comfy-Org/MOSS-Image into `models/diffusion_models`
+- `qwen3.5_9b_w4a8_gptq.safetensors` from Comfy-Org/MOSS-Image into `models/text_encoders`
+- `flux2-vae_small.safetensors` from Comfy-Org/MOSS-Image into `models/vae`
+- `kromoss_int8_convrot.safetensors` from lodestones/Kromoss into `models/diffusion_models`
+- `8-steps-dmd-lora.safetensors` from lodestones/Kromoss into `models/loras`
+
+ComfyUI 0.42.1, the version pinned by this template, loads MOSS-Image with its built-in nodes.
+`HF_TOKEN` stays optional for this flag and only raises the Hugging Face rate limit. The flag
+copies `workflows/MOSS Image/MOSS_Image_Workflow.json`. Leave KROMOSS off for the 25-step MOSS SFT
+pass, or turn it on for Kromoss with the 8-step LoRA. The built-in switch runs only the selected sampler.
 
 ## Once it is up
 
