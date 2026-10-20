@@ -38,7 +38,7 @@ FYI: this template is built for CUDA 13.0 and above.
 | `download_boogu` | false | Boogu-Image, with its three workflows: base, edit and turbo |
 | `download_krea2` | false | Krea-2, with its two workflows |
 | `DOWNLOAD_KLEIN3` | false | FLUX.3 Klein distilled INT8, with official Comfy-Org text-to-image and image-edit workflows. Requires `HF_TOKEN` and model access; failed preflight skips Klein 3 and continues setup. |
-| `DOWNLOAD_MOSS` | false | MOSS-Image SFT INT8 and Kromoss INT8, with the Qwen3.5-9B W4A8 text encoder, small Flux 2 VAE, and Kromoss 8-step LoRA. Public weights; ComfyUI 0.42.1 loads them with built-in nodes. The MOSS Image workflow is added separately. |
+| `DOWNLOAD_MOSS` | false | MOSS-Image SFT INT8 and Kromoss INT8, with the Qwen3.5-9B W4A8 text encoder, small Flux 2 VAE, Kromoss 8-step LoRA, and the MOSS Image workflow. Public weights; ComfyUI 0.42.1 loads them with built-in nodes. |
 | `QWEN_IMAGE_PRECISION` | bf16 | bf16 or fp8 for the Qwen-Image base model. Qwen-Image-Edit is not affected, it ships as a single build. |
 | `BOOGU_PRECISION` | bf16 | bf16 or fp8 for the Boogu models. Independent of the one above. |
 | `civitai_token` | empty | Your CivitAI API token |
@@ -100,8 +100,8 @@ downloader as the other families:
 
 ComfyUI 0.42.1, the version pinned by this template, loads MOSS-Image with its built-in nodes.
 `HF_TOKEN` stays optional for this flag and only raises the Hugging Face rate limit. The flag
-also copies whatever graphs are in `workflows/MOSS Image`; that workflow is added in a follow-up,
-so a pod with only this flag currently downloads the weights and copies no graph.
+copies `workflows/MOSS Image/MOSS_Image_Workflow.json`. Leave KROMOSS off for the 25-step MOSS SFT
+pass, or turn it on for Kromoss with the 8-step LoRA. The built-in switch runs only the selected sampler.
 
 ## Once it is up
 

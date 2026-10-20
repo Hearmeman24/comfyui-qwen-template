@@ -56,9 +56,7 @@ EXPECTED_WORKFLOW_COUNTS = {
     "download_boogu": 3,
     "download_krea2": 2,
     "DOWNLOAD_KLEIN3": 2,
-    # The MOSS Image workflow JSON lands in a follow-up. The folder is already
-    # wired so that drop-in is copied; until then this flag queues models only.
-    "DOWNLOAD_MOSS": 0,
+    "DOWNLOAD_MOSS": 1,
 }
 KLEIN3_MODELS = {
     "flux3-image-klein-int8-convrot.safetensors",
@@ -270,6 +268,21 @@ def main() -> int:
                 subdir, name = dest.rsplit("/", 1)
                 assert registry[name]["url"] == MOSS_URLS[name], name
                 assert registry[name]["subdir"] == subdir, name
+            moss_graph = load_json(
+                REPO / "workflows" / "MOSS Image" / "MOSS_Image_Workflow.json",
+                "MOSS Image workflow",
+            )
+            exts = (".safetensors", ".bin", ".onnx", ".pth", ".pt", ".ckpt", ".gguf")
+            referenced = set()
+            for node in moss_graph.get("nodes") or []:
+                assert node.get("properties", {}).get("cnr_id") == "comfy-core", node.get("type")
+                for value in node.get("widgets_values") or []:
+                    if isinstance(value, str) and value.lower().endswith(exts):
+                        referenced.add(Path(value).name)
+            assert referenced == MOSS_MODELS, sorted(referenced)
+            assert any(node.get("type") == "ComfySwitchNode" for node in moss_graph["nodes"])
+            serialized = json.dumps(moss_graph).lower()
+            assert "lazyswitchkj" not in serialized and "kjnodes" not in serialized
         if flag == "download_krea2":
             expected_extras.update(KREA2_EXTRA_MODELS)
         assert extras == expected_extras, (
