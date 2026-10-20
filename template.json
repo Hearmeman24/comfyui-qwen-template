@@ -85,6 +85,19 @@
         "qwen3.5_9b_flux3_prompt_upsampler_w4a8.safetensors",
         "flux2-vae.safetensors"
       ]
+    },
+    "DOWNLOAD_MOSS": {
+      "default": false,
+      "folders": [
+        "MOSS Image"
+      ],
+      "extra_models": [
+        "moss_image_sft_int8_convrot.safetensors",
+        "qwen3.5_9b_w4a8_gptq.safetensors",
+        "flux2-vae_small.safetensors",
+        "kromoss_int8_convrot.safetensors",
+        "8-steps-dmd-lora.safetensors"
+      ]
     }
   },
   "swap_groups": [

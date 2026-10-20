@@ -1,7 +1,7 @@
 ## What is in this template
 
-This template runs Qwen-Image (base + Edit), Z-Image Turbo, Boogu-Image and
-Krea-2 and Flux Klein 3 on ComfyUI. Each family ships behind its own download flag, so a
+This template runs Qwen-Image (base + Edit), Z-Image Turbo, Boogu-Image,
+Krea-2, Flux Klein 3, and MOSS-Image with Kromoss on ComfyUI. Each family ships behind its own download flag, so a
 pod only downloads what you ask for.
 
 Every family is off by default. Set the matching flag to `true` on the
@@ -30,6 +30,7 @@ you deploy, or edit the variables on this pod and restart it.
 | BOOGU_PRECISION | bf16 | bf16 or fp8. Same idea as QWEN_IMAGE_PRECISION, scoped to Boogu only: the two switches are independent. |
 | download_krea2 | false | Krea-2: downloads the Turbo checkpoint, the raw base, both Krea-2 LoRAs and the text encoder, and copies the two Krea-2 workflows. |
 | DOWNLOAD_KLEIN3 | false | FLUX.3 Klein distilled INT8, with official text-to-image and image-edit workflows. Requires an explicit HF_TOKEN and gated model access. Failed preflight skips Klein 3 and continues setup. |
+| DOWNLOAD_MOSS | false | MOSS-Image SFT INT8 and Kromoss INT8: downloads the diffusion weights, Qwen3.5-9B W4A8 text encoder, small Flux 2 VAE, and 8-step LoRA. Public weights on ComfyUI 0.42.1. Copies workflows/MOSS Image when that folder exists; the graph is added in a follow-up. |
 | CIVITAI_LORAS | unset | Comma-separated CivitAI model version IDs to download into models/loras/. |
 | CIVITAI_CHECKPOINTS | unset | Comma-separated CivitAI model version IDs to download into models/checkpoints/. |
 | civitai_token | unset | Your CivitAI API token. CIVITAI_TOKEN and CIVITAI_API_KEY are also accepted. |
