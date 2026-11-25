@@ -72,16 +72,16 @@
         "seedvr2_ema_7b_fp16.safetensors",
         "ema_vae_fp16.safetensors",
         "qwen3vl_4b_fp8_scaled.safetensors",
-        "wan2.1_14B_SCAIL_2_int8_convrot.safetensors",
-        "wan2.1_SCAIL_2_DPO_lora_bf16.safetensors",
-        "lightx2v_I2V_14B_480p_cfg_step_distill_rank64_bf16.safetensors",
-        "umt5_xxl_fp8_e4m3fn_scaled.safetensors",
-        "wan_2.1_vae.safetensors",
-        "clip_vision_h.safetensors",
         "sam3.1_multiplex_fp16.safetensors",
-        "taew2_1.pth",
-        "rife426.pth",
-        "1x-ITF-SkinDiffDetail-Lite-v1.pth"
+        "minimax_h3_ref2va_pruned_int8_convrot.safetensors",
+        "qwen3vl_32b_minimax_h3_int8_convrot.safetensors",
+        "minimax_h3_video_vae_fp16.safetensors",
+        "minimax_h3_audio_vae_fp32.safetensors",
+        "minimax_h3_ref2v_turbo_8step_v1.1_768p_comfyui_bf16.safetensors",
+        "minimax_h3_latent_upscaler_3d_conv_v1_fp16.safetensors",
+        "taeh3.safetensors",
+        "depth_anything_3_mono_large.safetensors",
+        "minimax_h3_open_regenerate_2k_refiner_rank_384_bf16.safetensors"
       ]
     },
     "DOWNLOAD_KLEIN3": {
@@ -161,7 +161,9 @@
         "https://github.com/numz/ComfyUI-SeedVR2_VideoUpscaler.git|4490bd1f482e026674543386bb2a4d176da245b9",
         "https://github.com/Jonseed/ComfyUI-Detail-Daemon.git|3394e44afea04ed0188fb37b21f0d9952469766b",
         "https://github.com/Kosinkadink/ComfyUI-VideoHelperSuite.git|775ae691ecbab6a6d09a2c186f95d130cf8a10d3",
-        "https://github.com/gabe-init/ComfyUI-Openrouter_node.git|df18925e8d19f98987fe865fc0ed7b66015eeb05"
+        "https://github.com/LBH-123-AI/Comfyui_Minimax_h3_latent_Upscaler.git|d7c01b9011f2e8439493f6c02c29995a27df276f",
+        "https://github.com/Comfy-Org/ComfyUI_Nvidia_VFX_Nodes.git|38d790ded00650681fa3645362efe28c8560cf40",
+        "https://github.com/Fannovel16/comfyui_controlnet_aux.git|a587a4c1594524c1d2de5cd1a86cd868ff448e1c"
       ]
     }
   },
