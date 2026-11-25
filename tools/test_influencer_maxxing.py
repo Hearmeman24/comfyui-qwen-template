@@ -40,7 +40,6 @@ NODE_URLS = {
     "https://github.com/Kosinkadink/ComfyUI-VideoHelperSuite.git",
     "https://github.com/LBH-123-AI/Comfyui_Minimax_h3_latent_Upscaler.git",
     "https://github.com/Comfy-Org/ComfyUI_Nvidia_VFX_Nodes.git",
-    "https://github.com/Fannovel16/comfyui_controlnet_aux.git",
 }
 
 

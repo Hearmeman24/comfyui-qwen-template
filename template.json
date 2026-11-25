@@ -162,8 +162,7 @@
         "https://github.com/Jonseed/ComfyUI-Detail-Daemon.git|3394e44afea04ed0188fb37b21f0d9952469766b",
         "https://github.com/Kosinkadink/ComfyUI-VideoHelperSuite.git|775ae691ecbab6a6d09a2c186f95d130cf8a10d3",
         "https://github.com/LBH-123-AI/Comfyui_Minimax_h3_latent_Upscaler.git|d7c01b9011f2e8439493f6c02c29995a27df276f",
-        "https://github.com/Comfy-Org/ComfyUI_Nvidia_VFX_Nodes.git|38d790ded00650681fa3645362efe28c8560cf40",
-        "https://github.com/Fannovel16/comfyui_controlnet_aux.git|a587a4c1594524c1d2de5cd1a86cd868ff448e1c"
+        "https://github.com/Comfy-Org/ComfyUI_Nvidia_VFX_Nodes.git|38d790ded00650681fa3645362efe28c8560cf40"
       ]
     }
   },
