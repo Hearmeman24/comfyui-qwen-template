@@ -71,7 +71,17 @@
         "Krea2_TextFusion_Refusal_Reduction.safetensors",
         "seedvr2_ema_7b_fp16.safetensors",
         "ema_vae_fp16.safetensors",
-        "qwen3vl_4b_fp8_scaled.safetensors"
+        "qwen3vl_4b_fp8_scaled.safetensors",
+        "wan2.1_14B_SCAIL_2_int8_convrot.safetensors",
+        "wan2.1_SCAIL_2_DPO_lora_bf16.safetensors",
+        "lightx2v_I2V_14B_480p_cfg_step_distill_rank64_bf16.safetensors",
+        "umt5_xxl_fp8_e4m3fn_scaled.safetensors",
+        "wan_2.1_vae.safetensors",
+        "clip_vision_h.safetensors",
+        "sam3.1_multiplex_fp16.safetensors",
+        "taew2_1.pth",
+        "rife426.pth",
+        "1x-ITF-SkinDiffDetail-Lite-v1.pth"
       ]
     },
     "DOWNLOAD_KLEIN3": {

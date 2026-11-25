@@ -21,6 +21,17 @@ MODELS = {
     "Krea2_TextFusion_Refusal_Reduction.safetensors": "loras",
     "seedvr2_ema_7b_fp16.safetensors": "SEEDVR2",
     "ema_vae_fp16.safetensors": "SEEDVR2",
+    # SCAIL 2 God Mode V2 (Wan 2.1 character replacement)
+    "wan2.1_14B_SCAIL_2_int8_convrot.safetensors": "diffusion_models",
+    "wan2.1_SCAIL_2_DPO_lora_bf16.safetensors": "loras",
+    "lightx2v_I2V_14B_480p_cfg_step_distill_rank64_bf16.safetensors": "loras",
+    "umt5_xxl_fp8_e4m3fn_scaled.safetensors": "text_encoders",
+    "wan_2.1_vae.safetensors": "vae",
+    "clip_vision_h.safetensors": "clip_vision",
+    "sam3.1_multiplex_fp16.safetensors": "checkpoints",
+    "taew2_1.pth": "vae_approx",
+    "rife426.pth": "frame_interpolation",
+    "1x-ITF-SkinDiffDetail-Lite-v1.pth": "upscale_models",
 }
 NODE_URLS = {
     "https://github.com/numz/ComfyUI-SeedVR2_VideoUpscaler.git",
@@ -90,7 +101,7 @@ def main():
             assert rows == (expected if enabled else {}), (raw, rows)
             assert nodes == (NODE_URLS if enabled else set()), (raw, nodes)
             assert not list(dst.rglob("*.json")), "Dependency-only setup copied a graph"
-        print("OK: premium flag truth values gate exactly eight models and two node packs, zero graphs")
+        print(f"OK: premium flag truth values gate exactly {len(MODELS)} models and two node packs, zero graphs")
 
         for other in template["flags"]:
             if other == FLAG:
@@ -118,11 +129,13 @@ def main():
         rows, _ = run({FLAG: "true"})
         assert rows == expected
         # Sparse files exercise the provisioner's existing-file skip at real destinations.
-        for relative in expected:
-            target = models_root / relative
+        for name, category in MODELS.items():
+            target = models_root / category / name
             target.parent.mkdir(parents=True, exist_ok=True)
+            # Above the entry's explicit min_size_mb floor, else it counts as a partial download.
+            size_mb = max(11, int(registry[name].get("min_size_mb", 0)) + 1)
             with target.open("wb") as handle:
-                handle.truncate(11 * 1024 * 1024)
+                handle.truncate(size_mb * 1024 * 1024)
         rows, _ = run({FLAG: "true"})
         assert rows == {}, "Repeated provisioning must reuse existing weights"
         rows, nodes = run({FLAG: "false"})
