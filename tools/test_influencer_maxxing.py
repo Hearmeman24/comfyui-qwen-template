@@ -23,11 +23,11 @@ MODELS = {
     "ema_vae_fp16.safetensors": "SEEDVR2",
     # MiniMax H3 character replacement workflow
     "sam3.1_multiplex_fp16.safetensors": "checkpoints",
-    "minimax_h3_ref2va_pruned_int8_convrot.safetensors": "diffusion_models",
+    "minimax_h3_ref2va_int8_convrot.safetensors": "diffusion_models",
     "qwen3vl_32b_minimax_h3_int8_convrot.safetensors": "text_encoders",
     "minimax_h3_video_vae_fp16.safetensors": "vae",
     "minimax_h3_audio_vae_fp32.safetensors": "vae",
-    "minimax_h3_fl2v_turbo_8step_v1.1_768p_comfyui_bf16.safetensors": "loras",
+    "minimax_h3_fl2v_turbo_8step_v1.2_768p_comfyui_bf16.safetensors": "loras",
     "h3_character_swap_v1.5.safetensors": "loras",
     "minimax_h3_latent_upscaler_3d_conv_v1_fp16.safetensors": "latent_upscale_models",
     "taeh3.safetensors": "vae_approx",
