@@ -27,10 +27,10 @@ MODELS = {
     "qwen3vl_32b_minimax_h3_int8_convrot.safetensors": "text_encoders",
     "minimax_h3_video_vae_fp16.safetensors": "vae",
     "minimax_h3_audio_vae_fp32.safetensors": "vae",
-    "minimax_h3_ref2v_turbo_8step_v1.1_768p_comfyui_bf16.safetensors": "loras",
+    "minimax_h3_fl2v_turbo_8step_v1.1_768p_comfyui_bf16.safetensors": "loras",
+    "h3_character_swap_v1.5.safetensors": "loras",
     "minimax_h3_latent_upscaler_3d_conv_v1_fp16.safetensors": "latent_upscale_models",
     "taeh3.safetensors": "vae_approx",
-    "depth_anything_3_mono_large.safetensors": "geometry_estimation",
     "minimax_h3_open_regenerate_2k_refiner_rank_384_bf16.safetensors": "loras",
 }
 NODE_URLS = {
