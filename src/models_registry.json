@@ -231,7 +231,8 @@
     "subdir": "geometry_estimation"
   },
   "minimax_h3_open_regenerate_2k_refiner_rank_384_bf16.safetensors": {
-    "url": "https://huggingface.co/RunningHubAI/rh-minimax-h3-open-regenerate-2k-refiner-rank-384-bf16.safetensors-lora/resolve/main/minimax_h3_open_regenerate_2k_refiner_rank_384_bf16.safetensors",
-    "subdir": "loras"
+    "url": "https://huggingface.co/Hearmeman/comfyui-template-assets/resolve/main/loras/minimax_h3_open_regenerate_2k_refiner_rank_384_bf16.safetensors",
+    "subdir": "loras",
+    "upstream_url": "https://huggingface.co/Kijai/MiniMax-H3-experimental/resolve/main/loras/minimax_h3_open_regenerate_2k_refiner_rank_384_bf16.safetensors"
   }
 }
