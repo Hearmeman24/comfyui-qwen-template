@@ -21,21 +21,25 @@ MODELS = {
     "Krea2_TextFusion_Refusal_Reduction.safetensors": "loras",
     "seedvr2_ema_7b_fp16.safetensors": "SEEDVR2",
     "ema_vae_fp16.safetensors": "SEEDVR2",
-    # SCAIL 2 God Mode V2 (Wan 2.1 character replacement)
-    "wan2.1_14B_SCAIL_2_int8_convrot.safetensors": "diffusion_models",
-    "wan2.1_SCAIL_2_DPO_lora_bf16.safetensors": "loras",
-    "lightx2v_I2V_14B_480p_cfg_step_distill_rank64_bf16.safetensors": "loras",
-    "umt5_xxl_fp8_e4m3fn_scaled.safetensors": "text_encoders",
-    "wan_2.1_vae.safetensors": "vae",
-    "clip_vision_h.safetensors": "clip_vision",
+    # MiniMax H3 character replacement workflow
     "sam3.1_multiplex_fp16.safetensors": "checkpoints",
-    "taew2_1.pth": "vae_approx",
-    "rife426.pth": "frame_interpolation",
-    "1x-ITF-SkinDiffDetail-Lite-v1.pth": "upscale_models",
+    "minimax_h3_ref2va_int8_convrot.safetensors": "diffusion_models",
+    "qwen3vl_32b_minimax_h3_int8_convrot.safetensors": "text_encoders",
+    "minimax_h3_video_vae_fp16.safetensors": "vae",
+    "minimax_h3_audio_vae_fp32.safetensors": "vae",
+    "minimax_h3_fl2v_turbo_8step_v1.2_768p_comfyui_bf16.safetensors": "loras",
+    "h3_character_swap_v1.5.safetensors": "loras",
+    "minimax_h3_latent_upscaler_3d_conv_v1_fp16.safetensors": "latent_upscale_models",
+    "taeh3.safetensors": "vae_approx",
+    "minimax_h3_open_regenerate_2k_refiner_rank_384_bf16.safetensors": "loras",
 }
 NODE_URLS = {
     "https://github.com/numz/ComfyUI-SeedVR2_VideoUpscaler.git",
     "https://github.com/Jonseed/ComfyUI-Detail-Daemon.git",
+    # MiniMax H3 character replacement workflow
+    "https://github.com/Kosinkadink/ComfyUI-VideoHelperSuite.git",
+    "https://github.com/LBH-123-AI/Comfyui_Minimax_h3_latent_Upscaler.git",
+    "https://github.com/Comfy-Org/ComfyUI_Nvidia_VFX_Nodes.git",
 }
 
 
@@ -101,7 +105,7 @@ def main():
             assert rows == (expected if enabled else {}), (raw, rows)
             assert nodes == (NODE_URLS if enabled else set()), (raw, nodes)
             assert not list(dst.rglob("*.json")), "Dependency-only setup copied a graph"
-        print(f"OK: premium flag truth values gate exactly {len(MODELS)} models and two node packs, zero graphs")
+        print(f"OK: premium flag truth values gate exactly {len(MODELS)} models and {len(NODE_URLS)} node packs, zero graphs")
 
         for other in template["flags"]:
             if other == FLAG:
