@@ -36,6 +36,7 @@ MODELS = {
 NODE_URLS = {
     "https://github.com/numz/ComfyUI-SeedVR2_VideoUpscaler.git",
     "https://github.com/Jonseed/ComfyUI-Detail-Daemon.git",
+    "https://github.com/Kosinkadink/ComfyUI-VideoHelperSuite.git",  # SCAIL 2 God Mode V2
 }
 
 
@@ -101,7 +102,7 @@ def main():
             assert rows == (expected if enabled else {}), (raw, rows)
             assert nodes == (NODE_URLS if enabled else set()), (raw, nodes)
             assert not list(dst.rglob("*.json")), "Dependency-only setup copied a graph"
-        print(f"OK: premium flag truth values gate exactly {len(MODELS)} models and two node packs, zero graphs")
+        print(f"OK: premium flag truth values gate exactly {len(MODELS)} models and {len(NODE_URLS)} node packs, zero graphs")
 
         for other in template["flags"]:
             if other == FLAG:
