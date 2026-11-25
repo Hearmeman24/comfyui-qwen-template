@@ -37,6 +37,7 @@ NODE_URLS = {
     "https://github.com/numz/ComfyUI-SeedVR2_VideoUpscaler.git",
     "https://github.com/Jonseed/ComfyUI-Detail-Daemon.git",
     "https://github.com/Kosinkadink/ComfyUI-VideoHelperSuite.git",  # SCAIL 2 God Mode V2
+    "https://github.com/gabe-init/ComfyUI-Openrouter_node.git",  # SCAIL 2 God Mode V2: OpenRouterNode
 }
 
 

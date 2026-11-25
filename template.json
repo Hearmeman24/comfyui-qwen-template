@@ -160,7 +160,8 @@
       "influencer_maxxing": [
         "https://github.com/numz/ComfyUI-SeedVR2_VideoUpscaler.git|4490bd1f482e026674543386bb2a4d176da245b9",
         "https://github.com/Jonseed/ComfyUI-Detail-Daemon.git|3394e44afea04ed0188fb37b21f0d9952469766b",
-        "https://github.com/Kosinkadink/ComfyUI-VideoHelperSuite.git|775ae691ecbab6a6d09a2c186f95d130cf8a10d3"
+        "https://github.com/Kosinkadink/ComfyUI-VideoHelperSuite.git|775ae691ecbab6a6d09a2c186f95d130cf8a10d3",
+        "https://github.com/gabe-init/ComfyUI-Openrouter_node.git|df18925e8d19f98987fe865fc0ed7b66015eeb05"
       ]
     }
   },
